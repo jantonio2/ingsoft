@@ -1,0 +1,44 @@
+﻿--- Insert Person
+
+
+INSERT INTO person VALUES (null,'Juan','Peralta','Flores','8344502','73935655',1, 1, '192.168.1.100', 1, now());
+INSERT INTO person VALUES (null,'Luis','Mamani','Mamani','6345502','73935622',1, 1, '192.168.1.100', 1, now());
+INSERT INTO person VALUES (null,'Maria','Lima','Mamani','9974505','63935612',1, 1, '192.168.1.100', 1, now());
+INSERT INTO person VALUES (null,'Carmen','Flores','Flores','3444506','73933422',1, 1, '192.168.1.100', 1, now());
+INSERT INTO person VALUES (null,'Marco','Linares','Flores','6324505','63935435',1, 1, '192.168.1.100', 1, now());
+INSERT INTO person VALUES (null,'Hugo','Peres','Gutierrez','9734502','73935622',1, 1, '192.168.1.100', 1, now());
+INSERT INTO person VALUES (null,'Pedro','Artiaga','Flores','1244504','63935621',1, 1, '192.168.1.100', 1, now());
+INSERT INTO person VALUES (null,'German','Choque','Lima','6684502','73935612',1, 1, '192.168.1.100', 1, now());
+INSERT INTO person VALUES (null,'Armando','Fuentes','Choque','4844501','63936522',1, 1, '192.168.1.100', 1, now());
+INSERT INTO person VALUES (null,'Lorena','Alvarado','Flores','8000502','63935523',1, 1, '192.168.1.100', 1, now());
+INSERT INTO person VALUES (null,'Patricio','Peralta','Mamani','8350232','63935655',1, 1, '192.168.1.100', 1, now());
+
+
+
+
+--- Insert Address
+
+
+
+
+INSERT INTO person VALUES (null,'Calle 1','San Mateo','La Paz','Bolivia',1, 1, '192.168.1.100', 1, now());
+INSERT INTO person VALUES (null,'Vita','Florida','La Paz','Bolivia',1, 1, '192.168.1.100', 1, now());
+INSERT INTO person VALUES (null,'Mendoza','Pacaje','La Paz','Bolivia',1, 1, '192.168.1.100', 1, now());
+INSERT INTO person VALUES (null,'Florida','Arcaza','La Paz','Bolivia',1, 1, '192.168.1.100', 1, now());
+INSERT INTO person VALUES (null,'Barbado','Libertad','La Paz','Bolivia',1, 1, '192.168.1.100', 1, now());
+
+
+
+
+
+
+-- Insert Vehicle
+INSERT INTO vehicle VALUES (null,’1’,’yyy-123’,2.5,’alto’,250.80,’disponible’,null,’Toyota’,’Toyota Sienna’,1,1, '192.168.1.100', 1, now());
+INSERT INTO vehicle VALUES (null,’2’,’xxx-123’,1.5,’medio’,150.80,’disponible’,null,’Toyota’,’Toyota Starlet’,1,1, '192.168.1.100', 1, now());
+
+
+INSERT INTO vehicle VALUES (null,’3’,’zzz-123’,2.5,’alto’,250.80,’disponible’,null,’Mercedes Benz’,’Actroz 1845 LS’,1,1, '192.168.1.100', 1, now());
+
+
+INSERT INTO vehicle VALUES (null,’4’,’aaa-123’,0.5,’bajo’,90.80,’disponible’,null,’Toyota’,’Toyota Granvia’,1,1, '192.168.1.100', 1, now());
+INSERT INTO vehicle VALUES (null,’5’,’sss-123’,2.5,’alto’,250.80,’disponible’,null,’Toyota’,’Toyota Sienna’,1,1, '192.168.1.100', 1, now());
