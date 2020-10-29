@@ -1,1588 +1,1601 @@
 ---
-openapi: "3.0.0"
+openapi: 3.0.0
 info:
-  title: "Simple TransVeloz API"
-  description: "API of TransVeloz system"
+  title: Simple TransVeloz API
+  description: API of TransVeloz system
   contact:
-    name: "Jorge Alejo-Kevin Escobar-Joel Quispe-Antonio Rocha"
-    email: "you@your-company.com"
+    name: Jorge Alejo-Kevin Escobar-Joel Quispe-Antonio Rocha
+    email: you@your-company.com
   license:
-    name: "Apache 2.0"
-    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-  version: "1.0.0"
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
 servers:
-- url: "https://virtserver.swaggerhub.com/jantonio2/TransVeloz/1.0.0"
-  description: "TransVeloz API documentation"
+- url: https://virtserver.swaggerhub.com/jantonio2/TransVeloz/1.0.0
+  description: TransVeloz API documentation
 tags:
-- name: "user"
-  description: "Operations about user"
-- name: "driver"
-  description: "Operations about driver"
-- name: "payment"
-  description: "Transactions that user make on the system"
+- name: user
+  description: Operations about user
+- name: driver
+  description: Operations about driver
+- name: payment
+  description: Transactions that user make on the system
 paths:
   /user:
     get:
       tags:
-      - "user"
-      summary: "Get all users in the system"
-      operationId: "getAllUsers"
+      - user
+      summary: Get all users in the system
+      operationId: getAllUsers
       parameters:
-      - name: "pageNumber"
-        in: "query"
-        description: "Page number"
+      - name: pageNumber
+        in: query
+        description: Page number
         required: false
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "integer"
+          type: integer
           default: 1
-      - name: "itemsPerPage"
-        in: "query"
-        description: "Number of items per page"
+      - name: itemsPerPage
+        in: query
+        description: Number of items per page
         required: false
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "integer"
+          type: integer
           default: 5
       responses:
         "200":
-          description: "successful operation"
+          description: successful operation
           headers:
             pagination:
-              description: "necesary elements to implement pagination"
-              style: "simple"
+              description: necesary elements to implement pagination
+              style: simple
               explode: false
               schema:
-                $ref: "#/components/schemas/Pagination"
+                $ref: '#/components/schemas/Pagination'
           content:
             application/json:
               schema:
-                type: "array"
+                type: array
                 items:
-                  type: "object"
+                  type: object
                   properties:
                     names:
-                      type: "string"
-                      example: "Pedro Alejandro"
+                      type: string
+                      example: Pedro Alejandro
                     surnames:
-                      type: "string"
-                      example: "Perez Rodriguez"
+                      type: string
+                      example: Perez Rodriguez
                     email:
-                      type: "string"
-                      example: "example@gmail.com"
+                      type: string
+                      example: example@gmail.com
                     ci:
-                      type: "string"
-                      example: "8588857"
+                      type: string
+                      example: 8588857
                     phone:
-                      type: "integer"
+                      type: integer
                       example: 7465843
         "400":
-          description: "Invalid status value"
+          description: Invalid status value
     put:
       tags:
-      - "user"
-      summary: "Update an existing user"
-      operationId: "updateUser"
+      - user
+      summary: Update an existing user
+      operationId: updateUser
       requestBody:
-        $ref: "#/components/requestBodies/User"
+        $ref: '#/components/requestBodies/User'
       responses:
         "200":
-          description: "Successful update"
+          description: Successful update
         "400":
-          description: "Invalid ID supplied"
+          description: Invalid ID supplied
         "404":
-          description: "User not found"
+          description: User not found
         "405":
-          description: "Validation exception"
+          description: Validation exception
     post:
       tags:
-      - "user"
-      summary: "Add a new user to the system"
-      operationId: "addUser"
+      - user
+      summary: Add a new user to the system
+      operationId: addUser
       requestBody:
-        $ref: "#/components/requestBodies/User"
+        $ref: '#/components/requestBodies/User'
       responses:
         "201":
-          description: "User added"
+          description: User added
         "405":
-          description: "Invalid input"
+          description: Invalid input
   /user/{idUser}:
     get:
       tags:
-      - "user"
-      summary: "Find user by ID"
-      description: "Returns a single user"
-      operationId: "getUserById"
+      - user
+      summary: Find user by ID
+      description: Returns a single user
+      operationId: getUserById
       parameters:
-      - name: "idUser"
-        in: "path"
-        description: "ID of user to return"
+      - name: idUser
+        in: path
+        description: ID of user to return
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
       responses:
         "200":
-          description: "successful operation"
+          description: successful operation
           content:
             application/json:
               schema:
-                type: "object"
+                type: object
                 properties:
                   names:
-                    type: "string"
-                    example: "Pedro Alejandro"
+                    type: string
+                    example: Pedro Alejandro
                   surnames:
-                    type: "string"
-                    example: "Perez Rodriguez"
+                    type: string
+                    example: Perez Rodriguez
                   email:
-                    type: "string"
-                    example: "example@gmail.com"
+                    type: string
+                    example: example@gmail.com
                   ci:
-                    type: "string"
-                    example: "8588857"
+                    type: string
+                    example: 8588857
                   phone:
-                    type: "integer"
+                    type: integer
                     example: 7465843
                   birthdate:
-                    type: "string"
-                    format: "date"
-                    example: "2016-08-29"
+                    type: string
+                    format: date
+                    example: 2016-08-29
                   picture:
-                    type: "string"
-                    example: "url"
+                    type: string
+                    example: url
                   company:
-                    type: "string"
-                    example: "Soboce"
+                    type: string
+                    example: Soboce
                   address:
-                    type: "string"
-                    example: "Sopocachi, av. Carranza"
+                    type: string
+                    example: Sopocachi, av. Carranza
         "400":
-          description: "Invalid ID supplied"
+          description: Invalid ID supplied
         "404":
-          description: "User not found"
+          description: User not found
     delete:
       tags:
-      - "user"
-      summary: "Deletes a user"
-      operationId: "deleteUser"
+      - user
+      summary: Deletes a user
+      operationId: deleteUser
       parameters:
-      - name: "idUser"
-        in: "path"
-        description: "User id to delete"
+      - name: idUser
+        in: path
+        description: User id to delete
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
       responses:
         "200":
-          description: "Succesful delete"
+          description: Succesful delete
         "400":
-          description: "Invalid ID supplied"
+          description: Invalid ID supplied
         "404":
-          description: "User not found"
+          description: User not found
   /user/{idUser}/image:
     post:
       tags:
-      - "user"
-      summary: "uploads an picture profile"
-      operationId: "uploadFile"
+      - user
+      summary: uploads an picture profile
+      operationId: uploadFile
       parameters:
-      - name: "idUser"
-        in: "path"
-        description: "ID of user to update"
+      - name: idUser
+        in: path
+        description: ID of user to update
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
       requestBody:
         content:
           application/octet-stream:
             schema:
-              type: "string"
-              format: "binary"
+              type: string
+              format: binary
       responses:
         "200":
-          description: "successful operation"
+          description: successful operation
         "400":
-          description: "Invalid ID supplied"
+          description: Invalid ID supplied
         "404":
-          description: "User not found"
+          description: User not found
         "405":
-          description: "Validation exception"
+          description: Validation exception
   /user/{idUser}/payment/{idPayment}:
     get:
       tags:
-      - "user"
-      summary: "Get payment by ID user and ID payment"
-      operationId: "getPaymentByUserId"
+      - user
+      summary: Get payment by ID user and ID payment
+      operationId: getPaymentByUserId
       parameters:
-      - name: "idUser"
-        in: "path"
-        description: "ID user that match in the Data Base"
+      - name: idUser
+        in: path
+        description: ID user that match in the Data Base
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "integer"
-      - name: "idPayment"
-        in: "path"
-        description: "ID payment that match in the Data Base"
+          type: integer
+      - name: idPayment
+        in: path
+        description: ID payment that match in the Data Base
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "integer"
+          type: integer
       responses:
         "200":
-          description: "successful operation"
+          description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Payment"
+                $ref: '#/components/schemas/Payment'
             application/xml:
               schema:
-                $ref: "#/components/schemas/Payment"
+                $ref: '#/components/schemas/Payment'
         "400":
-          description: "Invalid id payment"
+          description: Invalid id payment
         "401":
-          description: "Please sign in"
+          description: Please sign in
         "404":
-          description: "Data not found"
+          description: Data not found
   /user/{idUser}/payment:
     get:
       tags:
-      - "user"
-      summary: "Get payments by userId"
-      operationId: "getPaymentsByUserId"
+      - user
+      summary: Get payments by userId
+      operationId: getPaymentsByUserId
       parameters:
-      - name: "idUser"
-        in: "path"
-        description: "ID user that match in the Data Base"
+      - name: idUser
+        in: path
+        description: ID user that match in the Data Base
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "string"
-      - name: "pageNumber"
-        in: "query"
-        description: "Page number"
+          type: string
+      - name: pageNumber
+        in: query
+        description: Page number
         required: false
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "integer"
+          type: integer
           default: 1
-      - name: "itemsPerPage"
-        in: "query"
-        description: "Number of items per page"
+      - name: itemsPerPage
+        in: query
+        description: Number of items per page
         required: false
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "integer"
+          type: integer
           default: 5
       responses:
         "200":
-          description: "successful operation"
+          description: successful operation
           headers:
             pagination:
-              description: "necesary elements to implement pagination"
-              style: "simple"
+              description: necesary elements to implement pagination
+              style: simple
               explode: false
               schema:
-                $ref: "#/components/schemas/Pagination"
+                $ref: '#/components/schemas/Pagination'
           content:
             application/json:
               schema:
-                type: "array"
+                type: array
                 items:
-                  $ref: "#/components/schemas/Payment"
+                  $ref: '#/components/schemas/Payment'
             application/xml:
               schema:
-                type: "array"
+                type: array
                 items:
-                  $ref: "#/components/schemas/Payment"
+                  $ref: '#/components/schemas/Payment'
         "400":
-          description: "Invalid id payment"
+          description: Invalid id payment
         "401":
-          description: "Please sign in"
+          description: Please sign in
         "404":
-          description: "Data not found"
+          description: Data not found
   /driver:
     get:
       tags:
-      - "driver"
-      summary: "Get all drivers in the system"
-      operationId: "getAllDrivers"
+      - driver
+      summary: Get all drivers in the system
+      operationId: getAllDrivers
       parameters:
-      - name: "pageNumber"
-        in: "query"
-        description: "Page number"
+      - name: pageNumber
+        in: query
+        description: Page number
         required: false
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "integer"
+          type: integer
           default: 1
-      - name: "itemsPerPage"
-        in: "query"
-        description: "Number of items per page"
+      - name: itemsPerPage
+        in: query
+        description: Number of items per page
         required: false
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "integer"
+          type: integer
           default: 5
       responses:
         "200":
-          description: "successful operation"
+          description: successful operation
           headers:
             pagination:
-              description: "necesary elements to implement pagination"
-              style: "simple"
+              description: necesary elements to implement pagination
+              style: simple
               explode: false
               schema:
-                $ref: "#/components/schemas/Pagination"
+                $ref: '#/components/schemas/Pagination'
           content:
             application/json:
               schema:
-                type: "array"
+                type: array
                 items:
-                  type: "object"
+                  type: object
                   properties:
                     names:
-                      type: "string"
-                      example: "Jose Gabriel"
+                      type: string
+                      example: Jose Gabriel
                     surnames:
-                      type: "string"
-                      example: "Lopez Lopez"
+                      type: string
+                      example: Lopez Lopez
                     idCompany:
-                      $ref: "#/components/schemas/Company"
+                      $ref: '#/components/schemas/Company'
                     ci:
-                      type: "string"
-                      example: "456484165"
+                      type: string
+                      example: 456484165
                     phone:
-                      type: "integer"
+                      type: integer
                       example: 7465843
                     email:
-                      type: "string"
-                      example: "example@gmail.com"
+                      type: string
+                      example: example@gmail.com
         "400":
-          description: "Invalid status value"
+          description: Invalid status value
     put:
       tags:
-      - "driver"
-      summary: "Update an existing driver"
-      operationId: "updateDriver"
+      - driver
+      summary: Update an existing driver
+      operationId: updateDriver
       requestBody:
-        $ref: "#/components/requestBodies/Driver"
+        $ref: '#/components/requestBodies/Driver'
       responses:
         "200":
-          description: "Successful update"
+          description: Successful update
         "400":
-          description: "Invalid ID supplied"
+          description: Invalid ID supplied
         "404":
-          description: "Driver not found"
+          description: Driver not found
         "405":
-          description: "Validation exception"
+          description: Validation exception
     post:
       tags:
-      - "driver"
-      summary: "Add a new driver to the system"
-      operationId: "addDriver"
+      - driver
+      summary: Add a new driver to the system
+      operationId: addDriver
       requestBody:
-        $ref: "#/components/requestBodies/Driver"
+        $ref: '#/components/requestBodies/Driver'
       responses:
         "201":
-          description: "Driver added"
+          description: Driver added
         "405":
-          description: "Invalid input"
+          description: Invalid input
   /driver/{idDriver}:
     get:
       tags:
-      - "driver"
-      summary: "Find driver by ID"
-      description: "Returns a single driver"
-      operationId: "getDriverById"
+      - driver
+      summary: Find driver by ID
+      description: Returns a single driver
+      operationId: getDriverById
       parameters:
-      - name: "idDriver"
-        in: "path"
-        description: "ID of driver to return"
+      - name: idDriver
+        in: path
+        description: ID of driver to return
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
       responses:
         "200":
-          description: "successful operation"
+          description: successful operation
           content:
             application/json:
               schema:
-                type: "object"
+                type: object
                 properties:
                   names:
-                    type: "string"
-                    example: "Jose Gabriel"
+                    type: string
+                    example: Jose Gabriel
                   surnames:
-                    type: "string"
-                    example: "Lopez Lopez"
+                    type: string
+                    example: Lopez Lopez
                   idCompany:
-                    $ref: "#/components/schemas/Company"
+                    $ref: '#/components/schemas/Company'
                   ci:
-                    type: "string"
-                    example: "456484165"
+                    type: string
+                    example: 456484165
                   phone:
-                    type: "integer"
+                    type: integer
                     example: 7465843
                   email:
-                    type: "string"
-                    example: "example@gmail.com"
+                    type: string
+                    example: example@gmail.com
                   birthdate:
-                    type: "string"
-                    format: "date"
-                    example: "2016-08-29"
+                    type: string
+                    format: date
+                    example: 2016-08-29
                   picture:
-                    type: "string"
-                    example: "url"
+                    type: string
+                    example: url
                   address:
-                    type: "string"
-                    example: "Sopocachi, av. Carranza"
+                    type: string
+                    example: Sopocachi, av. Carranza
         "400":
-          description: "Invalid ID supplied"
+          description: Invalid ID supplied
         "404":
-          description: "Driver not found"
+          description: Driver not found
     delete:
       tags:
-      - "driver"
-      summary: "Deletes a driver"
-      operationId: "deleteDriver"
+      - driver
+      summary: Deletes a driver
+      operationId: deleteDriver
       parameters:
-      - name: "idDriver"
-        in: "path"
-        description: "Driver id to delete"
+      - name: idDriver
+        in: path
+        description: Driver id to delete
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
       responses:
         "200":
-          description: "Succesful delete"
+          description: Succesful delete
         "400":
-          description: "Invalid ID supplied"
+          description: Invalid ID supplied
         "404":
-          description: "Driver not found"
+          description: Driver not found
   /driver/{driverId}/image:
     post:
       tags:
-      - "driver"
-      summary: "uploads an picture profile"
-      operationId: "uploadDriverPicture"
+      - driver
+      summary: uploads an picture profile
+      operationId: uploadDriverPicture
       parameters:
-      - name: "driverId"
-        in: "path"
-        description: "ID of driver to update"
+      - name: driverId
+        in: path
+        description: ID of driver to update
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
       requestBody:
         content:
           application/octet-stream:
             schema:
-              type: "string"
-              format: "binary"
+              type: string
+              format: binary
       responses:
         "200":
-          description: "successful operation"
+          description: successful operation
         "400":
-          description: "Invalid ID supplied"
+          description: Invalid ID supplied
         "404":
-          description: "Driver not found"
+          description: Driver not found
         "405":
-          description: "Validation exception"
+          description: Validation exception
   /driver/{idDriver}/vehicle:
     get:
       tags:
-      - "vehicle"
-      summary: "Get all vehicles by driver in the system"
-      operationId: "getVehiclesByDriver"
+      - vehicle
+      summary: Get all vehicles by driver in the system
+      operationId: getVehiclesByDriver
       parameters:
-      - name: "idDriver"
-        in: "path"
-        description: "ID of driver"
+      - name: idDriver
+        in: path
+        description: ID of driver
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "integer"
-          format: "int64"
-      - name: "pageNumber"
-        in: "query"
-        description: "Page number"
+          type: integer
+          format: int64
+      - name: pageNumber
+        in: query
+        description: Page number
         required: false
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "integer"
+          type: integer
           default: 1
-      - name: "itemsPerPage"
-        in: "query"
-        description: "Number of items per page"
+      - name: itemsPerPage
+        in: query
+        description: Number of items per page
         required: false
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "integer"
+          type: integer
           default: 5
       responses:
         "200":
-          description: "successful operation"
+          description: successful operation
           headers:
             pagination:
-              description: "necesary elements to implement pagination"
-              style: "simple"
+              description: necesary elements to implement pagination
+              style: simple
               explode: false
               schema:
-                $ref: "#/components/schemas/Pagination"
+                $ref: '#/components/schemas/Pagination'
           content:
             application/json:
               schema:
-                type: "array"
+                type: array
                 items:
-                  $ref: "#/components/schemas/Vehicle"
+                  $ref: '#/components/schemas/Vehicle'
             application/xml:
               schema:
-                type: "array"
+                type: array
                 items:
-                  $ref: "#/components/schemas/Vehicle"
+                  $ref: '#/components/schemas/Vehicle'
         "400":
-          description: "Invalid status value"
+          description: Invalid status value
   /driver/{idDriver}/payment/{idPayment}:
     get:
       tags:
-      - "driver"
-      summary: "Get payment by ID driver and ID payment"
-      operationId: "getPaymentByDriverId"
+      - driver
+      summary: Get payment by ID driver and ID payment
+      operationId: getPaymentByDriverId
       parameters:
-      - name: "idDriver"
-        in: "path"
-        description: "ID driver payment that match in the Data Base"
+      - name: idDriver
+        in: path
+        description: ID driver payment that match in the Data Base
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "integer"
-      - name: "idPayment"
-        in: "path"
-        description: "ID payment that match in the Data Base"
+          type: integer
+      - name: idPayment
+        in: path
+        description: ID payment that match in the Data Base
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "integer"
-      - name: "pageNumber"
-        in: "query"
-        description: "Page number"
+          type: integer
+      - name: pageNumber
+        in: query
+        description: Page number
         required: false
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "integer"
+          type: integer
           default: 1
-      - name: "itemsPerPage"
-        in: "query"
-        description: "Number of items per page"
+      - name: itemsPerPage
+        in: query
+        description: Number of items per page
         required: false
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "integer"
+          type: integer
           default: 5
       responses:
         "200":
-          description: "successful operation"
+          description: successful operation
           headers:
             pagination:
-              description: "necesary elements to implement pagination"
-              style: "simple"
+              description: necesary elements to implement pagination
+              style: simple
               explode: false
               schema:
-                $ref: "#/components/schemas/Pagination"
+                $ref: '#/components/schemas/Pagination'
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Payment"
+                $ref: '#/components/schemas/Payment'
             application/xml:
               schema:
-                $ref: "#/components/schemas/Payment"
+                $ref: '#/components/schemas/Payment'
         "400":
-          description: "Invalid id payment"
+          description: Invalid id payment
         "401":
-          description: "Please sign in"
+          description: Please sign in
         "404":
-          description: "Data not found"
+          description: Data not found
   /driver/{idDriver}/payment:
     get:
       tags:
-      - "payment"
-      summary: "Get payments by driverId"
-      operationId: "getPaymentsByDriverId"
+      - payment
+      summary: Get payments by driverId
+      operationId: getPaymentsByDriverId
       parameters:
-      - name: "idDriver"
-        in: "path"
-        description: "ID driver that match in the Data Base"
+      - name: idDriver
+        in: path
+        description: ID driver that match in the Data Base
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "string"
+          type: string
       responses:
         "200":
-          description: "successful operation"
+          description: successful operation
           content:
             application/json:
               schema:
-                type: "array"
+                type: array
                 items:
-                  $ref: "#/components/schemas/Payment"
+                  $ref: '#/components/schemas/Payment'
             application/xml:
               schema:
-                type: "array"
+                type: array
                 items:
-                  $ref: "#/components/schemas/Payment"
+                  $ref: '#/components/schemas/Payment'
         "400":
-          description: "Invalid id payment"
+          description: Invalid id payment
         "401":
-          description: "Please sign in"
+          description: Please sign in
         "404":
-          description: "Data not found"
+          description: Data not found
   /vehicle:
     get:
       tags:
-      - "vehicle"
-      summary: "Get all vehicles in the system"
-      operationId: "getAllVehicles"
+      - vehicle
+      summary: Get all vehicles in the system
+      operationId: getAllVehicles
       parameters:
-      - name: "pageNumber"
-        in: "query"
-        description: "Page number"
+      - name: pageNumber
+        in: query
+        description: Page number
         required: false
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "integer"
+          type: integer
           default: 1
-      - name: "itemsPerPage"
-        in: "query"
-        description: "Number of items per page"
+      - name: itemsPerPage
+        in: query
+        description: Number of items per page
         required: false
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "integer"
+          type: integer
           default: 5
       responses:
         "200":
-          description: "successful operation"
+          description: successful operation
           headers:
             pagination:
-              description: "necesary elements to implement pagination"
-              style: "simple"
+              description: necesary elements to implement pagination
+              style: simple
               explode: false
               schema:
-                $ref: "#/components/schemas/Pagination"
+                $ref: '#/components/schemas/Pagination'
           content:
             application/json:
               schema:
-                type: "array"
+                type: array
                 items:
-                  $ref: "#/components/schemas/Vehicle"
+                  $ref: '#/components/schemas/Vehicle'
             application/xml:
               schema:
-                type: "array"
+                type: array
                 items:
-                  $ref: "#/components/schemas/Vehicle"
+                  $ref: '#/components/schemas/Vehicle'
         "400":
-          description: "Invalid status value"
+          description: Invalid status value
     put:
       tags:
-      - "vehicle"
-      summary: "Update an existing vehicle"
-      operationId: "updateVehicle"
+      - vehicle
+      summary: Update an existing vehicle
+      operationId: updateVehicle
       requestBody:
-        $ref: "#/components/requestBodies/Vehicle"
+        $ref: '#/components/requestBodies/Vehicle'
       responses:
         "200":
-          description: "Successful update"
+          description: Successful update
         "400":
-          description: "Invalid ID supplied"
+          description: Invalid ID supplied
         "404":
-          description: "Vehicle not found"
+          description: Vehicle not found
         "405":
-          description: "Validation exception"
+          description: Validation exception
     post:
       tags:
-      - "vehicle"
-      summary: "Add a new vehicle to the system"
-      operationId: "addVehicle"
+      - vehicle
+      summary: Add a new vehicle to the system
+      operationId: addVehicle
       requestBody:
-        $ref: "#/components/requestBodies/Vehicle"
+        $ref: '#/components/requestBodies/Vehicle'
       responses:
         "201":
-          description: "Vehicle added"
+          description: Vehicle added
         "405":
-          description: "Invalid input"
+          description: Invalid input
   /vehicle/{idVehicle}:
     get:
       tags:
-      - "vehicle"
-      summary: "Find vehicle by ID"
-      description: "Returns a single vehicle"
-      operationId: "getVehicleById"
+      - vehicle
+      summary: Find vehicle by ID
+      description: Returns a single vehicle
+      operationId: getVehicleById
       parameters:
-      - name: "idVehicle"
-        in: "path"
-        description: "ID of vehicle to return"
+      - name: idVehicle
+        in: path
+        description: ID of vehicle to return
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
       responses:
         "200":
-          description: "successful operation"
+          description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Vehicle"
+                $ref: '#/components/schemas/Vehicle'
         "400":
-          description: "Invalid ID supplied"
+          description: Invalid ID supplied
         "404":
-          description: "Vehicle not found"
+          description: Vehicle not found
     delete:
       tags:
-      - "vehicle"
-      summary: "Deletes a vehicle"
-      operationId: "deleteVehicle"
+      - vehicle
+      summary: Deletes a vehicle
+      operationId: deleteVehicle
       parameters:
-      - name: "idVehicle"
-        in: "path"
-        description: "Vehicle id to delete"
+      - name: idVehicle
+        in: path
+        description: Vehicle id to delete
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
       responses:
         "200":
-          description: "Succesful delete"
+          description: Succesful delete
         "400":
-          description: "Invalid ID supplied"
+          description: Invalid ID supplied
         "404":
-          description: "Vehicle not found"
+          description: Vehicle not found
   /vehicle/{idVehicle}/image:
     post:
       tags:
-      - "vehicle"
-      summary: "uploads an picture profile"
-      operationId: "uploadFileVehicle"
+      - vehicle
+      summary: uploads an picture profile
+      operationId: uploadFileVehicle
       parameters:
-      - name: "idVehicle"
-        in: "path"
-        description: "ID of vehicle to update"
+      - name: idVehicle
+        in: path
+        description: ID of vehicle to update
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
       requestBody:
         content:
           application/octet-stream:
             schema:
-              type: "string"
-              format: "binary"
+              type: string
+              format: binary
       responses:
         "200":
-          description: "successful operation"
+          description: successful operation
         "400":
-          description: "Invalid ID supplied"
+          description: Invalid ID supplied
         "404":
-          description: "User not found"
+          description: User not found
         "405":
-          description: "Validation exception"
+          description: Validation exception
   /vehicle/type:
     get:
       tags:
-      - "vehicle"
-      summary: "Finds Vehicles by Type"
-      operationId: "findVehiclesByType"
+      - vehicle
+      summary: Finds Vehicles by Type
+      operationId: findVehiclesByType
       parameters:
-      - name: "type"
-        in: "query"
-        description: "Type to filter by"
+      - name: type
+        in: query
+        description: Type to filter by
         required: true
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "array"
+          type: array
           items:
-            type: "string"
-      - name: "pageNumber"
-        in: "query"
-        description: "Page number"
+            type: string
+      - name: pageNumber
+        in: query
+        description: Page number
         required: false
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "integer"
+          type: integer
           default: 1
-      - name: "itemsPerPage"
-        in: "query"
-        description: "Number of items per page"
+      - name: itemsPerPage
+        in: query
+        description: Number of items per page
         required: false
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "integer"
+          type: integer
           default: 5
       responses:
         "200":
-          description: "successful operation"
+          description: successful operation
           headers:
             pagination:
-              description: "necesary elements to implement pagination"
-              style: "simple"
+              description: necesary elements to implement pagination
+              style: simple
               explode: false
               schema:
-                $ref: "#/components/schemas/Pagination"
+                $ref: '#/components/schemas/Pagination'
           content:
             application/json:
               schema:
-                type: "array"
+                type: array
                 items:
-                  $ref: "#/components/schemas/Vehicle"
+                  $ref: '#/components/schemas/Vehicle'
             application/xml:
               schema:
-                type: "array"
+                type: array
                 items:
-                  $ref: "#/components/schemas/Vehicle"
+                  $ref: '#/components/schemas/Vehicle'
         "400":
-          description: "Invalid tag value"
+          description: Invalid tag value
   /vehicle/brand:
     get:
       tags:
-      - "vehicle"
-      summary: "Finds Vehicles by Brand"
-      operationId: "findVehiclesByBrand"
+      - vehicle
+      summary: Finds Vehicles by Brand
+      operationId: findVehiclesByBrand
       parameters:
-      - name: "type"
-        in: "query"
-        description: "Type to filter by"
+      - name: type
+        in: query
+        description: Type to filter by
         required: true
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "array"
+          type: array
           items:
-            type: "string"
-      - name: "pageNumber"
-        in: "query"
-        description: "Page number"
+            type: string
+      - name: pageNumber
+        in: query
+        description: Page number
         required: false
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "integer"
+          type: integer
           default: 1
-      - name: "itemsPerPage"
-        in: "query"
-        description: "Number of items per page"
+      - name: itemsPerPage
+        in: query
+        description: Number of items per page
         required: false
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "integer"
+          type: integer
           default: 5
       responses:
         "200":
-          description: "successful operation"
+          description: successful operation
           headers:
             pagination:
-              description: "necesary elements to implement pagination"
-              style: "simple"
+              description: necesary elements to implement pagination
+              style: simple
               explode: false
               schema:
-                $ref: "#/components/schemas/Pagination"
+                $ref: '#/components/schemas/Pagination'
           content:
             application/json:
               schema:
-                type: "array"
+                type: array
                 items:
-                  $ref: "#/components/schemas/Vehicle"
+                  $ref: '#/components/schemas/Vehicle'
             application/xml:
               schema:
-                type: "array"
+                type: array
                 items:
-                  $ref: "#/components/schemas/Vehicle"
+                  $ref: '#/components/schemas/Vehicle'
         "400":
-          description: "Invalid tag value"
+          description: Invalid tag value
   /vehicle/company:
     get:
       tags:
-      - "vehicle"
-      summary: "Finds Vehicles by Company"
-      operationId: "findVehiclesByCompany"
+      - vehicle
+      summary: Finds Vehicles by Company
+      operationId: findVehiclesByCompany
       parameters:
-      - name: "type"
-        in: "query"
-        description: "Type to filter by"
+      - name: type
+        in: query
+        description: Type to filter by
         required: true
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "array"
+          type: array
           items:
-            type: "string"
-      - name: "pageNumber"
-        in: "query"
-        description: "Page number"
+            type: string
+      - name: pageNumber
+        in: query
+        description: Page number
         required: false
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "integer"
+          type: integer
           default: 1
-      - name: "itemsPerPage"
-        in: "query"
-        description: "Number of items per page"
+      - name: itemsPerPage
+        in: query
+        description: Number of items per page
         required: false
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "integer"
+          type: integer
           default: 5
       responses:
         "200":
-          description: "successful operation"
+          description: successful operation
           headers:
             pagination:
-              description: "necesary elements to implement pagination"
-              style: "simple"
+              description: necesary elements to implement pagination
+              style: simple
               explode: false
               schema:
-                $ref: "#/components/schemas/Pagination"
+                $ref: '#/components/schemas/Pagination'
           content:
             application/json:
               schema:
-                type: "array"
+                type: array
                 items:
-                  $ref: "#/components/schemas/Vehicle"
+                  $ref: '#/components/schemas/Vehicle'
             application/xml:
               schema:
-                type: "array"
+                type: array
                 items:
-                  $ref: "#/components/schemas/Vehicle"
+                  $ref: '#/components/schemas/Vehicle'
         "400":
-          description: "Invalid tag value"
+          description: Invalid tag value
   /vehicle/{idVehicle}/score:
     get:
       tags:
-      - "vehicle"
-      summary: "Get score by vehicleId"
-      operationId: "getScoresByVehicleId"
+      - vehicle
+      summary: Get score by vehicleId
+      operationId: getScoresByVehicleId
       parameters:
-      - name: "idVehicle"
-        in: "path"
-        description: "ID score that match in the Data Base"
+      - name: idVehicle
+        in: path
+        description: ID score that match in the Data Base
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "string"
-      - name: "pageNumber"
-        in: "query"
-        description: "Page number"
+          type: string
+      - name: pageNumber
+        in: query
+        description: Page number
         required: false
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "integer"
+          type: integer
           default: 1
-      - name: "itemsPerPage"
-        in: "query"
-        description: "Number of items per page"
+      - name: itemsPerPage
+        in: query
+        description: Number of items per page
         required: false
-        style: "form"
+        style: form
         explode: true
         schema:
-          type: "integer"
+          type: integer
           default: 5
       responses:
         "200":
-          description: "successful operation"
+          description: successful operation
           headers:
             pagination:
-              description: "necesary elements to implement pagination"
-              style: "simple"
+              description: necesary elements to implement pagination
+              style: simple
               explode: false
               schema:
-                $ref: "#/components/schemas/Pagination"
+                $ref: '#/components/schemas/Pagination'
           content:
             application/json:
               schema:
-                type: "array"
+                type: array
                 items:
-                  $ref: "#/components/schemas/Score"
+                  $ref: '#/components/schemas/Score'
             application/xml:
               schema:
-                type: "array"
+                type: array
                 items:
-                  $ref: "#/components/schemas/Score"
+                  $ref: '#/components/schemas/Score'
         "400":
-          description: "Invalid id score"
+          description: Invalid id score
         "401":
-          description: "Please sign in"
+          description: Please sign in
         "404":
-          description: "Data not found"
+          description: Data not found
   /payment:
     put:
       tags:
-      - "payment"
-      summary: "Make a new payment"
-      operationId: "addPayment"
+      - payment
+      summary: Make a new payment
+      operationId: addPayment
       requestBody:
-        $ref: "#/components/requestBodies/Payment"
+        $ref: '#/components/requestBodies/Payment'
       responses:
         "201":
-          description: "Payment added"
+          description: Payment added
         "400":
-          description: "Invalid ID card supplied"
+          description: Invalid ID card supplied
         "401":
-          description: "Please sign in"
+          description: Please sign in
         "405":
-          description: "Validation exception"
+          description: Validation exception
   /score:
     put:
       tags:
-      - "payment"
-      summary: "Make a new score"
-      operationId: "addScore"
+      - payment
+      summary: Make a new score
+      operationId: addScore
       requestBody:
-        $ref: "#/components/requestBodies/Score"
+        $ref: '#/components/requestBodies/Score'
       responses:
         "201":
-          description: "Score added"
+          description: Score added
         "400":
-          description: "Invalid ID user supplied"
+          description: Invalid ID user supplied
         "401":
-          description: "Please sign in"
+          description: Please sign in
         "405":
-          description: "Validation exception"
+          description: Validation exception
   /score/{idScore}:
     get:
       tags:
-      - "score"
-      summary: "Find score by ID"
-      description: "Returns a single score"
-      operationId: "getScoreById"
+      - score
+      summary: Find score by ID
+      description: Returns a single score
+      operationId: getScoreById
       parameters:
-      - name: "idScore"
-        in: "path"
-        description: "ID of score to return"
+      - name: idScore
+        in: path
+        description: ID of score to return
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
       responses:
         "200":
-          description: "successful operation"
+          description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Score"
+                $ref: '#/components/schemas/Score'
             application/xml:
               schema:
-                $ref: "#/components/schemas/Score"
+                $ref: '#/components/schemas/Score'
         "400":
-          description: "Invalid ID supplied"
+          description: Invalid ID supplied
         "404":
-          description: "Score not found"
+          description: Score not found
     delete:
       tags:
-      - "score"
-      summary: "Deletes a score"
-      operationId: "deleteScore"
+      - score
+      summary: Deletes a score
+      operationId: deleteScore
       parameters:
-      - name: "idScore"
-        in: "path"
-        description: "Score id to delete"
+      - name: idScore
+        in: path
+        description: Score id to delete
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
       responses:
         "200":
-          description: "Succesful delete"
+          description: Succesful delete
         "400":
-          description: "Invalid ID supplied"
+          description: Invalid ID supplied
         "404":
-          description: "Score not found"
+          description: Score not found
   /card:
     put:
       tags:
-      - "card"
-      summary: "Update an existing card"
-      operationId: "updatecard"
+      - card
+      summary: Update an existing card
+      operationId: updatecard
       requestBody:
-        $ref: "#/components/requestBodies/Card"
+        $ref: '#/components/requestBodies/Card'
       responses:
         "200":
-          description: "Successful update"
+          description: Successful update
         "400":
-          description: "Invalid ID supplied"
+          description: Invalid ID supplied
         "404":
-          description: "Card not found"
+          description: Card not found
         "405":
-          description: "Validation exception"
+          description: Validation exception
     post:
       tags:
-      - "card"
-      summary: "Add a new card to the system"
-      operationId: "addCard"
+      - card
+      summary: Add a new card to the system
+      operationId: addCard
       requestBody:
-        $ref: "#/components/requestBodies/Card"
+        $ref: '#/components/requestBodies/Card'
       responses:
         "201":
-          description: "Card added"
+          description: Card added
         "405":
-          description: "Invalid input"
+          description: Invalid input
   /card/{idCard}:
     get:
       tags:
-      - "card"
-      summary: "Find card by ID"
-      description: "Returns a single card"
-      operationId: "getCardById"
+      - card
+      summary: Find card by ID
+      description: Returns a single card
+      operationId: getCardById
       parameters:
-      - name: "idCard"
-        in: "path"
-        description: "ID of card to return"
+      - name: idCard
+        in: path
+        description: ID of card to return
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
       responses:
         "200":
-          description: "successful operation"
+          description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Card"
+                $ref: '#/components/schemas/Card'
             application/xml:
               schema:
-                $ref: "#/components/schemas/Card"
+                $ref: '#/components/schemas/Card'
         "400":
-          description: "Invalid ID supplied"
+          description: Invalid ID supplied
         "404":
-          description: "Card not found"
+          description: Card not found
     delete:
       tags:
-      - "card"
-      summary: "Deletes a card"
-      operationId: "deleteCard"
+      - card
+      summary: Deletes a card
+      operationId: deleteCard
       parameters:
-      - name: "idCard"
-        in: "path"
-        description: "Card id to delete"
+      - name: idCard
+        in: path
+        description: Card id to delete
         required: true
-        style: "simple"
+        style: simple
         explode: false
         schema:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
       responses:
         "200":
-          description: "Succesful delete"
+          description: Succesful delete
         "400":
-          description: "Invalid ID supplied"
+          description: Invalid ID supplied
         "404":
-          description: "Card not found"
+          description: Card not found
 components:
   schemas:
+    Person:
+      type: object
+      properties:
+        idPerson:
+          type: integer
+          format: int64
+          example: 111
+        first_name:
+          type: string
+          example: Pedro Alejandro
+        first_surname:
+          type: string
+          example: Perez
+        second_surname:
+          type: string
+          example: Rodriguez
+        ci:
+          type: string
+          example: 156451lp
+        phone:
+          type: string
+          example: +591 7456451
+    Address:
+      type: object
+      properties:
+        idAddress:
+          type: integer
+          format: int64
+          example: 111
+        street:
+          type: string
+          example: Pisagua
+        zone:
+          type: string
+          example: Norte
+        city:
+          type: string
+          example: Nuestra Señora de La Paz
+        country:
+          type: string
+          example: Bolivia
     User:
       required:
-      - "address"
-      - "birthdate"
-      - "ci"
-      - "email"
-      - "idUser"
-      - "names"
-      - "password"
-      - "phone"
-      - "sornames"
-      type: "object"
+      - address
+      - birthdate
+      - email
+      - idPerson
+      - idUser
+      - password
+      type: object
       properties:
         idUser:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
           example: 112
-        names:
-          type: "string"
-          example: "Pedro Alejandro"
-        surnames:
-          type: "string"
-          example: "Perez Rodriguez"
         email:
-          type: "string"
-          example: "example@gmail.com"
+          type: string
+          example: example@gmail.com
         password:
-          type: "string"
-          example: "1234abc"
-        ci:
-          type: "string"
-          example: "8588857"
-        phone:
-          type: "integer"
-          example: 7465843
+          type: string
+          example: 1234abc
         birthdate:
-          type: "string"
-          format: "date"
-          example: "2016-08-29"
+          type: string
+          format: date
+          example: 2016-08-29
         picture:
-          type: "string"
-          example: "url"
-        company:
-          type: "string"
-          example: "Soboce"
+          type: string
+          example: url
+        idPerson:
+          $ref: '#/components/schemas/Person'
         address:
-          type: "string"
-          example: "Sopocachi, av. Carranza"
+          $ref: '#/components/schemas/Address'
     Driver:
       required:
-      - "birthdate"
-      - "ci"
-      - "email"
-      - "idBankAccount"
-      - "idCompany"
-      - "idDriver"
-      - "names"
-      - "password"
-      - "phone"
-      - "sornames"
-      type: "object"
+      - birthdate
+      - email
+      - idBankAccount
+      - idCompany
+      - idDriver
+      - idPerson
+      - password
+      type: object
       properties:
         idDriver:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
           example: 110
-        names:
-          type: "string"
-          example: "Jose Gabriel"
-        sornames:
-          type: "string"
-          example: "Lopez Lopez"
         password:
-          type: "string"
-          example: "1234abc"
-        idCompany:
-          $ref: "#/components/schemas/Company"
-        ci:
-          type: "string"
-          example: "456484165"
-        phone:
-          type: "integer"
-          example: 7465843
+          type: string
+          example: 1234abc
         email:
-          type: "string"
-          example: "example@gmail.com"
+          type: string
+          example: example@gmail.com
         birthdate:
-          type: "string"
-          format: "date"
-          example: "2016-08-29"
+          type: string
+          format: date
+          example: 2016-08-29
         picture:
-          type: "string"
-          example: "url"
+          type: string
+          example: url
+        idPerson:
+          $ref: '#/components/schemas/Person'
+        idCompany:
+          $ref: '#/components/schemas/Company'
         address:
-          type: "string"
-          example: "Sopocachi, av. Carranza"
+          $ref: '#/components/schemas/Address'
     Vehicle:
       required:
-      - "brand"
-      - "capacity"
-      - "idDriver"
-      - "idVehicle"
-      - "licensePlate"
-      - "pictures"
-      - "price"
-      - "status"
-      - "vehicleModel"
-      - "vehicleType"
+      - brand
+      - capacity
+      - idDriver
+      - idVehicle
+      - licensePlate
+      - pictures
+      - price
+      - status
+      - vehicleModel
+      - vehicleStatus
+      - vehicleType
       properties:
         idVehicle:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
           example: 110
         licensePlate:
-          type: "string"
+          type: string
         capacity:
-          type: "number"
+          type: number
           example: 2.5
         vehicleType:
-          type: "string"
-          example: "medium weight"
+          type: string
+          example: medium weight
+        vehicleStatus:
+          type: string
+          example: occupied
         price:
-          type: "number"
+          type: number
           example: 150.8
         status:
-          type: "string"
-          description: "Vehicle status in real time"
+          type: string
+          description: Vehicle status in real time
           enum:
-          - "available"
-          - "taken"
+          - available
+          - taken
         pictures:
-          type: "array"
+          type: array
           xml:
-            name: "picturesUrl"
+            name: picturesUrl
             wrapped: true
           items:
-            type: "string"
+            type: string
         brand:
-          type: "string"
-          example: "Toyota"
+          type: string
+          example: Toyota
         vehicleModel:
-          type: "string"
-          example: "Evolution 2020"
+          type: string
+          example: Evolution 2020
         idDriver:
-          $ref: "#/components/schemas/Driver"
+          $ref: '#/components/schemas/Driver'
     Company:
       required:
-      - "address"
-      - "email"
-      - "idCompany"
-      - "name"
-      - "phone"
+      - address
+      - email
+      - idCompany
+      - name
+      - phone
       properties:
         idCompany:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
           example: 110
         name:
-          type: "string"
-          example: "TransVeloz"
-        address:
-          type: "string"
-          example: "Zona sur, 21 de Calacoto"
+          type: string
+          example: TransVeloz
         email:
-          type: "string"
-          example: "example@gmail.com"
+          type: string
+          example: example@gmail.com
         phone:
-          type: "integer"
+          type: integer
           example: 6758576
+        address:
+          $ref: '#/components/schemas/Address'
     Card:
       required:
-      - "accountNumber"
-      - "bank"
-      - "cvvCode"
-      - "idCard"
-      - "idUser"
-      - "pin"
-      - "typeAccount"
+      - accountNumber
+      - bank
+      - cvvCode
+      - idCard
+      - idUser
+      - pin
+      - typeAccount
       properties:
         idCard:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
           example: 110
         accountNumber:
-          type: "string"
+          type: string
         pin:
-          type: "string"
+          type: string
         bank:
-          type: "string"
-          example: "Banco Union"
+          type: string
+          example: Banco Union
         typeAccount:
-          type: "string"
-          example: "Savings account"
+          type: string
+          example: Savings account
         cvvCode:
-          type: "integer"
+          type: integer
         idUser:
-          $ref: "#/components/schemas/User"
+          $ref: '#/components/schemas/User'
     Payment:
       required:
-      - "ammount"
-      - "dateDelivery"
-      - "datePayment"
-      - "deliveryAddress"
-      - "idDriver"
-      - "idPayment"
-      - "idUser"
-      - "idVehicle"
-      - "startAddress"
+      - ammount
+      - datePayment
+      - idPayment
+      - idTravel
+      - paymentStatus
       properties:
         idPayment:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
           example: 110
         datePayment:
-          type: "string"
-          format: "date-time"
+          type: string
+          format: date-time
         ammount:
-          type: "number"
+          type: number
           example: 257.9
-        startAddress:
-          type: "string"
-          example: "San Pedro, Colombia"
-        deliveryAddress:
-          type: "string"
-          example: "Sopocachi, Palmares"
-        dateDelivery:
-          type: "string"
-          format: "date-time"
-        idUser:
-          $ref: "#/components/schemas/User"
-        idVehicle:
-          $ref: "#/components/schemas/Vehicle"
+        paymentStatus:
+          type: string
+          example: confirmado
         idDriver:
-          $ref: "#/components/schemas/Driver"
+          $ref: '#/components/schemas/Driver'
     bankAccount:
       required:
-      - "accountNumber"
-      - "accountType"
-      - "bank"
-      - "idBankAccount"
+      - accountNumber
+      - accountType
+      - bank
+      - idBankAccount
       properties:
         idBankAccount:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
           example: 110
         accountNumber:
-          type: "number"
+          type: number
           example: 13542
         bank:
-          type: "string"
-          example: "Banco Union"
+          type: string
+          example: Banco Union
         accountType:
-          type: "string"
-          example: "Savings account"
+          type: string
+          example: Savings account
         idDriver:
-          $ref: "#/components/schemas/Driver"
+          $ref: '#/components/schemas/Driver'
     Score:
       required:
-      - "idDriver"
-      - "idScore"
-      - "idUser"
-      - "idVehicle"
-      - "punctuation"
+      - idScore
+      - idVehicle
+      - score
       properties:
         idScore:
-          type: "integer"
-          format: "int64"
+          type: integer
+          format: int64
           example: 110
-        punctuation:
-          type: "number"
+        score:
+          type: number
           example: 4.9
-        idDriver:
-          $ref: "#/components/schemas/Driver"
         idVehicle:
-          $ref: "#/components/schemas/Vehicle"
+          $ref: '#/components/schemas/Vehicle'
+    Travel:
+      type: object
+      properties:
+        idTravel:
+          type: integer
+          format: int64
+          example: 110
+        travelStatus:
+          type: string
+          example: confirmado
+        deliveryDate:
+          type: string
+        startAddress:
+          $ref: '#/components/schemas/Address'
+        deliveryAddress:
+          $ref: '#/components/schemas/Address'
         idUser:
-          $ref: "#/components/schemas/User"
+          $ref: '#/components/schemas/User'
+        idDriver:
+          $ref: '#/components/schemas/Driver'
     Pagination:
-      type: "object"
+      type: object
       properties:
         currentPage:
-          type: "integer"
-          description: "Current page"
+          type: integer
+          description: Current page
         itemsPerPage:
-          type: "integer"
-          description: "Number of items per page"
+          type: integer
+          description: Number of items per page
         totalItems:
-          type: "integer"
-          description: "total elements"
+          type: integer
+          description: total elements
         totalPages:
-          type: "integer"
-          description: "total pages"
+          type: integer
+          description: total pages
   requestBodies:
     User:
-      description: "User object that needs to be added to the system"
+      description: User object that needs to be added to the system
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/User"
+            $ref: '#/components/schemas/User'
         application/xml:
           schema:
-            $ref: "#/components/schemas/User"
+            $ref: '#/components/schemas/User'
       required: true
     Driver:
-      description: "Driver object that needs to be added to the system"
+      description: Driver object that needs to be added to the system
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Driver"
+            $ref: '#/components/schemas/Driver'
         application/xml:
           schema:
-            $ref: "#/components/schemas/Driver"
+            $ref: '#/components/schemas/Driver'
       required: true
     Payment:
-      description: "Payment object that needs to be added to the system"
+      description: Payment object that needs to be added to the system
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Payment"
+            $ref: '#/components/schemas/Payment'
         application/xml:
           schema:
-            $ref: "#/components/schemas/Payment"
+            $ref: '#/components/schemas/Payment'
       required: true
     Vehicle:
-      description: "Vehicle object that needs to be added to the system"
+      description: Vehicle object that needs to be added to the system
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Vehicle"
+            $ref: '#/components/schemas/Vehicle'
         application/xml:
           schema:
-            $ref: "#/components/schemas/Vehicle"
+            $ref: '#/components/schemas/Vehicle'
       required: true
     Score:
-      description: "Score object that needs to be added to the system"
+      description: Score object that needs to be added to the system
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Score"
+            $ref: '#/components/schemas/Score'
         application/xml:
           schema:
-            $ref: "#/components/schemas/Score"
+            $ref: '#/components/schemas/Score'
       required: true
     Card:
-      description: "Card object that needs to be added to the system"
+      description: Card object that needs to be added to the system
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Card"
+            $ref: '#/components/schemas/Card'
         application/xml:
           schema:
-            $ref: "#/components/schemas/Card"
+            $ref: '#/components/schemas/Card'
       required: true
