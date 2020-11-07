@@ -9,11 +9,8 @@ public class Address {
     private Integer status;
     private Transaction transaction;
 
-    public Address(){
+    public Address() {
         transaction = new Transaction();
-    }
-    public Address(Transaction transaction){
-        this.transaction = transaction;
     }
 
     public Integer getAddressId() {
