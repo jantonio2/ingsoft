@@ -14,10 +14,6 @@ public class Person {
         transaction = new Transaction();
     }
 
-    public Person(Transaction transaction) {
-        this.transaction = transaction;
-    }
-
     public Integer getPersonId() {
         return personId;
     }
