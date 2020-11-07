@@ -1,15 +1,17 @@
 package bo.ucb.edu.ingsoft.modelo;
 
 
+
 public class Score {
     private Integer scoreId;
-    private Integer VehicleId;
+    private Integer vehicleId;
+    private Integer userId;
     private Double score;
     private Integer status;
     private Transaction transaction;
 
-    public Score(){
-        transaction=new Transaction();
+    public Score() {
+        transaction = new Transaction();
     }
 
     public Integer getScoreId() {
@@ -21,11 +23,19 @@ public class Score {
     }
 
     public Integer getVehicleId() {
-        return VehicleId;
+        return vehicleId;
     }
 
     public void setVehicleId(Integer vehicleId) {
-        VehicleId = vehicleId;
+        this.vehicleId = vehicleId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Double getScore() {
@@ -50,5 +60,17 @@ public class Score {
 
     public void setTransaction(Transaction transaction) {
         this.transaction = transaction;
+    }
+
+    @Override
+    public String toString() {
+        return "Score{" +
+                "scoreId=" + scoreId +
+                ", vehicleId=" + vehicleId +
+                ", userId=" + userId +
+                ", score=" + score +
+                ", status=" + status +
+                ", transaction=" + transaction +
+                '}';
     }
 }
