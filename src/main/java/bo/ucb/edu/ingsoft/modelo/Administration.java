@@ -9,8 +9,11 @@ public class Administration {
     private Integer status;
     private Transaction transaction;
 
-    public Administration() {
+    public Administration(){
         transaction = new Transaction();
+    }
+    public Administration(Transaction transaction){
+        this.transaction = transaction;
     }
 
     public Integer getAdministrationId() {
