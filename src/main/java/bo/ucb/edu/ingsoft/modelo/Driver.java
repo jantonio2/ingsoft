@@ -5,7 +5,6 @@ import java.util.Date;
 public class Driver {
     private Integer driverId;
     private Integer personId;
-    private Integer addressId;
     private Integer companyId;
     private Date birthDate;
     private String email;
@@ -16,9 +15,6 @@ public class Driver {
 
     public Driver(){
         transaction = new Transaction();
-    }
-    public Driver(Transaction transaction){
-        this.transaction = transaction;
     }
 
     public Integer getDriverId() {
@@ -35,14 +31,6 @@ public class Driver {
 
     public void setPersonId(Integer personId) {
         this.personId = personId;
-    }
-
-    public Integer getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(Integer addressId) {
-        this.addressId = addressId;
     }
 
     public Integer getCompanyId() {
@@ -106,7 +94,6 @@ public class Driver {
         return "Driver{" +
                 "driverId=" + driverId +
                 ", personId=" + personId +
-                ", addressId=" + addressId +
                 ", companyId=" + companyId +
                 ", birthDate=" + birthDate +
                 ", email='" + email + '\'' +

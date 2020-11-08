@@ -1,0 +1,25 @@
+insert into address values (null,'Calle 1','San Mateo','La Paz','Bolivia',1, 1, '192.168.1.100', 1, now());
+insert into address values (null,'Vita','Florida','La Paz','Bolivia',1, 1, '192.168.1.100', 1, now());
+insert into address values (null,'Mendoza','Pacaje','La Paz','Bolivia',1, 1, '192.168.1.100', 1, now());
+insert into address values (null,'Florida','Arcaza','La Paz','Bolivia',1, 1, '192.168.1.100', 1, now());
+insert into address values (null,'Barbado','Libertad','La Paz','Bolivia',1, 1, '192.168.1.100', 1, now());
+insert into address values (null,'Calle 1','San Mateo','La Paz','Bolivia',1, 1, '192.168.1.100', 1, now());
+insert into address values (null,'Calle 1','San Mateo','La Paz','Bolivia',1, 1, '192.168.1.100', 1, now());
+insert into address values (null,'Calle 1','San Mateo','La Paz','Bolivia',1, 1, '192.168.1.100', 1, now());
+insert into address values (null,'Calle 1','San Mateo','La Paz','Bolivia',1, 1, '192.168.1.100', 1, now());
+insert into address values (null,'Calle 1','San Mateo','La Paz','Bolivia',1, 1, '192.168.1.100', 1, now());
+
+insert into person values (null,'Juan','Peralta','Flores','8344502','73935655',1, 1, '192.168.1.100', 1, now());
+insert into person values (null,'Luis','Mamani','Mamani','6345502','73935622',1, 1, '192.168.1.100', 1, now());
+insert into person values (null,'Maria','Lima','Mamani','9974505','63935612',1, 1, '192.168.1.100', 1, now());
+insert into person values (null,'Carmen','Flores','Flores','3444506','73933422',1, 1, '192.168.1.100', 1, now());
+insert into person values (null,'Marco','Linares','Flores','6324505','63935435',1, 1, '192.168.1.100', 1, now());
+insert into person values (null,'Hugo','Peres','Gutierrez','9734502','73935622',1, 1, '192.168.1.100', 1, now());
+insert into person values (null,'Pedro','Artiaga','Flores','1244504','63935621',1, 1, '192.168.1.100', 1, now());
+insert into person values (null,'German','Choque','Lima','6684502','73935612',1, 1, '192.168.1.100', 1, now());
+insert into person values (null,'Armando','Fuentes','Choque','4844501','63936522',1, 1, '192.168.1.100', 1, now());
+insert into person values (null,'Lorena','Alvarado','Flores','8000502','63935523',1, 1, '192.168.1.100', 1, now());
+insert into person values (null,'Patricio','Peralta','Mamani','8350232','63935655',1, 1, '192.168.1.100', 1, now());
+insert into person values (null,'Jorge','Mendez','Torrico','7845964','78956345',1, 1, '192.168.1.100', 1, now());
+insert into person values (null,'Sandra','Ramirez','Rocha','8465451','68594572',1, 1, '192.168.1.100', 1, now());
+insert into person values (null,'Fabiana','Porcel','Chavez','4895167','75864925',1, 1, '192.168.1.100', 1, now());
