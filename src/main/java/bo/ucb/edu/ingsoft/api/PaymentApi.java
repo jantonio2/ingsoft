@@ -5,6 +5,7 @@ import bo.ucb.edu.ingsoft.bl.PaymentBl;
 import bo.ucb.edu.ingsoft.bl.TransactionBl;
 import bo.ucb.edu.ingsoft.dto.Contact;
 import bo.ucb.edu.ingsoft.modelo.BankAccount;
+import bo.ucb.edu.ingsoft.modelo.BankTransaction;
 import bo.ucb.edu.ingsoft.modelo.Transaction;
 import bo.ucb.edu.ingsoft.util.TransactionUtil;
 import org.mybatis.logging.Logger;
@@ -43,5 +44,14 @@ public class PaymentApi {
         transactionBl.createTransaction(transaction);
         BankAccount createbankaccount=paymentBl.createBankAccount(bankAccount,transaction);
         return createbankaccount;
+    }
+
+    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public BankTransaction createBankTransaction(@RequestBody BankTransaction bankTransaction, HttpServletRequest request){
+        Transaction transaction = TransactionUtil.createTransaction(request);
+        transactionBl.createTransaction(transaction);
+        BankTransaction createbanktransaction=paymentBl.createBankTransaction(bankTransaction,transaction);
+        return createbanktransaction;
     }
 }

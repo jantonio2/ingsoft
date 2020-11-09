@@ -6,9 +6,7 @@ import bo.ucb.edu.ingsoft.dao.BankTransactionDao;
 import bo.ucb.edu.ingsoft.dao.PaymentDao;
 import bo.ucb.edu.ingsoft.dao.TransactionDao;
 import bo.ucb.edu.ingsoft.dto.Contact;
-import bo.ucb.edu.ingsoft.modelo.BankAccount;
-import bo.ucb.edu.ingsoft.modelo.Driver;
-import bo.ucb.edu.ingsoft.modelo.Transaction;
+import bo.ucb.edu.ingsoft.modelo.*;
 import org.mybatis.logging.Logger;
 import org.mybatis.logging.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,15 +32,30 @@ public class PaymentBl {
     }
 
     public BankAccount createBankAccount(BankAccount bankAccount, Transaction transaction) {
+
+        Driver driver=new Driver();
+        Administration administration=new Administration();
+        bankAccount.setDriverId(driver.getDriverId());
+        bankAccount.setAdministrationId(administration.getAdministrationId());
+
         bankAccount.setAccountNumber(bankAccount.getAccountNumber());
         bankAccount.setBank(bankAccount.getBank());
         bankAccount.setAccountType(bankAccount.getAccountType());
         bankAccount.setStatus(bankAccount.getStatus());
-        Driver driver=new Driver();
 
-        Integer getLastId = bankAccountDao.getLastInsertId();
+//        driver.getDriverId();
+
+        bankAccount.setTransaction(transaction);
+        Integer getLastId = transactionDao.getLastInsertId();
         return bankAccount;
     }
+
+    public BankTransaction createBankTransaction(BankTransaction bankTransaction, Transaction transaction) {
+
+        Integer getLastId=transactionDao.getLastInsertId();
+        return bankTransaction;
+    }
+
 
 //    public Contact findContactById(Integer contactId) {
 //        return  contactDao.findByContactId(contactId);
