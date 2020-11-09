@@ -1,0 +1,20 @@
+POST http://localhost:8080/transveloz/user
+Accept: application/json
+Content-Type: application/json
+
+{
+
+  "personFirstName": "Raul",
+  "personFirstSurname": "Flores",
+  "personSecondSurname": "Mamani",
+  "birthDate": "12-04-1999",
+  "personCi": "4832603",
+  "personPhone": "74292502",
+  "addressStreet": "Mendoza",
+  "addressZone": "San Carlos",
+  "addressCity": "La Paz",
+  "addressCountry": "Bolivia",
+  "email": "raul@gmail.com",
+  "password": "37545vdvs"
+
+}
