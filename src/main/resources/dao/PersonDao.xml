@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bo.ucb.edu.ingsoft.dao.PersonDao">
-    <select id="findByPersonId" resultType="bo.ucb.edu.ingsoft.model.Person">
+    <select id="findByPersonId" resultType="bo.ucb.edu.ingsoft.modelo.Person">
         SELECT
                first_name as firstName,
                first_surname as firstSurname,
@@ -14,13 +14,13 @@
         WHERE
             person_id = #{personId}
     </select>
-    <insert id="createPerson" parameterType="bo.ucb.edu.ingsoft.model.Person">
+    <insert id="createPerson" parameterType="bo.ucb.edu.ingsoft.modelo.Person">
         INSERT INTO person VALUES (
             null, #{firstName}, #{firstSurname}, #{secondSurname}, #{ci}, #{phone}, 1,
             #{transaction.txId}, #{transaction.txHost}, #{transaction.txUserId}, #{transaction.txDate}
         )
     </insert>
-    <update id="updatePerson" parameterType="bo.ucb.edu.ingsoft.model.Person">
+    <update id="updatePerson" parameterType="bo.ucb.edu.ingsoft.modelo.Person">
         UPDATE person set
         first_name=#{firstName},
         first_surname=#{firstSurname},

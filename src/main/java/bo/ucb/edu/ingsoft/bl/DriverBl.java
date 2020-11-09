@@ -7,7 +7,7 @@ import bo.ucb.edu.ingsoft.dao.TransactionDao;
 import bo.ucb.edu.ingsoft.dao.DriverDao;
 import bo.ucb.edu.ingsoft.dto.DriverRequest;
 import bo.ucb.edu.ingsoft.dto.SingleDriver;
-import bo.ucb.edu.ingsoft.model.*;
+import bo.ucb.edu.ingsoft.modelo.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
