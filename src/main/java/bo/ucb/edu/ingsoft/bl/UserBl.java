@@ -94,8 +94,38 @@ public class UserBl {
         return userRequest;
     }
 
-    public SingleUser updateUser(SingleUser singleUser, Transaction transaction){
+    public UserRequest updateUser(UserRequest userRequest, Transaction transaction){
+        User user = new User();
+        Person person = new Person();
+        Address address = new Address();
 
-        return  singleUser;
+        user.setUserId(userRequest.getUserId());
+        user.setEmail(userRequest.getEmail());
+        user.setBirthDate(userRequest.getBirthDate());
+        user.setPassword(userRequest.getPassword());
+        user.setTransaction(transaction);
+        LOGGER.error(transaction.getTxId().toString());
+        userDao.updateUser(user);
+
+        User user2 = userDao.getPersonId(userRequest.getUserId());
+        person.setPersonId(user2.getPersonId());
+        person.setFirstName(userRequest.getFirstName());
+        person.setFirstSurname(userRequest.getFirstSurname());
+        person.setSecondSurname(userRequest.getSecondSurname());
+        person.setCi(userRequest.getCi());
+        person.setPhone(userRequest.getPhone());
+        person.setTransaction(transaction);
+        personDao.updatePerson(person);
+
+        address.setUserId(userRequest.getUserId());
+        address.setNumber(userRequest.getNumber());
+        address.setStreet(userRequest.getStreet());
+        address.setZone(userRequest.getZone());
+        address.setCity(userRequest.getCity());
+        address.setCountry(userRequest.getCountry());
+        address.setTransaction(transaction);
+        addressDao.updateAddressUser(address);
+
+        return  userRequest;
     }
 }

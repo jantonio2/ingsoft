@@ -51,10 +51,10 @@ public class UserApi {
     }
 
     @RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public SingleUser update(@RequestBody SingleUser singleUser, HttpServletRequest request) {
-        TransactionUtil transactionUtil=new TransactionUtil();
-        Transaction transaction = transactionUtil.createTransaction(request);
-        userBl.updateUser(singleUser,transaction);
-        return singleUser;
+    public UserRequest update(@RequestBody UserRequest userRequest, HttpServletRequest request) {
+        Transaction transaction = TransactionUtil.createTransaction(request);
+        transactionBl.createTransaction(transaction);
+        userBl.updateUser(userRequest,transaction);
+        return userRequest;
     }
 }

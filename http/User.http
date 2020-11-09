@@ -30,5 +30,18 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  
+  "userId": 2,
+  "ci": "124248596 cbba",
+  "firstName": "Andrea",
+  "firstSurname": "Albarracin",
+  "secondSurname": "Daza",
+  "birthDate": "2000-01-17",
+  "phone": "+591 77745812",
+  "email": "albarracinandrea@gmail.com",
+  "password": "andreaalbarracin",
+  "number":"198B",
+  "street":"Calama",
+  "zone":"Norte",
+  "city":"La Paz",
+  "country":"Bolivia"
 }

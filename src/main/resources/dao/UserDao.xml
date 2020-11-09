@@ -21,8 +21,21 @@
     </insert>
     <update id="updateUser" parameterType="bo.ucb.edu.ingsoft.modelo.User">
         UPDATE user set
-        email=#{email}
+        email=#{email},
+        birthdate=#{birthDate},
+        password=#{password},
+        tx_id=#{transaction.txId},
+        tx_host=#{transaction.txHost},
+        tx_user_id=#{transaction.txUserId},
+        tx_date=#{transaction.txDate}
         WHERE
         user_id=#{userId}
     </update>
+    <select id="getPersonId" resultType="bo.ucb.edu.ingsoft.modelo.User">
+        SELECT
+               person_id as personId
+        FROM user
+        WHERE
+            user_id = #{userId}
+    </select>
 </mapper>
