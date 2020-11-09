@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class AgendaBl {
     private ContactDao contactDao;
+    private TransactionDao transactionDao;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ContactApi.class);
 
     @Autowired
     public AgendaBl(ContactDao contactDao) {

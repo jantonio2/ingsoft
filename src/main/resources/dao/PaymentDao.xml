@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bo.ucb.edu.ingsoft.dao.TransactionDao">
+    <insert id="create" parameterType="bo.ucb.edu.ingsoft.dto.Payment">
+        INSERT INTO payment
+        VALUES (
+            null,
+            #(travelId),#(date_payment),
+            #(payment_status),#(amount),
+            #(status),
+            #{txHost},
+            #{txUserId},
+            #{txDate}
+        )
+    </insert>
+    <select id="getLastInsertId" resultType="java.lang.Integer">
+        SELECT LAST_INSERT_ID()
+    </select>
+</mapper>
