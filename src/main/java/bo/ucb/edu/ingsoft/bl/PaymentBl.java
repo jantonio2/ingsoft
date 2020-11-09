@@ -1,9 +1,8 @@
 package bo.ucb.edu.ingsoft.bl;
 
-import bo.ucb.edu.ingsoft.api.ContactApi;
+import bo.ucb.edu.ingsoft.api.PaymentApi;
 import bo.ucb.edu.ingsoft.dao.*;
 import bo.ucb.edu.ingsoft.dto.BankAccountRequest;
-import bo.ucb.edu.ingsoft.dto.Contact;
 import bo.ucb.edu.ingsoft.modelo.*;
 import org.mybatis.logging.Logger;
 import org.mybatis.logging.LoggerFactory;
@@ -20,7 +19,7 @@ public class PaymentBl {
     private DriverDao driverDao;
     private  AdministrationDao administrationDao;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ContactApi.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PaymentApi.class);
 
     @Autowired
     public PaymentBl(BankAccountDao bankAccountDao,DriverDao driverDao, AdministrationDao administrationDao,TransactionDao transactionDao) {

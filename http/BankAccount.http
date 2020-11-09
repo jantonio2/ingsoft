@@ -1,8 +1,8 @@
-GET http://localhost:8080/v1/contact
+GET http://localhost:8080/v1/payment
 Accept: application/json
 
 ###
-POST http://localhost:8080/v2/contact
+POST http://localhost:8090/v1/payment
 Accept: application/json
 Content-Type: application/json
 

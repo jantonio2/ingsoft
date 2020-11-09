@@ -3,7 +3,6 @@ package bo.ucb.edu.ingsoft.api;
 import bo.ucb.edu.ingsoft.bl.PaymentBl;
 import bo.ucb.edu.ingsoft.bl.TransactionBl;
 import bo.ucb.edu.ingsoft.dto.BankAccountRequest;
-import bo.ucb.edu.ingsoft.dto.Contact;
 import bo.ucb.edu.ingsoft.modelo.Transaction;
 import bo.ucb.edu.ingsoft.util.TransactionUtil;
 import org.mybatis.logging.Logger;
@@ -18,13 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping(value = "/v2/contact")
+@RequestMapping(value = "/v1/payment")
 public class PaymentApi {
 
     private PaymentBl paymentBl;
     private TransactionBl transactionBl;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ContactApi.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PaymentApi.class);
     @Autowired
     public PaymentApi(PaymentBl paymentBl, TransactionBl transactionBl) {
         this.paymentBl = paymentBl;
