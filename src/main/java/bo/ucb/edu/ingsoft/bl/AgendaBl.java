@@ -1,9 +1,13 @@
 package bo.ucb.edu.ingsoft.bl;
 
+import bo.ucb.edu.ingsoft.api.ContactApi;
 import bo.ucb.edu.ingsoft.dao.ContactDao;
+import bo.ucb.edu.ingsoft.dao.TransactionDao;
 import bo.ucb.edu.ingsoft.dto.Contact;
-import bo.ucb.edu.ingsoft.models.BankAccount;
-import bo.ucb.edu.ingsoft.dao.BankAccountDao;
+import bo.ucb.edu.ingsoft.modelo.BankAccount;
+import bo.ucb.edu.ingsoft.modelo.Transaction;
+import org.mybatis.logging.Logger;
+import org.mybatis.logging.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +15,9 @@ import org.springframework.stereotype.Service;
 public class AgendaBl {
     private ContactDao contactDao;
     private TransactionDao transactionDao;
-    private BankAccountDao bankAccountDao;
-    private BankTransactionDao bankTransactionDao;
-    private PaymentDao paymentDao;
+//    private BankAccountDao bankAccountDao;
+//    private BankTransactionDao bankTransactionDao;
+//    private PaymentDao paymentDao;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ContactApi.class);
 
@@ -26,7 +30,7 @@ public class AgendaBl {
     public Contact findContactById(Integer contactId) {
         return  contactDao.findByContactId(contactId);
     }
-    public BankAccount createBankAccount(BankAccount bankAccount,Transaction transaction){
-        bankAccount.set
-    }
+//    public BankAccount createBankAccount(BankAccount bankAccount, Transaction transaction){
+//        bankAccount.set
+//    }
 }
