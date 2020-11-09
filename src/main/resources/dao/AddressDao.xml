@@ -11,4 +11,13 @@
             #{transaction.txDate}
         )
     </insert>
+    <update id="updateAddress" parameterType="bo.ucb.edu.ingsoft.modelo.Address">
+        UPDATE address SET
+            street=#{street},
+            zone=#{zone},
+            city=#{city},
+            country=#{country},
+            status=1
+            WHERE user_id = #{userId}
+    </update>
 </mapper>

@@ -64,5 +64,36 @@ public class AgendaBl {
 
         return userRequest;
     }
+    public UserRequest updateUserRequest(UserRequest userRequest, Transaction transaction){
+        Person person = new Person();
+        User user = new User();
+        Address address = new Address();
+
+        user.setBirthDate(userRequest.getBirthDate());
+        user.setEmail(userRequest.getEmail());
+        user.setPassword(userRequest.getPassword());
+        user.setTransaction(transaction);
+        user.setUserId(userRequest.getUserId());
+        userDao.updateUser(user);
+
+        Integer idPerson=personDao.idPersonUser(user);
+        person.setPersonId(idPerson);
+        person.setFirstName(userRequest.getPersonFirstName());
+        person.setFirstSurname(userRequest.getPersonFirstSurname());
+        person.setSecondSurname(userRequest.getPersonSecondSurname());
+        person.setCi(userRequest.getPersonCi());
+        person.setPhone(userRequest.getPersonPhone());
+        person.setTransaction(transaction);
+        personDao.updatePerson(person);
+
+        address.setUserId(userRequest.getUserId());
+        address.setStreet(userRequest.getAddressStreet());
+        address.setZone(userRequest.getAddressZone());
+        address.setCity(userRequest.getAddressCity());
+        address.setCountry(userRequest.getAddressCountry());
+        address.setTransaction(transaction);
+        addressDao.updateAddress(address);
+        return userRequest;
+    }
 
 }

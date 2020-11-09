@@ -5,6 +5,7 @@ import bo.ucb.edu.ingsoft.modelo.Transaction;
 public class UserRequest {
 
     private Integer userId;
+
     private String personFirstName;
     private String personFirstSurname;
     private String personSecondSurname;

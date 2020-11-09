@@ -18,3 +18,25 @@ Content-Type: application/json
   "password": "37545vdvs"
 
 }
+
+###
+
+PUT http://localhost:8080/transveloz/user
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userId": 3,
+  "personFirstName": "Maria",
+  "personFirstSurname": "Aldana",
+  "personSecondSurname": "Flores",
+  "birthDate": "1999-04-22",
+  "personCi": "4832603",
+  "personPhone": "77777777",
+  "addressStreet": "Calle2",
+  "addressZone": "San Lucas",
+  "addressCity": "La Paz",
+  "addressCountry": "Bolivia",
+  "email": "maria@gmail.com",
+  "password": "37545vdvs"
+}

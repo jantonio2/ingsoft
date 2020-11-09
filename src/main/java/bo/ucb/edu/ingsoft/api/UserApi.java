@@ -41,6 +41,15 @@ public class UserApi {
         return userResponse;
     }
 
+    @RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public UserRequest updateContact(@RequestBody UserRequest userRequest, HttpServletRequest request) {
+        Transaction transaction = TransactionUtil.createTransaction(request);
+        transactionBl.createTransaction(transaction);
+        UserRequest userResponse = agendaBl.updateUserRequest(userRequest, transaction);
+        return userResponse;
+    }
+
     //@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     //public Contact findById(HttpServletRequest request) {
     //    return agendaBl.findContactById(0);

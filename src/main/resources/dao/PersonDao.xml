@@ -6,8 +6,25 @@
     <insert id="createPerson" parameterType="bo.ucb.edu.ingsoft.modelo.Person">
         INSERT INTO person VALUES (
             null, #{firstName}, #{firstSurname}, #{secondSurname}, #{ci},
-            1, #{phone}, #{transaction.txId}, #{transaction.txHost}, #{transaction.txUserId},
+            #{phone}, 1, #{transaction.txId}, #{transaction.txHost}, #{transaction.txUserId},
             #{transaction.txDate}
         )
     </insert>
+    <update id="updatePerson" parameterType="bo.ucb.edu.ingsoft.modelo.Person">
+        UPDATE person SET
+            first_name=#{firstName},
+            first_surname=#{firstSurname},
+            second_surname=#{secondSurname},
+            ci=#{ci},
+            phone=#{phone},
+            status=2
+            WHERE person_id= #{personId}
+    </update>
+    <select id="idPersonUser" resultType="java.lang.Integer">
+        SELECT
+            person_id
+        FROM user
+        WHERE user_id=#{userId}
+    </select>
+
 </mapper>

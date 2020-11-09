@@ -10,6 +10,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserDao {
     public void createUser(User user);
 
+    public void updateUser(User user);
+
 
 
 }
