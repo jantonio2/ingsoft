@@ -1,5 +1,4 @@
 package bo.ucb.edu.ingsoft.bl;
-
 import bo.ucb.edu.ingsoft.dao.TransactionDao;
 import bo.ucb.edu.ingsoft.modelo.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,3 +25,4 @@ public class TransactionBl {
         return transaction;
     }
 }
+
