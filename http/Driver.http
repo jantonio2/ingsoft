@@ -1,0 +1,23 @@
+POST http://localhost:8090/v1/driver
+Accept: application/json
+Content-Type: application/json
+
+{
+  "ci": "124248596 lp",
+  "firstName": "Jorge",
+  "firstSurname": "Mamani",
+  "secondSurname": "Quispe",
+  "birthDate": "1996-11-10",
+  "phone": "+591 68459315",
+  "email": "mamani@gmail.com",
+  "password": "mamani",
+  "number":"198B",
+  "street":"Pisagua",
+  "zone":"Norte",
+  "city":"La Paz",
+  "country":"Bolivia"
+}
+
+###
+
+

@@ -14,6 +14,17 @@
         WHERE
             user_id = #{userId}
     </select>
+    <select id="findByDriverId" resultType="bo.ucb.edu.ingsoft.modelo.Address">
+        SELECT
+               number as number,
+               street as street,
+               zone as zone,
+               city as city,
+               country as country
+        FROM address
+        WHERE
+            driver_id = #{driverId}
+    </select>
     <insert id="createAddress" parameterType="bo.ucb.edu.ingsoft.modelo.Address">
         INSERT INTO address VALUES (
             null, #{driverId}, #{userId}, #{companyId}, #{startTravelId},#{deliveryTravelId},
@@ -34,5 +45,19 @@
         tx_date=#{transaction.txDate}
         WHERE
         user_id=#{userId}
+    </update>
+    <update id="updateAddressDriver" parameterType="bo.ucb.edu.ingsoft.modelo.Address">
+        UPDATE address set
+        number=#{number},
+        street=#{street},
+        zone=#{zone},
+        city=#{city},
+        country=#{country},
+        tx_id=#{transaction.txId},
+        tx_host=#{transaction.txHost},
+        tx_user_id=#{transaction.txUserId},
+        tx_date=#{transaction.txDate}
+        WHERE
+        driver_id=#{driverId}
     </update>
 </mapper>
