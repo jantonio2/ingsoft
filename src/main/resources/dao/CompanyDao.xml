@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bo.ucb.edu.ingsoft.dao.CompanyDao">
+    <update id="updateCompanyDriver" parameterType="bo.ucb.edu.ingsoft.modelo.Company">
+        UPDATE company SET
+            name=#{name},
+            email=#{email},
+            phone=#{phone},
+            status=1
+            WHERE company_id = #{companyId}
+    </update>
+    <select id="companyIdByDriver" resultType="java.lang.Integer">
+        SELECT
+            company_id
+        FROM driver
+        WHERE driver_id=#{driverId}
+    </select>
+</mapper>

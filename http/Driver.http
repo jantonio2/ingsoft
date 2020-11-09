@@ -1,0 +1,27 @@
+
+PUT http://localhost:8080/transveloz/driver
+Accept: application/json
+Content-Type: application/json
+
+{
+  "driverId": 1,
+  "personDFirstName": "Carmen",
+  "personDFirstSurname": "Mamani",
+  "personDSecondSurname": "Mamani",
+  "birthDateDriver": "1998-04-22",
+  "personDCi": "1111111",
+  "personDPhone": "6666666",
+  "addressDStreet": "Calle4",
+  "addressDZone": "Rosarios",
+  "addressDCity": "La Paz",
+  "addressDCountry": "Bolivia",
+  "companyName": "Toyota1",
+  "companyEmail": "toyota11@gmail.com",
+  "companyPhone": "2244922",
+  "bankAccountNumber": "923043",
+  "bankAccountBank": "BCP",
+  "bankAccountType": "Cuenta de Ahorro",
+  "emailDriver": "carmen@gmail.com",
+  "passwordDriver": "1gg45vds2"
+
+}

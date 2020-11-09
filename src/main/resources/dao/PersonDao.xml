@@ -17,7 +17,7 @@
             second_surname=#{secondSurname},
             ci=#{ci},
             phone=#{phone},
-            status=2
+            status=1
             WHERE person_id= #{personId}
     </update>
     <select id="idPersonUser" resultType="java.lang.Integer">
@@ -25,6 +25,22 @@
             person_id
         FROM user
         WHERE user_id=#{userId}
+    </select>
+    <update id="updatePersonDriver" parameterType="bo.ucb.edu.ingsoft.modelo.Person">
+        UPDATE person SET
+            first_name=#{firstName},
+            first_surname=#{firstSurname},
+            second_surname=#{secondSurname},
+            ci=#{ci},
+            phone=#{phone},
+            status=1
+            WHERE person_id= #{personId}
+    </update>
+    <select id="personIdByDriver" resultType="java.lang.Integer">
+        SELECT
+            person_id
+        FROM driver
+        WHERE driver_id=#{driverId}
     </select>
 
 </mapper>

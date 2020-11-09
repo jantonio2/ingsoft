@@ -8,5 +8,6 @@ public interface AddressDao {
     public void createAddress(Address address);
 
     public void updateAddress(Address address);
+    public void updateAddressDriver(Address address);
 
 }

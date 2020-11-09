@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bo.ucb.edu.ingsoft.dao.BankAccountDao">
+    <update id="updateBankAccountDriver" parameterType="bo.ucb.edu.ingsoft.modelo.BankAccount">
+        UPDATE bank_account SET
+            account_number=#{accountNumber},
+            bank=#{bank},
+            account_type=#{accountType},
+            status=1
+            WHERE driver_id= #{driverId}
+    </update>
+</mapper>
