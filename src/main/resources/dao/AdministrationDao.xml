@@ -2,13 +2,18 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="bo.ucb.edu.ingsoft.dao.PaymentDao">
-    <insert id="create" parameterType="bo.ucb.edu.ingsoft.modelo.Payment">
-        INSERT INTO payment
+<mapper namespace="bo.ucb.edu.ingsoft.dao.DriverDao">
+    <insert id="createAdministrationAccount" parameterType="bo.ucb.edu.ingsoft.modelo.Administration">
+        INSERT INTO administration
         VALUES (
             null,
-            #(travelId),#(date_payment),
-            #(payment_status),#(amount),
+            #(driverId),
+            #(personId),
+            #(companyId),
+            #(birthdate),
+            #(email),
+            #(password),
+            #(picture),
             #(status),
             #{txHost},
             #{txUserId},

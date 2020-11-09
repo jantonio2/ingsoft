@@ -1,10 +1,8 @@
 package bo.ucb.edu.ingsoft.bl;
 
 import bo.ucb.edu.ingsoft.api.ContactApi;
-import bo.ucb.edu.ingsoft.dao.BankAccountDao;
-import bo.ucb.edu.ingsoft.dao.BankTransactionDao;
-import bo.ucb.edu.ingsoft.dao.PaymentDao;
-import bo.ucb.edu.ingsoft.dao.TransactionDao;
+import bo.ucb.edu.ingsoft.dao.*;
+import bo.ucb.edu.ingsoft.dto.BankAccountRequest;
 import bo.ucb.edu.ingsoft.dto.Contact;
 import bo.ucb.edu.ingsoft.modelo.*;
 import org.mybatis.logging.Logger;
@@ -17,37 +15,53 @@ public class PaymentBl {
 //    private ContactDao contactDao;
     private TransactionDao transactionDao;
     private BankAccountDao bankAccountDao;
-    private BankTransactionDao bankTransactionDao;
-    private PaymentDao paymentDao;
+//    private BankTransactionDao bankTransactionDao;
+//    private PaymentDao paymentDao;
+    private DriverDao driverDao;
+    private  AdministrationDao administrationDao;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ContactApi.class);
 
     @Autowired
-    public PaymentBl(BankTransactionDao bankTransactionDao,BankAccountDao bankAccountDao, PaymentDao paymentDao, TransactionDao transactionDao) {
+    public PaymentBl(BankAccountDao bankAccountDao,DriverDao driverDao, AdministrationDao administrationDao,TransactionDao transactionDao) {
 //        this.contactDao = contactDao;
         this.transactionDao = transactionDao;
         this.bankAccountDao=bankAccountDao;
-        this.bankTransactionDao=bankTransactionDao;
-        this.paymentDao=paymentDao;
+//        this.bankTransactionDao=bankTransactionDao;
+//        this.paymentDao=paymentDao;
+//        this.driverDao=driverDao;
+//        this.administrationDao=administrationDao;
     }
 
-    public BankAccount createBankAccount(BankAccount bankAccount, Transaction transaction) {
+    public BankAccountRequest createBankAccount(BankAccountRequest bankAccountRequest, Transaction transaction) {
 
         Driver driver=new Driver();
         Administration administration=new Administration();
-        bankAccount.setDriverId(driver.getDriverId());
-        bankAccount.setAdministrationId(administration.getAdministrationId());
+        BankAccount bankAccount=new BankAccount();
 
-        bankAccount.setAccountNumber(bankAccount.getAccountNumber());
-        bankAccount.setBank(bankAccount.getBank());
-        bankAccount.setAccountType(bankAccount.getAccountType());
-        bankAccount.setStatus(bankAccount.getStatus());
+//        bankAccount.setBankAccountId(bankAccountRequest.getBankAccountId());
+        bankAccount.setAccountNumber(bankAccountRequest.getAccountNumber());
+        bankAccount.setBank(bankAccountRequest.getBank());
+        bankAccount.setAccountType(bankAccountRequest.getAccountType());
+        bankAccount.setStatus(bankAccountRequest.getStatus());
 
+
+//        driver.setDriverId();
+//        Integer getLastIdDriver=transactionDao.getLastInsertId();
+//        driverDao.createDriver(driver);
+
+//        Integer getLastIdAdministrator=transactionDao.getLastInsertId();
+//        administrationDao.createAdministrationAccount(administration);
+        bankAccount.setDriverId(bankAccountRequest.getDriverId());
+        bankAccount.setAdministrationId(bankAccountRequest.getAdministrationId());
 //        driver.getDriverId();
 
         bankAccount.setTransaction(transaction);
         Integer getLastId = transactionDao.getLastInsertId();
-        return bankAccount;
+        bankAccount.setBankAccountId(getLastId);
+        bankAccountDao.createBankAccount(bankAccount);
+//        administrationDao.createAdministrationAccount(administration);
+        return bankAccountRequest;
     }
 
     public BankTransaction createBankTransaction(BankTransaction bankTransaction, Transaction transaction) {

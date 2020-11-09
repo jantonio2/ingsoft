@@ -3,6 +3,7 @@ package bo.ucb.edu.ingsoft.api;
 import bo.ucb.edu.ingsoft.bl.AgendaBl;
 import bo.ucb.edu.ingsoft.bl.PaymentBl;
 import bo.ucb.edu.ingsoft.bl.TransactionBl;
+import bo.ucb.edu.ingsoft.dto.BankAccountRequest;
 import bo.ucb.edu.ingsoft.dto.Contact;
 import bo.ucb.edu.ingsoft.modelo.BankAccount;
 import bo.ucb.edu.ingsoft.modelo.BankTransaction;
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping(value = "/v1/contact")
+@RequestMapping(value = "/v2/contact")
 public class PaymentApi {
 
     private PaymentBl paymentBl;
@@ -39,19 +40,19 @@ public class PaymentApi {
 //    }
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public BankAccount createBankAccount(@RequestBody BankAccount bankAccount, HttpServletRequest request) {
+    public BankAccountRequest createBankAccount(@RequestBody BankAccountRequest bankAccountRequest, HttpServletRequest request) {
         Transaction transaction = TransactionUtil.createTransaction(request);
         transactionBl.createTransaction(transaction);
-        BankAccount createbankaccount=paymentBl.createBankAccount(bankAccount,transaction);
+        BankAccountRequest createbankaccount=paymentBl.createBankAccount(bankAccountRequest,transaction);
         return createbankaccount;
     }
 
-    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
-            consumes = MediaType.APPLICATION_JSON_VALUE)
-    public BankTransaction createBankTransaction(@RequestBody BankTransaction bankTransaction, HttpServletRequest request){
-        Transaction transaction = TransactionUtil.createTransaction(request);
-        transactionBl.createTransaction(transaction);
-        BankTransaction createbanktransaction=paymentBl.createBankTransaction(bankTransaction,transaction);
-        return createbanktransaction;
-    }
+//    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
+//            consumes = MediaType.APPLICATION_JSON_VALUE)
+//    public BankTransaction createBankTransaction(@RequestBody BankTransaction bankTransaction, HttpServletRequest request){
+//        Transaction transaction = TransactionUtil.createTransaction(request);
+//        transactionBl.createTransaction(transaction);
+//        BankTransaction createbanktransaction=paymentBl.createBankTransaction(bankTransaction,transaction);
+//        return createbanktransaction;
+//    }
 }
