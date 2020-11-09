@@ -1,9 +1,9 @@
-POST http://localhost:8080/v1/travel
+POST http://localhost:8090/v1/travel
 Accept: application/json
 Content-Type: application/json
 
 {
-  "travelUserId": 7,
+  "travelUserId": 6,
   "travelDriverId": 2,
   "travelStatus": "Confirmado",
   "travelDateDelivery": "2020-11-11",
