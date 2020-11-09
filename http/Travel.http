@@ -1,0 +1,16 @@
+POST http://localhost:8080/v1/travel
+Accept: application/json
+Content-Type: application/json
+
+{
+  "travelUserId": 6,
+  "travelDriverId": 2,
+  "travelStatus": "Confirmado",
+  "travelDateDelivery": "2020-11-11",
+  "addressNumber": "226",
+  "addressStreet": "Chulumani",
+  "addressZone": "Villa Fatima",
+  "addressCity": "La Paz",
+  "addressCountry": "Bolivia"
+
+}
