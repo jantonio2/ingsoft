@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/v1/contact")
 public class ContactApi {
-
+    /*
     private AgendaBl agendaBl;
 
     @Autowired
@@ -23,4 +23,5 @@ public class ContactApi {
     public Contact findById() {
         return agendaBl.findContactById(0);
     }
+    */
 }

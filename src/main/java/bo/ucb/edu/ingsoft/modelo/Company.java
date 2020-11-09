@@ -2,18 +2,14 @@ package bo.ucb.edu.ingsoft.modelo;
 
 public class Company {
     private Integer companyId;
-    private Integer addressId;
     private String name;
     private String email;
     private String phone;
     private Integer status;
     private Transaction transaction;
 
-    public Company(){
+    public Company() {
         transaction = new Transaction();
-    }
-    public Company(Transaction transaction){
-        this.transaction = transaction;
     }
 
     public Integer getCompanyId() {
@@ -22,14 +18,6 @@ public class Company {
 
     public void setCompanyId(Integer companyId) {
         this.companyId = companyId;
-    }
-
-    public Integer getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(Integer addressId) {
-        this.addressId = addressId;
     }
 
     public String getName() {
@@ -76,7 +64,6 @@ public class Company {
     public String toString() {
         return "Company{" +
                 "companyId=" + companyId +
-                ", addressId=" + addressId +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +

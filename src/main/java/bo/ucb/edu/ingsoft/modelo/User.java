@@ -1,23 +1,17 @@
 package bo.ucb.edu.ingsoft.modelo;
 
-import java.util.Date;
-
 public class User {
     private Integer userId;
     private Integer personId;
-    private Integer addressId;
-    private Date birthDate;
+    private String birthDate;
     private String email;
     private String password;
     private String picture;
     private Integer status;
     private Transaction transaction;
 
-    public User(){
+    public User() {
         transaction = new Transaction();
-    }
-    public User(Transaction transaction){
-        this.transaction = transaction;
     }
 
     public Integer getUserId() {
@@ -36,19 +30,11 @@ public class User {
         this.personId = personId;
     }
 
-    public Integer getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(Integer addressId) {
-        this.addressId = addressId;
-    }
-
-    public Date getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -97,7 +83,6 @@ public class User {
         return "User{" +
                 "userId=" + userId +
                 ", personId=" + personId +
-                ", addressId=" + addressId +
                 ", birthDate=" + birthDate +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +

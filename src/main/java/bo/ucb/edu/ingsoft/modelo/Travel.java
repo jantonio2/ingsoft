@@ -6,8 +6,6 @@ public class Travel {
     private Integer travelId;
     private Integer userId;
     private Integer driverId;
-    private Integer startAddressId;
-    private Integer deliveryAddressId;
     private String travelStatus;
     private Date dateDelivery;
     private Integer status;
@@ -15,9 +13,6 @@ public class Travel {
 
     public Travel(){
         transaction = new Transaction();
-    }
-    public Travel(Transaction transaction){
-        this.transaction = transaction;
     }
 
     public Integer getTravelId() {
@@ -42,22 +37,6 @@ public class Travel {
 
     public void setDriverId(Integer driverId) {
         this.driverId = driverId;
-    }
-
-    public Integer getStartAddressId() {
-        return startAddressId;
-    }
-
-    public void setStartAddressId(Integer startAddressId) {
-        this.startAddressId = startAddressId;
-    }
-
-    public Integer getDeliveryAddressId() {
-        return deliveryAddressId;
-    }
-
-    public void setDeliveryAddressId(Integer deliveryAddressId) {
-        this.deliveryAddressId = deliveryAddressId;
     }
 
     public String getTravelStatus() {
@@ -98,8 +77,6 @@ public class Travel {
                 "travelId=" + travelId +
                 ", userId=" + userId +
                 ", driverId=" + driverId +
-                ", startAddressId=" + startAddressId +
-                ", deliveryAddressId=" + deliveryAddressId +
                 ", travelStatus='" + travelStatus + '\'' +
                 ", dateDelivery=" + dateDelivery +
                 ", status=" + status +

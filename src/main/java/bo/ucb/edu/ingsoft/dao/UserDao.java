@@ -8,9 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface UserDao {
-
-    public void createPerson(Person person);
-    public void createAddress(Address address);
     public void createUser(User user);
+
+
 
 }
