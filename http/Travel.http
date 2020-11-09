@@ -1,0 +1,18 @@
+POST http://localhost:8080/v1/travel
+Accept: application/json
+Content-Type: application/json
+
+{
+  "travelUserId": "1",
+  "travelDriverId": "La Ferte",
+  "travelStatus": "70834566",
+  "travelDateDelivery": "14 de septiembre",
+  "addressStartTravelId": "La Paz",
+  "addressDeliveryTravelId": "Bolivia",
+  "addressNumber": "Bolivia",
+  "addressStreet": "Bolivia",
+  "addressZone": "Bolivia",
+  "addressCity": "ad",
+  "addressCountry": ""
+
+}

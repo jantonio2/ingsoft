@@ -1,7 +1,9 @@
 package bo.ucb.edu.ingsoft.bl;
 
 import bo.ucb.edu.ingsoft.dao.ContactDao;
+import bo.ucb.edu.ingsoft.dao.TravelDao;
 import bo.ucb.edu.ingsoft.dto.Contact;
+import bo.ucb.edu.ingsoft.modelo.Travel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,4 +19,5 @@ public class AgendaBl {
     public Contact findContactById(Integer contactId) {
         return  contactDao.findByContactId(contactId);
     }
+
 }
