@@ -34,7 +34,7 @@
     <select id="getPersonId" resultType="bo.ucb.edu.ingsoft.modelo.Driver">
         SELECT
                person_id as personId
-        FROM user
+        FROM driver
         WHERE
             driver_id = #{driverId}
     </select>

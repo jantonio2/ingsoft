@@ -94,4 +94,39 @@ public class DriverBl {
         addressDao.createAddress(address);
         return driverRequest;
     }
+
+    public DriverRequest updateDriver(DriverRequest driverRequest, Transaction transaction){
+        Driver driver = new Driver();
+        Person person = new Person();
+        Address address = new Address();
+
+        driver.setDriverId(driverRequest.getDriverId());
+        driver.setEmail(driverRequest.getEmail());
+        driver.setBirthDate(driverRequest.getBirthDate());
+        driver.setPassword(driverRequest.getPassword());
+        driver.setTransaction(transaction);
+        LOGGER.error(transaction.getTxId().toString());
+        driverDao.updateDriver(driver);
+
+        Driver driver2 = driverDao.getPersonId(driverRequest.getDriverId());
+        person.setPersonId(driver2.getPersonId());
+        person.setFirstName(driverRequest.getFirstName());
+        person.setFirstSurname(driverRequest.getFirstSurname());
+        person.setSecondSurname(driverRequest.getSecondSurname());
+        person.setCi(driverRequest.getCi());
+        person.setPhone(driverRequest.getPhone());
+        person.setTransaction(transaction);
+        personDao.updatePerson(person);
+
+        address.setUserId(driverRequest.getDriverId());
+        address.setNumber(driverRequest.getNumber());
+        address.setStreet(driverRequest.getStreet());
+        address.setZone(driverRequest.getZone());
+        address.setCity(driverRequest.getCity());
+        address.setCountry(driverRequest.getCountry());
+        address.setTransaction(transaction);
+        addressDao.updateAddressDriver(address);
+
+        return  driverRequest;
+    }
 }

@@ -45,4 +45,12 @@ public class DriverApi {
         DriverRequest driverResponse = driverBl.createDriver(driverRequest, transaction);
         return driverResponse;
     }
+
+    @RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public DriverRequest update(@RequestBody DriverRequest driverRequest, HttpServletRequest request) {
+        Transaction transaction = TransactionUtil.createTransaction(request);
+        transactionBl.createTransaction(transaction);
+        driverBl.updateDriver(driverRequest,transaction);
+        return driverRequest;
+    }
 }

@@ -20,7 +20,28 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8090/v1/driver?driverId=2
+GET http://localhost:8090/v1/driver?driverId=1
 Accept: application/json
 
 ###
+
+PUT  http://localhost:8090/v1/driver
+Accept: application/json
+Content-Type: application/json
+
+{
+  "driverId": 1,
+  "ci": "124248596 sc",
+  "firstName": "Maria",
+  "firstSurname": "Sarmiento",
+  "secondSurname": "Daza",
+  "birthDate": "1974-01-17",
+  "phone": "+591 77745812",
+  "email": "mariasarmiento@gmail.com",
+  "password": "mariasarmiento",
+  "number":"198B",
+  "street":"Calama",
+  "zone":"Norte",
+  "city":"La Paz",
+  "country":"Bolivia"
+}
