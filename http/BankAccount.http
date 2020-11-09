@@ -1,0 +1,16 @@
+GET http://localhost:8080/v1/payment
+Accept: application/json
+
+###
+POST http://localhost:8090/v1/payment
+Accept: application/json
+Content-Type: application/json
+
+{
+  "driverId": 1,
+  "administrationId":1 ,
+  "accountNumber": 123321,
+  "bank": "Banco Nacional",
+  "accountType": "Caja de ahorros",
+  "status": 1
+}

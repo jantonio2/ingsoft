@@ -38,4 +38,5 @@
         WHERE
             driver_id = #{driverId}
     </select>
+
 </mapper>

@@ -1,7 +1,5 @@
 package bo.ucb.edu.ingsoft.util;
 
-
-
 import bo.ucb.edu.ingsoft.modelo.Transaction;
 
 import javax.servlet.http.HttpServletRequest;
