@@ -19,3 +19,16 @@ Content-Type: application/json
 }
 
 ###
+
+GET http://localhost:8090/v1/user?userId=2
+Accept: application/json
+
+###
+
+PUT  http://localhost:8090/v1/user
+Accept: application/json
+Content-Type: application/json
+
+{
+  
+}

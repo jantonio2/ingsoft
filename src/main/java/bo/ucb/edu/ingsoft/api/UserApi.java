@@ -2,6 +2,7 @@ package bo.ucb.edu.ingsoft.api;
 
 import bo.ucb.edu.ingsoft.bl.TransactionBl;
 import bo.ucb.edu.ingsoft.bl.UserBl;
+import bo.ucb.edu.ingsoft.dto.SingleUser;
 import bo.ucb.edu.ingsoft.dto.UserRequest;
 import bo.ucb.edu.ingsoft.modelo.Transaction;
 import bo.ucb.edu.ingsoft.util.TransactionUtil;
@@ -9,10 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -36,6 +34,11 @@ public class UserApi {
         return agendaBl.findContactById(0);
     }*/
 
+    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public SingleUser findById(HttpServletRequest request, @RequestParam Integer userId) {
+        //int userId=2;
+        return userBl.findUserById(userId);
+    }
 
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -45,5 +48,13 @@ public class UserApi {
         transactionBl.createTransaction(transaction);
         UserRequest userResponse = userBl.createUser(userRequest, transaction);
         return userResponse;
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public SingleUser update(@RequestBody SingleUser singleUser, HttpServletRequest request) {
+        TransactionUtil transactionUtil=new TransactionUtil();
+        Transaction transaction = transactionUtil.createTransaction(request);
+        userBl.updateUser(singleUser,transaction);
+        return singleUser;
     }
 }

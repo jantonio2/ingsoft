@@ -5,6 +5,7 @@ import bo.ucb.edu.ingsoft.dao.AddressDao;
 import bo.ucb.edu.ingsoft.dao.PersonDao;
 import bo.ucb.edu.ingsoft.dao.TransactionDao;
 import bo.ucb.edu.ingsoft.dao.UserDao;
+import bo.ucb.edu.ingsoft.dto.SingleUser;
 import bo.ucb.edu.ingsoft.dto.UserRequest;
 import bo.ucb.edu.ingsoft.modelo.Address;
 import bo.ucb.edu.ingsoft.modelo.Person;
@@ -32,16 +33,37 @@ public class UserBl {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserApi.class);
 
+    public SingleUser findUserById(Integer userId) {
+        User user = userDao.findByUserId(userId);
+        SingleUser singleUserResponse = new SingleUser();
+        LOGGER.error(user.getEmail());
+        Person person = personDao.findByPersonId(user.getPersonId());
+        Address address = addressDao.findByUserId(userId);
 
-//    public Contact findContactById(Integer contactId) {
-//        return  contactDao.findByContactId(contactId);
-//    }
+        singleUserResponse.setCi(person.getCi());
+        singleUserResponse.setFirstName(person.getFirstName());
+        singleUserResponse.setFirstSurname(person.getFirstSurname());
+        singleUserResponse.setSecondSurname(person.getSecondSurname());
+        singleUserResponse.setPhone(person.getPhone());
+
+        singleUserResponse.setBirthDate(user.getBirthDate());
+        singleUserResponse.setEmail(user.getEmail());
+
+        singleUserResponse.setNumber(address.getNumber());
+        singleUserResponse.setStreet(address.getStreet());
+        singleUserResponse.setZone(address.getZone());
+        singleUserResponse.setCity(address.getCity());
+        singleUserResponse.setCountry(address.getCountry());
+        return  singleUserResponse;
+    }
+
 
     public UserRequest createUser(UserRequest userRequest, Transaction transaction) {
         User user = new User();
         Person person = new Person();
         Address address = new Address();
         LOGGER.error(userRequest.getFirstName());
+
         person.setFirstName(userRequest.getFirstName());
         person.setFirstSurname(userRequest.getFirstSurname());
         person.setSecondSurname(userRequest.getSecondSurname());
@@ -51,6 +73,7 @@ public class UserBl {
         personDao.createPerson(person);
         Integer getLastIdPerson = transactionDao.getLastInsertId();
         person.setPersonId(getLastIdPerson);
+
         user.setPersonId(getLastIdPerson);
         //LOGGER.error(user.getPersonId().toString());
         user.setBirthDate(userRequest.getBirthDate());
@@ -59,6 +82,7 @@ public class UserBl {
         user.setTransaction(transaction);
         userDao.createUser(user);
         Integer getLastIdUser = transactionDao.getLastInsertId();
+
         address.setUserId(getLastIdUser);
         address.setNumber(userRequest.getNumber());
         address.setStreet(userRequest.getStreet());
@@ -68,5 +92,10 @@ public class UserBl {
         address.setTransaction(transaction);
         addressDao.createAddress(address);
         return userRequest;
+    }
+
+    public SingleUser updateUser(SingleUser singleUser, Transaction transaction){
+
+        return  singleUser;
     }
 }

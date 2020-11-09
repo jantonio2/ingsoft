@@ -3,6 +3,17 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bo.ucb.edu.ingsoft.dao.PersonDao">
+    <select id="findByPersonId" resultType="bo.ucb.edu.ingsoft.modelo.Person">
+        SELECT
+               first_name as firstName,
+               first_surname as firstSurname,
+               second_surname as secondSurname,
+               ci as ci,
+               phone as phone
+        FROM person
+        WHERE
+            person_id = #{personId}
+    </select>
     <insert id="createPerson" parameterType="bo.ucb.edu.ingsoft.modelo.Person">
         INSERT INTO person VALUES (
             null, #{firstName}, #{firstSurname}, #{secondSurname}, #{ci}, #{phone}, 1,
