@@ -9,11 +9,8 @@ public class Company {
     private Integer status;
     private Transaction transaction;
 
-    public Company(){
+    public Company() {
         transaction = new Transaction();
-    }
-    public Company(Transaction transaction){
-        this.transaction = transaction;
     }
 
     public Integer getCompanyId() {
