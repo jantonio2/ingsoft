@@ -1,27 +1,27 @@
-package bo.ucb.edu.ingsoft.modelo;
+package bo.ucb.edu.ingsoft.model;
 
-public class Administration {
-    private Integer administrationId;
+import java.util.Date;
+
+public class User {
+    private Integer userId;
     private Integer personId;
-    private Integer paymentId;
+    private Date birthDate;
     private String email;
     private String password;
+    private String picture;
     private Integer status;
     private Transaction transaction;
 
-    public Administration(){
+    public User() {
         transaction = new Transaction();
     }
-    public Administration(Transaction transaction){
-        this.transaction = transaction;
+
+    public Integer getUserId() {
+        return userId;
     }
 
-    public Integer getAdministrationId() {
-        return administrationId;
-    }
-
-    public void setAdministrationId(Integer administrationId) {
-        this.administrationId = administrationId;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Integer getPersonId() {
@@ -32,12 +32,12 @@ public class Administration {
         this.personId = personId;
     }
 
-    public Integer getPaymentId() {
-        return paymentId;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setPaymentId(Integer paymentId) {
-        this.paymentId = paymentId;
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getEmail() {
@@ -54,6 +54,14 @@ public class Administration {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public Integer getStatus() {
@@ -74,12 +82,13 @@ public class Administration {
 
     @Override
     public String toString() {
-        return "Administration{" +
-                "administrationId=" + administrationId +
+        return "User{" +
+                "userId=" + userId +
                 ", personId=" + personId +
-                ", paymentId=" + paymentId +
+                ", birthDate=" + birthDate +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", picture='" + picture + '\'' +
                 ", status=" + status +
                 ", transaction=" + transaction +
                 '}';

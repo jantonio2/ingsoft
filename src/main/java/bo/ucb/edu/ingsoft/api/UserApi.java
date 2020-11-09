@@ -4,7 +4,7 @@ import bo.ucb.edu.ingsoft.bl.TransactionBl;
 import bo.ucb.edu.ingsoft.bl.UserBl;
 import bo.ucb.edu.ingsoft.dto.SingleUser;
 import bo.ucb.edu.ingsoft.dto.UserRequest;
-import bo.ucb.edu.ingsoft.modelo.Transaction;
+import bo.ucb.edu.ingsoft.model.Transaction;
 import bo.ucb.edu.ingsoft.util.TransactionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

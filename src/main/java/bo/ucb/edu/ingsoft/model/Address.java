@@ -1,4 +1,4 @@
-package bo.ucb.edu.ingsoft.modelo;
+package bo.ucb.edu.ingsoft.model;
 
 public class Address {
     private Integer addressId;

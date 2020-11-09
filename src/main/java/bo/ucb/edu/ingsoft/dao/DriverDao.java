@@ -1,6 +1,6 @@
 package bo.ucb.edu.ingsoft.dao;
 
-import bo.ucb.edu.ingsoft.modelo.Driver;
+import bo.ucb.edu.ingsoft.model.Driver;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

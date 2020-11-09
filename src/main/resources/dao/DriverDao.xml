@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bo.ucb.edu.ingsoft.dao.DriverDao">
-    <select id="findByDriverId" resultType="bo.ucb.edu.ingsoft.modelo.Driver">
+    <select id="findByDriverId" resultType="bo.ucb.edu.ingsoft.model.Driver">
         SELECT
                driver_id as driverId,
                person_id as personId,
@@ -13,13 +13,13 @@
         WHERE
             driver_id = #{driverId}
     </select>
-    <insert id="createDriver" parameterType="bo.ucb.edu.ingsoft.modelo.Driver">
+    <insert id="createDriver" parameterType="bo.ucb.edu.ingsoft.model.Driver">
         INSERT INTO driver VALUES (
             null, #{personId},#{companyId}, #{birthDate}, #{email}, #{password},null,1,
             #{transaction.txId}, #{transaction.txHost}, #{transaction.txUserId}, #{transaction.txDate}
         )
     </insert>
-    <update id="updateDriver" parameterType="bo.ucb.edu.ingsoft.modelo.Driver">
+    <update id="updateDriver" parameterType="bo.ucb.edu.ingsoft.model.Driver">
         UPDATE driver set
         email=#{email},
         birthdate=#{birthDate},
@@ -31,7 +31,7 @@
         WHERE
         driver_id=#{driverId}
     </update>
-    <select id="getPersonId" resultType="bo.ucb.edu.ingsoft.modelo.Driver">
+    <select id="getPersonId" resultType="bo.ucb.edu.ingsoft.model.Driver">
         SELECT
                person_id as personId
         FROM driver

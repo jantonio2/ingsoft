@@ -1,28 +1,27 @@
-package bo.ucb.edu.ingsoft.modelo;
+package bo.ucb.edu.ingsoft.model;
 
-import java.util.Date;
-
-public class Driver {
-    private Integer driverId;
+public class Administration {
+    private Integer administrationId;
     private Integer personId;
-    private Integer companyId;
-    private Date birthDate;
+    private Integer paymentId;
     private String email;
     private String password;
-    private String picture;
     private Integer status;
     private Transaction transaction;
 
-    public Driver(){
+    public Administration(){
         transaction = new Transaction();
     }
-
-    public Integer getDriverId() {
-        return driverId;
+    public Administration(Transaction transaction){
+        this.transaction = transaction;
     }
 
-    public void setDriverId(Integer driverId) {
-        this.driverId = driverId;
+    public Integer getAdministrationId() {
+        return administrationId;
+    }
+
+    public void setAdministrationId(Integer administrationId) {
+        this.administrationId = administrationId;
     }
 
     public Integer getPersonId() {
@@ -33,20 +32,12 @@ public class Driver {
         this.personId = personId;
     }
 
-    public Integer getCompanyId() {
-        return companyId;
+    public Integer getPaymentId() {
+        return paymentId;
     }
 
-    public void setCompanyId(Integer companyId) {
-        this.companyId = companyId;
-    }
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setPaymentId(Integer paymentId) {
+        this.paymentId = paymentId;
     }
 
     public String getEmail() {
@@ -63,14 +54,6 @@ public class Driver {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
     }
 
     public Integer getStatus() {
@@ -91,14 +74,12 @@ public class Driver {
 
     @Override
     public String toString() {
-        return "Driver{" +
-                "driverId=" + driverId +
+        return "Administration{" +
+                "administrationId=" + administrationId +
                 ", personId=" + personId +
-                ", companyId=" + companyId +
-                ", birthDate=" + birthDate +
+                ", paymentId=" + paymentId +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", picture='" + picture + '\'' +
                 ", status=" + status +
                 ", transaction=" + transaction +
                 '}';

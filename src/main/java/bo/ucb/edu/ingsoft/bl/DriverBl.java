@@ -1,16 +1,13 @@
 package bo.ucb.edu.ingsoft.bl;
 
 import bo.ucb.edu.ingsoft.api.DriverApi;
-import bo.ucb.edu.ingsoft.api.UserApi;
 import bo.ucb.edu.ingsoft.dao.AddressDao;
 import bo.ucb.edu.ingsoft.dao.PersonDao;
 import bo.ucb.edu.ingsoft.dao.TransactionDao;
 import bo.ucb.edu.ingsoft.dao.DriverDao;
 import bo.ucb.edu.ingsoft.dto.DriverRequest;
 import bo.ucb.edu.ingsoft.dto.SingleDriver;
-import bo.ucb.edu.ingsoft.dto.SingleUser;
-import bo.ucb.edu.ingsoft.dto.UserRequest;
-import bo.ucb.edu.ingsoft.modelo.*;
+import bo.ucb.edu.ingsoft.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

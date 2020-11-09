@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2020-11-08 20:30:30.562
+-- Last modification date: 2020-11-09 21:24:08.925
 
 -- tables
 -- Table: address
@@ -41,8 +41,8 @@ CREATE TABLE administration (
 -- Table: bank_account
 CREATE TABLE bank_account (
     bank_account_id int NOT NULL AUTO_INCREMENT,
-    driver_id int NOT NULL,
-    administration_id int NOT NULL,
+    driver_id int NULL,
+    administration_id int NULL,
     account_number int NOT NULL,
     bank varchar(45) NOT NULL,
     account_type varchar(45) NOT NULL,
@@ -121,8 +121,8 @@ CREATE TABLE driver (
 CREATE TABLE h_bank_account (
     h_bank_account_id int NOT NULL AUTO_INCREMENT,
     bank_Account_id int NOT NULL,
-    driver_id int NOT NULL,
-    administration_id int NOT NULL,
+    driver_id int NULL,
+    administration_id int NULL,
     account_number int NOT NULL,
     bank varchar(45) NOT NULL,
     account_type varchar(45) NOT NULL,
@@ -173,8 +173,7 @@ CREATE TABLE h_driver (
     h_driver_id int NOT NULL AUTO_INCREMENT,
     driver_id int NOT NULL,
     person_id int NOT NULL,
-    address_id int NOT NULL,
-    company_id int NOT NULL,
+    company_id int NULL,
     birthdate varchar(45) NOT NULL,
     email varchar(150) NOT NULL,
     password varchar(150) NOT NULL,
@@ -203,6 +202,23 @@ CREATE TABLE h_payment (
     CONSTRAINT h_payment_pk PRIMARY KEY (h_payment_id)
 );
 
+-- Table: h_person
+CREATE TABLE h_person (
+    h_person_id int NOT NULL AUTO_INCREMENT,
+    person_id int NOT NULL,
+    first_name varchar(150) NOT NULL,
+    first_surname varchar(150) NOT NULL,
+    second_surname varchar(150) NULL,
+    ci varchar(45) NOT NULL,
+    phone varchar(45) NOT NULL,
+    status int NOT NULL,
+    tx_id int NOT NULL,
+    tx_host varchar(100) NOT NULL,
+    tx_user_id int NOT NULL,
+    tx_date timestamp NOT NULL,
+    CONSTRAINT h_person_pk PRIMARY KEY (h_person_id)
+);
+
 -- Table: h_travel
 CREATE TABLE h_travel (
     h_travel_id int NOT NULL AUTO_INCREMENT,
@@ -210,8 +226,6 @@ CREATE TABLE h_travel (
     user_id int NOT NULL,
     driver_id int NOT NULL,
     travel_status varchar(45) NOT NULL,
-    start_address varchar(150) NOT NULL,
-    delivery_address varchar(150) NOT NULL,
     date_delivery timestamp NOT NULL,
     status int NOT NULL,
     tx_id int NOT NULL,
@@ -226,7 +240,6 @@ CREATE TABLE h_user (
     h_user_id int NOT NULL AUTO_INCREMENT,
     user_id int NOT NULL,
     person_id int NOT NULL,
-    address_id int NOT NULL,
     birthdate date NOT NULL,
     email varchar(150) NOT NULL,
     password varchar(150) NOT NULL,
@@ -249,7 +262,7 @@ CREATE TABLE h_vehicle (
     vehicle_type varchar(45) NOT NULL,
     price numeric(10,4) NOT NULL,
     vehicle_status varchar(45) NOT NULL,
-    pictures varchar(300) NOT NULL,
+    pictures varchar(300) NULL,
     brand varchar(45) NOT NULL,
     vehicle_model varchar(45) NOT NULL,
     status int NOT NULL,

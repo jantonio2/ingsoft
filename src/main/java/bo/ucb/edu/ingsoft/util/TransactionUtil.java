@@ -2,7 +2,7 @@ package bo.ucb.edu.ingsoft.util;
 
 
 
-import bo.ucb.edu.ingsoft.modelo.Transaction;
+import bo.ucb.edu.ingsoft.model.Transaction;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;

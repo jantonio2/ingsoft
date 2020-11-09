@@ -20,7 +20,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8090/v1/user?userId=2
+GET http://localhost:8090/v1/user?userId=6
 Accept: application/json
 
 ###

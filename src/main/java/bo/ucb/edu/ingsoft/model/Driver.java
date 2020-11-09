@@ -1,10 +1,11 @@
-package bo.ucb.edu.ingsoft.modelo;
+package bo.ucb.edu.ingsoft.model;
 
 import java.util.Date;
 
-public class User {
-    private Integer userId;
+public class Driver {
+    private Integer driverId;
     private Integer personId;
+    private Integer companyId;
     private Date birthDate;
     private String email;
     private String password;
@@ -12,16 +13,16 @@ public class User {
     private Integer status;
     private Transaction transaction;
 
-    public User() {
+    public Driver(){
         transaction = new Transaction();
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getDriverId() {
+        return driverId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setDriverId(Integer driverId) {
+        this.driverId = driverId;
     }
 
     public Integer getPersonId() {
@@ -30,6 +31,14 @@ public class User {
 
     public void setPersonId(Integer personId) {
         this.personId = personId;
+    }
+
+    public Integer getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Integer companyId) {
+        this.companyId = companyId;
     }
 
     public Date getBirthDate() {
@@ -82,9 +91,10 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "userId=" + userId +
+        return "Driver{" +
+                "driverId=" + driverId +
                 ", personId=" + personId +
+                ", companyId=" + companyId +
                 ", birthDate=" + birthDate +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
