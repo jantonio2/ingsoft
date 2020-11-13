@@ -5,7 +5,9 @@ import java.util.Date;
 public class Payment {
     private Integer paymentId;
     private Integer travelId;
+    private Integer administrationId;
     private Date datePayment;
+    private String paymentStatus;
     private Double amount;
     private String status;
     private Transaction transaction;
@@ -33,12 +35,28 @@ public class Payment {
         this.travelId = travelId;
     }
 
+    public Integer getAdministrationId() {
+        return administrationId;
+    }
+
+    public void setAdministrationId(Integer administrationId) {
+        this.administrationId = administrationId;
+    }
+
     public Date getDatePayment() {
         return datePayment;
     }
 
     public void setDatePayment(Date datePayment) {
         this.datePayment = datePayment;
+    }
+
+    public String getPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(String paymentStatus) {
+        this.paymentStatus = paymentStatus;
     }
 
     public Double getAmount() {
@@ -70,7 +88,9 @@ public class Payment {
         return "Payment{" +
                 "paymentId=" + paymentId +
                 ", travelId=" + travelId +
+                ", administrationId=" + administrationId +
                 ", datePayment=" + datePayment +
+                ", paymentStatus='" + paymentStatus + '\'' +
                 ", amount=" + amount +
                 ", status='" + status + '\'' +
                 ", transaction=" + transaction +

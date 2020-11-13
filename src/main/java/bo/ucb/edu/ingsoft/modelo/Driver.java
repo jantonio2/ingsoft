@@ -6,6 +6,7 @@ public class Driver {
     private Integer driverId;
     private Integer personId;
     private Integer companyId;
+    private Integer addressId;
     private Date birthDate;
     private String email;
     private String password;
@@ -39,6 +40,14 @@ public class Driver {
 
     public void setCompanyId(Integer companyId) {
         this.companyId = companyId;
+    }
+
+    public Integer getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
     }
 
     public Date getBirthDate() {
@@ -95,6 +104,7 @@ public class Driver {
                 "driverId=" + driverId +
                 ", personId=" + personId +
                 ", companyId=" + companyId +
+                ", addressId=" + addressId +
                 ", birthDate=" + birthDate +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +

@@ -3,7 +3,6 @@ package bo.ucb.edu.ingsoft.modelo;
 public class Administration {
     private Integer administrationId;
     private Integer personId;
-    private Integer paymentId;
     private String email;
     private String password;
     private Integer status;
@@ -30,14 +29,6 @@ public class Administration {
 
     public void setPersonId(Integer personId) {
         this.personId = personId;
-    }
-
-    public Integer getPaymentId() {
-        return paymentId;
-    }
-
-    public void setPaymentId(Integer paymentId) {
-        this.paymentId = paymentId;
     }
 
     public String getEmail() {
@@ -77,7 +68,6 @@ public class Administration {
         return "Administration{" +
                 "administrationId=" + administrationId +
                 ", personId=" + personId +
-                ", paymentId=" + paymentId +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", status=" + status +

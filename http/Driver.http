@@ -1,4 +1,4 @@
-POST http://localhost:8090/v1/driver
+POST http://localhost:8070/v1/driver
 Accept: application/json
 Content-Type: application/json
 
@@ -20,12 +20,12 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8090/v1/driver?driverId=5
+GET http://localhost:8070/v1/driver?driverId=1
 Accept: application/json
 
 ###
 
-PUT  http://localhost:8090/v1/driver
+PUT  http://localhost:8070/v1/driver
 Accept: application/json
 Content-Type: application/json
 
@@ -40,8 +40,8 @@ Content-Type: application/json
   "email": "mariasarmiento@gmail.com",
   "password": "mariasarmiento",
   "number":"198B",
-  "street":"Calama",
-  "zone":"Norte",
+  "street":"Estados Unidos",
+  "zone":"Miraflores",
   "city":"La Paz",
   "country":"Bolivia"
 }

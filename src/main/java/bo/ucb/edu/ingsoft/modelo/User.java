@@ -5,6 +5,7 @@ import java.util.Date;
 public class User {
     private Integer userId;
     private Integer personId;
+    private Integer addressId;
     private Date birthDate;
     private String email;
     private String password;
@@ -30,6 +31,14 @@ public class User {
 
     public void setPersonId(Integer personId) {
         this.personId = personId;
+    }
+
+    public Integer getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
     }
 
     public Date getBirthDate() {
@@ -85,6 +94,7 @@ public class User {
         return "User{" +
                 "userId=" + userId +
                 ", personId=" + personId +
+                ", addressId=" + addressId +
                 ", birthDate=" + birthDate +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +

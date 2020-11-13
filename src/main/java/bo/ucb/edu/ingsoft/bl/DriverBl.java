@@ -35,7 +35,7 @@ public class DriverBl {
         SingleDriver singleDriverResponse = new SingleDriver();
         LOGGER.error(driver.getEmail());
         Person person = personDao.findByPersonId(driver.getPersonId());
-        Address address = addressDao.findByDriverId(driverId);
+        Address address = addressDao.findByDriverId(driver.getAddressId());
         LOGGER.error(person.getFirstName());
         LOGGER.error(address.getStreet());
 
@@ -72,16 +72,6 @@ public class DriverBl {
         Integer getLastIdPerson = transactionDao.getLastInsertId();
         person.setPersonId(getLastIdPerson);
 
-        driver.setPersonId(getLastIdPerson);
-        //LOGGER.error(user.getPersonId().toString());
-        driver.setBirthDate(driverRequest.getBirthDate());
-        driver.setEmail(driverRequest.getEmail());
-        driver.setPassword(driverRequest.getPassword());
-        driver.setTransaction(transaction);
-        driverDao.createDriver(driver);
-        Integer getLastIdDriver = transactionDao.getLastInsertId();
-
-        address.setDriverId(getLastIdDriver);
         address.setNumber(driverRequest.getNumber());
         address.setStreet(driverRequest.getStreet());
         address.setZone(driverRequest.getZone());
@@ -89,6 +79,17 @@ public class DriverBl {
         address.setCountry(driverRequest.getCountry());
         address.setTransaction(transaction);
         addressDao.createAddress(address);
+
+        Integer getLastIdAddress = transactionDao.getLastInsertId();
+        driver.setPersonId(getLastIdPerson);
+        driver.setAddressId(getLastIdAddress);
+        //LOGGER.error(user.getPersonId().toString());
+        driver.setBirthDate(driverRequest.getBirthDate());
+        driver.setEmail(driverRequest.getEmail());
+        driver.setPassword(driverRequest.getPassword());
+        driver.setTransaction(transaction);
+        driverDao.createDriver(driver);
+
         return driverRequest;
     }
 
@@ -115,7 +116,7 @@ public class DriverBl {
         person.setTransaction(transaction);
         personDao.updatePerson(person);
 
-        address.setUserId(driverRequest.getDriverId());
+        address.setAddressId(driver2.getAddressId());
         address.setNumber(driverRequest.getNumber());
         address.setStreet(driverRequest.getStreet());
         address.setZone(driverRequest.getZone());

@@ -7,6 +7,7 @@
         SELECT
                user_id as userId,
                person_id as personId,
+               address_id as addressId,
                birthdate as birthDate,
                email as email
         FROM user
@@ -15,7 +16,7 @@
     </select>
     <insert id="createUser" parameterType="bo.ucb.edu.ingsoft.modelo.User">
         INSERT INTO user VALUES (
-            null, #{personId}, #{birthDate}, #{email}, #{password},null,1,
+            null, #{personId}, #{addressId}, #{birthDate}, #{email}, #{password},null,1,
             #{transaction.txId}, #{transaction.txHost}, #{transaction.txUserId}, #{transaction.txDate}
         )
     </insert>
@@ -33,7 +34,8 @@
     </update>
     <select id="getPersonId" resultType="bo.ucb.edu.ingsoft.modelo.User">
         SELECT
-               person_id as personId
+               person_id as personId,
+               address_id as addressId
         FROM user
         WHERE
             user_id = #{userId}

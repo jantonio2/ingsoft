@@ -38,7 +38,7 @@ public class UserBl {
         SingleUser singleUserResponse = new SingleUser();
         LOGGER.error(user.getEmail());
         Person person = personDao.findByPersonId(user.getPersonId());
-        Address address = addressDao.findByUserId(userId);
+        Address address = addressDao.findByUserId(user.getAddressId());
 
         singleUserResponse.setCi(person.getCi());
         singleUserResponse.setFirstName(person.getFirstName());
@@ -74,7 +74,17 @@ public class UserBl {
         Integer getLastIdPerson = transactionDao.getLastInsertId();
         person.setPersonId(getLastIdPerson);
 
+        address.setNumber(userRequest.getNumber());
+        address.setStreet(userRequest.getStreet());
+        address.setZone(userRequest.getZone());
+        address.setCity(userRequest.getCity());
+        address.setCountry(userRequest.getCountry());
+        address.setTransaction(transaction);
+        addressDao.createAddress(address);
+
+        Integer getLastIdAddress = transactionDao.getLastInsertId();
         user.setPersonId(getLastIdPerson);
+        user.setAddressId(getLastIdAddress);
         //LOGGER.error(user.getPersonId().toString());
         user.setBirthDate(userRequest.getBirthDate());
         user.setEmail(userRequest.getEmail());
@@ -83,14 +93,7 @@ public class UserBl {
         userDao.createUser(user);
         Integer getLastIdUser = transactionDao.getLastInsertId();
 
-        address.setUserId(getLastIdUser);
-        address.setNumber(userRequest.getNumber());
-        address.setStreet(userRequest.getStreet());
-        address.setZone(userRequest.getZone());
-        address.setCity(userRequest.getCity());
-        address.setCountry(userRequest.getCountry());
-        address.setTransaction(transaction);
-        addressDao.createAddress(address);
+
         return userRequest;
     }
 
@@ -117,7 +120,7 @@ public class UserBl {
         person.setTransaction(transaction);
         personDao.updatePerson(person);
 
-        address.setUserId(userRequest.getUserId());
+        address.setAddressId(user2.getAddressId());
         address.setNumber(userRequest.getNumber());
         address.setStreet(userRequest.getStreet());
         address.setZone(userRequest.getZone());

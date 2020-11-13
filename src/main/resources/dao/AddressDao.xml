@@ -13,7 +13,7 @@
                country as country
         FROM address
         WHERE
-            user_id = #{userId}
+            address_id = #{addressId}
     </select>
     <select id="findByDriverId" resultType="bo.ucb.edu.ingsoft.modelo.Address">
         SELECT
@@ -24,12 +24,11 @@
                country as country
         FROM address
         WHERE
-            driver_id = #{driverId}
+            address_id = #{addressId}
     </select>
     <insert id="createAddress" parameterType="bo.ucb.edu.ingsoft.modelo.Address">
         INSERT INTO address VALUES (
-            null, #{driverId}, #{userId}, #{companyId}, #{startTravelId},#{deliveryTravelId},
-            #{number},#{street},#{zone},#{city},#{country},1,
+            null, #{number},#{street},#{zone},#{city},#{country},1,
             #{transaction.txId}, #{transaction.txHost}, #{transaction.txUserId}, #{transaction.txDate}
         )
     </insert>
@@ -45,7 +44,7 @@
         tx_user_id=#{transaction.txUserId},
         tx_date=#{transaction.txDate}
         WHERE
-        user_id=#{userId}
+        address_id=#{addressId}
     </update>
     <update id="updateAddressDriver" parameterType="bo.ucb.edu.ingsoft.modelo.Address">
         UPDATE address set
@@ -59,21 +58,14 @@
         tx_user_id=#{transaction.txUserId},
         tx_date=#{transaction.txDate}
         WHERE
-        driver_id=#{driverId}
+        address_id=#{addressId}
     </update>
 
     <insert id="createStartTravelAddress" parameterType="bo.ucb.edu.ingsoft.modelo.Address">
-        insert into address values (null,null,null,null,#{startTravelId},
-        null,#{number},#{street},#{zone},#{city},
+        insert into address values (null,#{number},#{street},#{zone},#{city},
         #{country},1,#{transaction.txId}, #{transaction.txHost},
         #{transaction.txUserId},#{transaction.txDate});
     </insert>
 
-    <insert id="createDeliveryTravelAddress" parameterType="bo.ucb.edu.ingsoft.modelo.Address">
-        insert into address values (null,null,null,null,#{startTravelId},
-        null,#{number},#{street},#{zone},#{city},
-        #{country},1,#{transaction.txId}, #{transaction.txHost},
-        #{transaction.txUserId},#{transaction.txDate});
-    </insert>
 
 </mapper>

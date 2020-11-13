@@ -7,6 +7,7 @@
         SELECT
                driver_id as driverId,
                person_id as personId,
+               address_id as addressId,
                birthdate as birthDate,
                email as email
         FROM driver
@@ -15,7 +16,7 @@
     </select>
     <insert id="createDriver" parameterType="bo.ucb.edu.ingsoft.modelo.Driver">
         INSERT INTO driver VALUES (
-            null, #{personId},#{companyId}, #{birthDate}, #{email}, #{password},null,1,
+            null, #{personId},#{companyId}, #{addressId},#{birthDate}, #{email}, #{password},null,1,
             #{transaction.txId}, #{transaction.txHost}, #{transaction.txUserId}, #{transaction.txDate}
         )
     </insert>
@@ -33,7 +34,8 @@
     </update>
     <select id="getPersonId" resultType="bo.ucb.edu.ingsoft.modelo.Driver">
         SELECT
-               person_id as personId
+               person_id as personId,
+               address_id as addressId
         FROM driver
         WHERE
             driver_id = #{driverId}

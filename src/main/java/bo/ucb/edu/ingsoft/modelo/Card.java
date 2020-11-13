@@ -2,7 +2,7 @@ package bo.ucb.edu.ingsoft.modelo;
 
 public class Card {
     private Integer cardId;
-    private Integer usetId;
+    private Integer userId;
     private String accountNumber;
     private String pin;
     private String bank;
@@ -26,12 +26,12 @@ public class Card {
         this.cardId = cardId;
     }
 
-    public Integer getUsetId() {
-        return usetId;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUsetId(Integer usetId) {
-        this.usetId = usetId;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getAccountNumber() {
@@ -88,20 +88,5 @@ public class Card {
 
     public void setTransaction(Transaction transaction) {
         this.transaction = transaction;
-    }
-
-    @Override
-    public String toString() {
-        return "Card{" +
-                "cardId=" + cardId +
-                ", usetId=" + usetId +
-                ", accountNumber='" + accountNumber + '\'' +
-                ", pin='" + pin + '\'' +
-                ", bank='" + bank + '\'' +
-                ", typeAccount='" + typeAccount + '\'' +
-                ", cvvCode='" + cvvCode + '\'' +
-                ", status=" + status +
-                ", transaction=" + transaction +
-                '}';
     }
 }

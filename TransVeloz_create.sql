@@ -1,15 +1,10 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2020-11-09 21:24:08.925
+-- Last modification date: 2020-11-13 20:04:51.724
 
 -- tables
 -- Table: address
 CREATE TABLE address (
     address_id int NOT NULL AUTO_INCREMENT,
-    driver_id int NULL,
-    user_id int NULL,
-    company_id int NULL,
-    start_travel_id int NULL,
-    delivery_travel_id int NULL,
     number varchar(45) NULL,
     street varchar(150) NOT NULL,
     zone varchar(150) NOT NULL,
@@ -27,7 +22,6 @@ CREATE TABLE address (
 CREATE TABLE administration (
     administration_id int NOT NULL AUTO_INCREMENT,
     person_id int NOT NULL,
-    payment_id int NOT NULL,
     email varchar(150) NOT NULL,
     password varchar(150) NOT NULL,
     status int NOT NULL,
@@ -89,6 +83,7 @@ CREATE TABLE card (
 -- Table: company
 CREATE TABLE company (
     company_id int NOT NULL AUTO_INCREMENT,
+    address_id int NOT NULL,
     name varchar(45) NOT NULL,
     email varchar(45) NOT NULL,
     phone varchar(45) NOT NULL,
@@ -105,6 +100,7 @@ CREATE TABLE driver (
     driver_id int NOT NULL AUTO_INCREMENT,
     person_id int NOT NULL,
     company_id int NULL,
+    address_id int NOT NULL,
     birthdate varchar(45) NOT NULL,
     email varchar(150) NOT NULL,
     password varchar(150) NOT NULL,
@@ -174,6 +170,7 @@ CREATE TABLE h_driver (
     driver_id int NOT NULL,
     person_id int NOT NULL,
     company_id int NULL,
+    address_id int NOT NULL,
     birthdate varchar(45) NOT NULL,
     email varchar(150) NOT NULL,
     password varchar(150) NOT NULL,
@@ -191,6 +188,7 @@ CREATE TABLE h_payment (
     h_payment_id int NOT NULL AUTO_INCREMENT,
     payment_id int NOT NULL,
     travel_id int NOT NULL,
+    administration_id int NOT NULL,
     date_payment timestamp NOT NULL,
     payment_status varchar(45) NOT NULL,
     ammount numeric(10,5) NOT NULL,
@@ -225,6 +223,8 @@ CREATE TABLE h_travel (
     travel_id int NOT NULL,
     user_id int NOT NULL,
     driver_id int NOT NULL,
+    start_address_id int NOT NULL,
+    delivery_address_id int NOT NULL,
     travel_status varchar(45) NOT NULL,
     date_delivery timestamp NOT NULL,
     status int NOT NULL,
@@ -240,6 +240,7 @@ CREATE TABLE h_user (
     h_user_id int NOT NULL AUTO_INCREMENT,
     user_id int NOT NULL,
     person_id int NOT NULL,
+    address_id int NOT NULL,
     birthdate date NOT NULL,
     email varchar(150) NOT NULL,
     password varchar(150) NOT NULL,
@@ -277,6 +278,7 @@ CREATE TABLE h_vehicle (
 CREATE TABLE payment (
     payment_id int NOT NULL AUTO_INCREMENT,
     travel_id int NOT NULL,
+    administration_id int NOT NULL,
     date_payment timestamp NOT NULL,
     payment_status varchar(45) NOT NULL,
     amount numeric(12,6) NOT NULL,
@@ -332,6 +334,8 @@ CREATE TABLE travel (
     travel_id int NOT NULL AUTO_INCREMENT,
     user_id int NOT NULL,
     driver_id int NOT NULL,
+    start_address_id int NOT NULL,
+    delivery_address_id int NOT NULL,
     travel_status varchar(45) NOT NULL,
     date_delivery timestamp NOT NULL,
     status int NOT NULL,
@@ -346,6 +350,7 @@ CREATE TABLE travel (
 CREATE TABLE user (
     user_id int NOT NULL AUTO_INCREMENT,
     person_id int NOT NULL,
+    address_id int NOT NULL,
     birthdate date NOT NULL,
     email varchar(150) NOT NULL,
     password varchar(150) NOT NULL,
@@ -379,30 +384,6 @@ CREATE TABLE vehicle (
 );
 
 -- foreign keys
--- Reference: address_company (table: address)
-ALTER TABLE address ADD CONSTRAINT address_company FOREIGN KEY address_company (company_id)
-    REFERENCES company (company_id);
-
--- Reference: address_driver (table: address)
-ALTER TABLE address ADD CONSTRAINT address_driver FOREIGN KEY address_driver (driver_id)
-    REFERENCES driver (driver_id);
-
--- Reference: address_travel (table: address)
-ALTER TABLE address ADD CONSTRAINT address_travel FOREIGN KEY address_travel (start_travel_id)
-    REFERENCES travel (travel_id);
-
--- Reference: address_travel_2 (table: address)
-ALTER TABLE address ADD CONSTRAINT address_travel_2 FOREIGN KEY address_travel_2 (delivery_travel_id)
-    REFERENCES travel (travel_id);
-
--- Reference: address_user (table: address)
-ALTER TABLE address ADD CONSTRAINT address_user FOREIGN KEY address_user (user_id)
-    REFERENCES user (user_id);
-
--- Reference: administration_payment (table: administration)
-ALTER TABLE administration ADD CONSTRAINT administration_payment FOREIGN KEY administration_payment (payment_id)
-    REFERENCES payment (payment_id);
-
 -- Reference: administration_person (table: administration)
 ALTER TABLE administration ADD CONSTRAINT administration_person FOREIGN KEY administration_person (person_id)
     REFERENCES person (person_id);
@@ -427,6 +408,14 @@ ALTER TABLE bank_transaction ADD CONSTRAINT bank_transaction2_bank_account FOREI
 ALTER TABLE card ADD CONSTRAINT card_user FOREIGN KEY card_user (user_id)
     REFERENCES user (user_id);
 
+-- Reference: company_address (table: company)
+ALTER TABLE company ADD CONSTRAINT company_address FOREIGN KEY company_address (address_id)
+    REFERENCES address (address_id);
+
+-- Reference: driver_address (table: driver)
+ALTER TABLE driver ADD CONSTRAINT driver_address FOREIGN KEY driver_address (address_id)
+    REFERENCES address (address_id);
+
 -- Reference: driver_company (table: driver)
 ALTER TABLE driver ADD CONSTRAINT driver_company FOREIGN KEY driver_company (company_id)
     REFERENCES company (company_id);
@@ -434,6 +423,10 @@ ALTER TABLE driver ADD CONSTRAINT driver_company FOREIGN KEY driver_company (com
 -- Reference: driver_person (table: driver)
 ALTER TABLE driver ADD CONSTRAINT driver_person FOREIGN KEY driver_person (person_id)
     REFERENCES person (person_id);
+
+-- Reference: payment_administration (table: payment)
+ALTER TABLE payment ADD CONSTRAINT payment_administration FOREIGN KEY payment_administration (administration_id)
+    REFERENCES administration (administration_id);
 
 -- Reference: payment_travel (table: payment)
 ALTER TABLE payment ADD CONSTRAINT payment_travel FOREIGN KEY payment_travel (travel_id)
@@ -447,6 +440,14 @@ ALTER TABLE score ADD CONSTRAINT score_user FOREIGN KEY score_user (user_id)
 ALTER TABLE score ADD CONSTRAINT score_vehicle FOREIGN KEY score_vehicle (vehicle_id)
     REFERENCES vehicle (vehicle_id);
 
+-- Reference: travel2_address (table: travel)
+ALTER TABLE travel ADD CONSTRAINT travel2_address FOREIGN KEY travel2_address (start_address_id)
+    REFERENCES address (address_id);
+
+-- Reference: travel_address (table: travel)
+ALTER TABLE travel ADD CONSTRAINT travel_address FOREIGN KEY travel_address (delivery_address_id)
+    REFERENCES address (address_id);
+
 -- Reference: travel_driver (table: travel)
 ALTER TABLE travel ADD CONSTRAINT travel_driver FOREIGN KEY travel_driver (driver_id)
     REFERENCES driver (driver_id);
@@ -454,6 +455,10 @@ ALTER TABLE travel ADD CONSTRAINT travel_driver FOREIGN KEY travel_driver (drive
 -- Reference: travel_user (table: travel)
 ALTER TABLE travel ADD CONSTRAINT travel_user FOREIGN KEY travel_user (user_id)
     REFERENCES user (user_id);
+
+-- Reference: user_address (table: user)
+ALTER TABLE user ADD CONSTRAINT user_address FOREIGN KEY user_address (address_id)
+    REFERENCES address (address_id);
 
 -- Reference: user_person (table: user)
 ALTER TABLE user ADD CONSTRAINT user_person FOREIGN KEY user_person (person_id)

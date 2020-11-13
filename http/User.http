@@ -1,4 +1,4 @@
-POST http://localhost:8090/v1/user
+POST http://localhost:8070/v1/user
 Accept: application/json
 Content-Type: application/json
 
@@ -20,17 +20,17 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8090/v1/user?userId=6
+GET http://localhost:8070/v1/user?userId=1
 Accept: application/json
 
 ###
 
-PUT  http://localhost:8090/v1/user
+PUT  http://localhost:8070/v1/user
 Accept: application/json
 Content-Type: application/json
 
 {
-  "userId": 2,
+  "userId": 1,
   "ci": "124248596 cbba",
   "firstName": "Andrea",
   "firstSurname": "Albarracin",

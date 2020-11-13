@@ -25,21 +25,6 @@ public class TravelBl {
     }
     public TravelRequest createNewTravel(TravelRequest travelRequest, Transaction transaction){
 
-        Transaction travelTransaction = new Transaction();
-        travelTransaction.setTxId(transaction.getTxId());
-        travelTransaction.setTxUserId(transaction.getTxUserId());
-        travelTransaction.setTxHost(transaction.getTxHost());
-        travelTransaction.setTxDate(transaction.getTxDate());
-
-        Travel travel=new Travel();
-        travel.setUserId(travelRequest.getTravelUserId());
-        travel.setDriverId(travelRequest.getTravelDriverId());
-        travel.setDateDelivery(travelRequest.getTravelDateDelivery());
-        travel.setTravelStatus(travelRequest.getTravelStatus());
-        travel.setTransaction(travelTransaction);
-        travelDao.createTravel(travel);
-        travel.getTransaction();
-        Integer getLastId=transactionDao.getLastInsertId();
 
         Address address= new Address();
         address.setNumber(travelRequest.getAddressNumber());
@@ -47,9 +32,20 @@ public class TravelBl {
         address.setZone(travelRequest.getAddressZone());
         address.setCity(travelRequest.getAddressCity());
         address.setCountry(travelRequest.getAddressCountry());
-        address.setStartTravelId(getLastId);
-        address.setTransaction(travelTransaction);
+        address.setTransaction(transaction);
         addressDao.createStartTravelAddress(address);
+
+        Integer getLastIdStartTravel = transactionDao.getLastInsertId();
+        Travel travel=new Travel();
+        travel.setUserId(travelRequest.getTravelUserId());
+        travel.setDriverId(travelRequest.getTravelDriverId());
+        travel.setStartAddressId(getLastIdStartTravel);
+        travel.setDateDelivery(travelRequest.getTravelDateDelivery());
+        travel.setTravelStatus(travelRequest.getTravelStatus());
+        travel.setTransaction(transaction);
+        travelDao.createTravel(travel);
+
+
 
         return travelRequest;
     }
