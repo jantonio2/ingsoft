@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping(value = "/v1/user")
-public class UserApi {
+public class    UserApi {
 
     private UserBl userBl;
     private TransactionBl transactionBl;
@@ -34,10 +34,15 @@ public class UserApi {
         return agendaBl.findContactById(0);
     }*/
 
-    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public SingleUser findById(HttpServletRequest request, @RequestParam Integer userId) {
-        //int userId=2;
-        return userBl.findUserById(userId);
+//    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public SingleUser findById(HttpServletRequest request, @RequestParam Integer userId) {
+//        //int userId=2;
+//        return userBl.findUserById(userId);
+//    }
+
+    @GetMapping(path="/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public SingleUser findById(HttpServletRequest request, @PathVariable String userId){
+        return userBl.findUserById(Integer.parseInt(userId));
     }
 
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,

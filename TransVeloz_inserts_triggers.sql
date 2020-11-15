@@ -243,7 +243,7 @@ CREATE TRIGGER trigger_insert_h_bank_transaction
 AFTER INSERT ON bank_transaction
 FOR EACH ROW
 BEGIN
-	insert into h_bank_transaction values (null,new.driver_bank_account_id,new.administration_bank_account_id,new.amount,new.transaction_date,new.status,new.tx_id,new.tx_host,new.tx_user_id,new.tx_date);
+	insert into h_bank_transaction values (null,new.bank_transaction_id,new.driver_bank_account_id,new.administration_bank_account_id,new.amount,new.transaction_date,new.status,new.tx_id,new.tx_host,new.tx_user_id,new.tx_date);
 END;
 |
 DELIMITER ;
@@ -253,10 +253,11 @@ CREATE TRIGGER trigger_update_h_bank_transaction
 AFTER UPDATE ON bank_transaction
 FOR EACH ROW
 BEGIN
-	insert into h_bank_transaction values (null,new.driver_bank_account_id,new.administration_bank_account_id,new.amount,new.transaction_date,new.status,new.tx_id,new.tx_host,new.tx_user_id,new.tx_date);
+	insert into h_bank_transaction values (null,new.bank_transaction_id,new.driver_bank_account_id,new.administration_bank_account_id,new.amount,new.transaction_date,new.status,new.tx_id,new.tx_host,new.tx_user_id,new.tx_date);
 END;
-|
+|	 
 DELIMITER ;
+
 
 insert into bank_transaction values(null,null,2,850.50,now(),1, 1, '192.168.1.100', 1, now());
 insert into bank_transaction values(null,1,null,790.80,now(),1, 1, '192.168.1.100', 1, now());

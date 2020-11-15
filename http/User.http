@@ -20,7 +20,8 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8070/v1/user?userId=1
+//GET http://localhost:8070/v1/user?userId=1
+GET http://localhost:8070/v1/user/1
 Accept: application/json
 
 ###
@@ -30,7 +31,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "userId": 1,
+  "userId": 6,
   "ci": "124248596 cbba",
   "firstName": "Andrea",
   "firstSurname": "Albarracin",
