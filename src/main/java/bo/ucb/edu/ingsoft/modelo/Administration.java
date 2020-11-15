@@ -11,9 +11,6 @@ public class Administration {
     public Administration(){
         transaction = new Transaction();
     }
-    public Administration(Transaction transaction){
-        this.transaction = transaction;
-    }
 
     public Integer getAdministrationId() {
         return administrationId;

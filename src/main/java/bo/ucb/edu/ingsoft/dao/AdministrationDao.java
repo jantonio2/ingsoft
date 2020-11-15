@@ -9,7 +9,9 @@ import org.apache.ibatis.annotations.Mapper;
 public interface AdministrationDao {
 //    public Integer create(BankAccount bankAccount);
 
-    public Integer getLastInsertId();
+    //public Integer getLastInsertId();
 
-    public Integer createAdministrationAccount(Administration administration);
+    //public Integer createAdministrationAccount(Administration administration);
+    public void createAdministration(Administration administration);
+
 }

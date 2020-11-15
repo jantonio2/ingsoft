@@ -30,7 +30,7 @@
         tx_user_id=#{transaction.txUserId},
         tx_date=#{transaction.txDate}
         WHERE
-        user_id=#{userId}
+        user_id=#{userId} and status = 1
     </update>
     <select id="getPersonId" resultType="bo.ucb.edu.ingsoft.modelo.User">
         SELECT

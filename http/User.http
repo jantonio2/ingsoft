@@ -31,7 +31,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "userId": 6,
+  "userId": 2,
   "ci": "124248596 cbba",
   "firstName": "Andrea",
   "firstSurname": "Albarracin",

@@ -1,0 +1,13 @@
+POST http://localhost:8070/v1/administration
+Accept: application/json
+Content-Type: application/json
+
+{
+  "ci": "1458596 lp",
+  "firstName": "Antonio",
+  "firstSurname": "Rojas",
+  "secondSurname": "Rojas",
+  "phone": "+591 75400415",
+  "email": "antonio@gmail.com",
+  "password": "juan1234"
+}
