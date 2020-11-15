@@ -41,7 +41,7 @@ Content-Type: application/json
   "email": "albarracinandrea@gmail.com",
   "password": "andreaalbarracin",
   "number":"198B",
-  "street":"Calama",
+  "street":"Sucre",
   "zone":"Norte",
   "city":"La Paz",
   "country":"Bolivia"

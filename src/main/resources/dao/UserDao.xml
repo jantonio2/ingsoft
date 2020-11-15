@@ -12,7 +12,7 @@
                email as email
         FROM user
         WHERE
-            user_id = #{userId}
+            user_id = #{userId} and status = 1
     </select>
     <insert id="createUser" parameterType="bo.ucb.edu.ingsoft.modelo.User">
         INSERT INTO user VALUES (

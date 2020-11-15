@@ -38,7 +38,7 @@ public class UserBl {
         SingleUser singleUserResponse = new SingleUser();
         LOGGER.error(user.getEmail());
         Person person = personDao.findByPersonId(user.getPersonId());
-        Address address = addressDao.findByUserId(user.getAddressId());
+        Address address = addressDao.findById(user.getAddressId());
 
         singleUserResponse.setCi(person.getCi());
         singleUserResponse.setFirstName(person.getFirstName());
@@ -127,7 +127,7 @@ public class UserBl {
         address.setCity(userRequest.getCity());
         address.setCountry(userRequest.getCountry());
         address.setTransaction(transaction);
-        addressDao.updateAddressUser(address);
+        addressDao.updateAddress(address);
 
         return  userRequest;
     }

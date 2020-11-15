@@ -4,6 +4,7 @@ import bo.ucb.edu.ingsoft.bl.DriverBl;
 import bo.ucb.edu.ingsoft.bl.TransactionBl;
 import bo.ucb.edu.ingsoft.dto.DriverRequest;
 import bo.ucb.edu.ingsoft.dto.SingleDriver;
+import bo.ucb.edu.ingsoft.dto.SingleUser;
 import bo.ucb.edu.ingsoft.modelo.Transaction;
 import bo.ucb.edu.ingsoft.util.TransactionUtil;
 import org.slf4j.Logger;
@@ -28,10 +29,15 @@ public class DriverApi {
         this.transactionBl = transactionBl;
     }
 
-    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public SingleDriver findById(HttpServletRequest request, @RequestParam Integer driverId) {
-        //int userId=2;
-        return driverBl.findDriverById(driverId);
+//    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public SingleDriver findById(HttpServletRequest request, @RequestParam Integer driverId) {
+//        //int userId=2;
+//        return driverBl.findDriverById(driverId);
+//    }
+
+    @GetMapping(path="/{driverId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public SingleDriver findById(HttpServletRequest request, @PathVariable String driverId){
+        return driverBl.findDriverById(Integer.parseInt(driverId));
     }
 
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,

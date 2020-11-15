@@ -35,7 +35,7 @@ public class DriverBl {
         SingleDriver singleDriverResponse = new SingleDriver();
         LOGGER.error(driver.getEmail());
         Person person = personDao.findByPersonId(driver.getPersonId());
-        Address address = addressDao.findByDriverId(driver.getAddressId());
+        Address address = addressDao.findById(driver.getAddressId());
         LOGGER.error(person.getFirstName());
         LOGGER.error(address.getStreet());
 
@@ -123,7 +123,7 @@ public class DriverBl {
         address.setCity(driverRequest.getCity());
         address.setCountry(driverRequest.getCountry());
         address.setTransaction(transaction);
-        addressDao.updateAddressDriver(address);
+        addressDao.updateAddress(address);
 
         return  driverRequest;
     }

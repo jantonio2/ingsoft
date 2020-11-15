@@ -12,7 +12,7 @@
                phone as phone
         FROM person
         WHERE
-            person_id = #{personId}
+            person_id = #{personId} and status = 1
     </select>
     <insert id="createPerson" parameterType="bo.ucb.edu.ingsoft.modelo.Person">
         INSERT INTO person VALUES (

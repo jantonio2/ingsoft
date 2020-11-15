@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="bo.ucb.edu.ingsoft.dao.AddressDao">
-    <select id="findByUserId" resultType="bo.ucb.edu.ingsoft.modelo.Address">
+    <select id="findById" resultType="bo.ucb.edu.ingsoft.modelo.Address">
         SELECT
                number as number,
                street as street,
@@ -13,26 +13,16 @@
                country as country
         FROM address
         WHERE
-            address_id = #{addressId}
+            address_id = #{addressId} and status = 1
     </select>
-    <select id="findByDriverId" resultType="bo.ucb.edu.ingsoft.modelo.Address">
-        SELECT
-               number as number,
-               street as street,
-               zone as zone,
-               city as city,
-               country as country
-        FROM address
-        WHERE
-            address_id = #{addressId}
-    </select>
+
     <insert id="createAddress" parameterType="bo.ucb.edu.ingsoft.modelo.Address">
         INSERT INTO address VALUES (
             null, #{number},#{street},#{zone},#{city},#{country},1,
             #{transaction.txId}, #{transaction.txHost}, #{transaction.txUserId}, #{transaction.txDate}
         )
     </insert>
-    <update id="updateAddressUser" parameterType="bo.ucb.edu.ingsoft.modelo.Address">
+    <update id="updateAddress" parameterType="bo.ucb.edu.ingsoft.modelo.Address">
         UPDATE address set
         number=#{number},
         street=#{street},
@@ -46,20 +36,7 @@
         WHERE
         address_id=#{addressId}
     </update>
-    <update id="updateAddressDriver" parameterType="bo.ucb.edu.ingsoft.modelo.Address">
-        UPDATE address set
-        number=#{number},
-        street=#{street},
-        zone=#{zone},
-        city=#{city},
-        country=#{country},
-        tx_id=#{transaction.txId},
-        tx_host=#{transaction.txHost},
-        tx_user_id=#{transaction.txUserId},
-        tx_date=#{transaction.txDate}
-        WHERE
-        address_id=#{addressId}
-    </update>
+
 
     <insert id="createStartTravelAddress" parameterType="bo.ucb.edu.ingsoft.modelo.Address">
         insert into address values (null,#{number},#{street},#{zone},#{city},
