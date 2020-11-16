@@ -54,5 +54,5 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "userId": 2
+  "userId": 1
 }

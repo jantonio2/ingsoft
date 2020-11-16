@@ -57,6 +57,7 @@
             and g.person_id=a.person_id
             and e.start_address_id=b.address_id
             and e.delivery_address_id=d.address_id
+            and e.status = 1
     </select>
     <resultMap id="userMap" type="bo.ucb.edu.ingsoft.dto.UserHistoryRequest" >
         <result column="driverFirstName" property="driverFirstName"/>

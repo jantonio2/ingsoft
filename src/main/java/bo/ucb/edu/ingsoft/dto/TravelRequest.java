@@ -7,11 +7,16 @@ public class TravelRequest {
     private Integer travelDriverId;
     private String travelStatus;
     private Date travelDateDelivery;
-    private String addressNumber;
-    private String addressStreet;
-    private String addressZone;
-    private String addressCity;
-    private String addressCountry;
+    private String startAddressNumber;
+    private String startAddressStreet;
+    private String startAddressZone;
+    private String startAddressCity;
+    private String startAddressCountry;
+    private String deliveryAddressNumber;
+    private String deliveryAddressStreet;
+    private String deliveryAddressZone;
+    private String deliveryAddressCity;
+    private String deliveryAddressCountry;
 
 
     public Integer getTravelUserId() {
@@ -45,43 +50,105 @@ public class TravelRequest {
     public void setTravelDateDelivery(Date travelDateDelivery) {
         this.travelDateDelivery = travelDateDelivery;
     }
-    public String getAddressNumber() {
-        return addressNumber;
+
+    public String getStartAddressNumber() {
+        return startAddressNumber;
     }
 
-    public void setAddressNumber(String addressNumber) {
-        this.addressNumber = addressNumber;
+    public void setStartAddressNumber(String startAddressNumber) {
+        this.startAddressNumber = startAddressNumber;
     }
 
-    public String getAddressStreet() {
-        return addressStreet;
+    public String getStartAddressStreet() {
+        return startAddressStreet;
     }
 
-    public void setAddressStreet(String addressStreet) {
-        this.addressStreet = addressStreet;
+    public void setStartAddressStreet(String startAddressStreet) {
+        this.startAddressStreet = startAddressStreet;
     }
 
-    public String getAddressZone() {
-        return addressZone;
+    public String getStartAddressZone() {
+        return startAddressZone;
     }
 
-    public void setAddressZone(String addressZone) {
-        this.addressZone = addressZone;
+    public void setStartAddressZone(String startAddressZone) {
+        this.startAddressZone = startAddressZone;
     }
 
-    public String getAddressCity() {
-        return addressCity;
+    public String getStartAddressCity() {
+        return startAddressCity;
     }
 
-    public void setAddressCity(String addressCity) {
-        this.addressCity = addressCity;
+    public void setStartAddressCity(String startAddressCity) {
+        this.startAddressCity = startAddressCity;
     }
 
-    public String getAddressCountry() {
-        return addressCountry;
+    public String getStartAddressCountry() {
+        return startAddressCountry;
     }
 
-    public void setAddressCountry(String addressCountry) {
-        this.addressCountry = addressCountry;
+    public void setStartAddressCountry(String startAddressCountry) {
+        this.startAddressCountry = startAddressCountry;
+    }
+
+    public String getDeliveryAddressNumber() {
+        return deliveryAddressNumber;
+    }
+
+    public void setDeliveryAddressNumber(String deliveryAddressNumber) {
+        this.deliveryAddressNumber = deliveryAddressNumber;
+    }
+
+    public String getDeliveryAddressStreet() {
+        return deliveryAddressStreet;
+    }
+
+    public void setDeliveryAddressStreet(String deliveryAddressStreet) {
+        this.deliveryAddressStreet = deliveryAddressStreet;
+    }
+
+    public String getDeliveryAddressZone() {
+        return deliveryAddressZone;
+    }
+
+    public void setDeliveryAddressZone(String deliveryAddressZone) {
+        this.deliveryAddressZone = deliveryAddressZone;
+    }
+
+    public String getDeliveryAddressCity() {
+        return deliveryAddressCity;
+    }
+
+    public void setDeliveryAddressCity(String deliveryAddressCity) {
+        this.deliveryAddressCity = deliveryAddressCity;
+    }
+
+    public String getDeliveryAddressCountry() {
+        return deliveryAddressCountry;
+    }
+
+    public void setDeliveryAddressCountry(String deliveryAddressCountry) {
+        this.deliveryAddressCountry = deliveryAddressCountry;
+    }
+
+    @Override
+    public String toString() {
+        return "TravelRequest{" +
+                "travelUserId=" + travelUserId +
+                ", travelDriverId=" + travelDriverId +
+                ", travelStatus='" + travelStatus + '\'' +
+                ", travelDateDelivery=" + travelDateDelivery +
+                ", startAddressNumber='" + startAddressNumber + '\'' +
+                ", startAddressStreet='" + startAddressStreet + '\'' +
+                ", startAddressZone='" + startAddressZone + '\'' +
+                ", startAddressCity='" + startAddressCity + '\'' +
+                ", startAddressCountry='" + startAddressCountry + '\'' +
+                ", deliveryAddressNumber='" + deliveryAddressNumber + '\'' +
+                ", deliveryAddressStreet='" + deliveryAddressStreet + '\'' +
+                ", deliveryAddressZone='" + deliveryAddressZone + '\'' +
+                ", deliveryAddressCity='" + deliveryAddressCity + '\'' +
+                ", deliveryAddressCountry='" + deliveryAddressCountry + '\'' +
+                '}';
     }
 }
+

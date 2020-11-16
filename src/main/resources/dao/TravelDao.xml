@@ -5,7 +5,8 @@
 <mapper namespace="bo.ucb.edu.ingsoft.dao.TravelDao">
 
     <insert id="createTravel" parameterType="bo.ucb.edu.ingsoft.modelo.Travel">
-        insert into travel values (null,#{userId},#{driverId},#{startAddressId},1,#{travelStatus},
+        INSERT INTO travel VALUES (
+        null,#{userId},#{driverId},#{startAddressId},#{deliveryAddressId},#{travelStatus},
         #{dateDelivery},1,#{transaction.txId}, #{transaction.txHost},
         #{transaction.txUserId},#{transaction.txDate})
 

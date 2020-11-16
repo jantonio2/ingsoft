@@ -25,20 +25,31 @@ public class TravelBl {
     }
     public TravelRequest createNewTravel(TravelRequest travelRequest, Transaction transaction){
 
-        Address address= new Address();
-        address.setNumber(travelRequest.getAddressNumber());
-        address.setStreet(travelRequest.getAddressStreet());
-        address.setZone(travelRequest.getAddressZone());
-        address.setCity(travelRequest.getAddressCity());
-        address.setCountry(travelRequest.getAddressCountry());
-        address.setTransaction(transaction);
-        addressDao.createStartTravelAddress(address);
-
+        Address address1 = new Address();
+        address1.setNumber(travelRequest.getStartAddressNumber());
+        address1.setStreet(travelRequest.getStartAddressStreet());
+        address1.setZone(travelRequest.getStartAddressZone());
+        address1.setCity(travelRequest.getStartAddressCity());
+        address1.setCountry(travelRequest.getStartAddressCountry());
+        address1.setTransaction(transaction);
+        addressDao.createStartTravelAddress(address1);
         Integer getLastIdStartTravel = transactionDao.getLastInsertId();
+
+        Address address2 = new Address();
+        address2.setNumber(travelRequest.getDeliveryAddressNumber());
+        address2.setStreet(travelRequest.getDeliveryAddressStreet());
+        address2.setZone(travelRequest.getDeliveryAddressZone());
+        address2.setCity(travelRequest.getDeliveryAddressCity());
+        address2.setCountry(travelRequest.getDeliveryAddressCountry());
+        address2.setTransaction(transaction);
+        addressDao.createStartTravelAddress(address2);
+        Integer getLastIdDeliveryTravel = transactionDao.getLastInsertId();
+
         Travel travel=new Travel();
         travel.setUserId(travelRequest.getTravelUserId());
         travel.setDriverId(travelRequest.getTravelDriverId());
         travel.setStartAddressId(getLastIdStartTravel);
+        travel.setDeliveryAddressId(getLastIdDeliveryTravel);
         travel.setDateDelivery(travelRequest.getTravelDateDelivery());
         travel.setTravelStatus(travelRequest.getTravelStatus());
         travel.setTransaction(transaction);

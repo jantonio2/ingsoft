@@ -3,14 +3,19 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "travelUserId": 2,
-  "travelDriverId": 2,
+  "travelUserId": 1,
+  "travelDriverId": 3,
   "travelStatus": "Confirmado",
   "travelDateDelivery": "2020-11-11",
-  "addressNumber": "226",
-  "addressStreet": "Chulumani",
-  "addressZone": "Villa Fatima",
-  "addressCity": "La Paz",
-  "addressCountry": "Bolivia"
+  "startAddressNumber": "3226",
+  "startAddressStreet": "Calle 4",
+  "startAddressZone": "Ramos",
+  "startAddressCity": "La Paz",
+  "startAddressCountry": "Bolivia",
+  "deliveryAddressNumber": "2422",
+  "deliveryAddressStreet": "Calle 7",
+  "deliveryAddressZone": "Valentino",
+  "deliveryAddressCity": "La Paz",
+  "deliveryAddressCountry": "Bolivia"
 
 }
