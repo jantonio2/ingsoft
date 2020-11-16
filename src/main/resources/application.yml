@@ -4,7 +4,7 @@ spring:
   datasource:
     name: demo_mysql_db
     platform: mysql
-    url: jdbc:mysql://localhost:3306/transveloz_create?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/transveloz?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
     password:
     driver-class-name: com.mysql.jdbc.Driver
