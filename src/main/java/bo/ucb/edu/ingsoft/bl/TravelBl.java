@@ -32,7 +32,7 @@ public class TravelBl {
         address1.setCity(travelRequest.getStartAddressCity());
         address1.setCountry(travelRequest.getStartAddressCountry());
         address1.setTransaction(transaction);
-        addressDao.createStartTravelAddress(address1);
+        addressDao.createAddress(address1);
         Integer getLastIdStartTravel = transactionDao.getLastInsertId();
 
         Address address2 = new Address();
@@ -42,7 +42,7 @@ public class TravelBl {
         address2.setCity(travelRequest.getDeliveryAddressCity());
         address2.setCountry(travelRequest.getDeliveryAddressCountry());
         address2.setTransaction(transaction);
-        addressDao.createStartTravelAddress(address2);
+        addressDao.createAddress(address2);
         Integer getLastIdDeliveryTravel = transactionDao.getLastInsertId();
 
         Travel travel=new Travel();

@@ -37,12 +37,4 @@
         address_id=#{addressId}
     </update>
 
-
-    <insert id="createStartTravelAddress" parameterType="bo.ucb.edu.ingsoft.modelo.Address">
-        insert into address values (null,#{number},#{street},#{zone},#{city},
-        #{country},1,#{transaction.txId}, #{transaction.txHost},
-        #{transaction.txUserId},#{transaction.txDate});
-    </insert>
-
-
 </mapper>
