@@ -40,4 +40,30 @@
         WHERE
             user_id = #{userId}
     </select>
+    <select id="userHistory" resultMap="userMap">
+        SELECT
+            a.first_name as driverFirstName,
+            b.street as startStreet,
+            b.zone as startZone,
+            d.street as deliveryStreet,
+            d.zone as deliveryZone,
+            e.date_delivery as dateDelivery,
+            e.travel_status as travelStatus
+        FROM   person a, address b, address d, travel e, user f, driver g
+        WHERE
+	        f.user_id= #{userId}
+            and e.driver_id=g.driver_id
+            and f.user_id=e.user_id
+            and g.person_id=a.person_id
+            and e.start_address_id=b.address_id
+            and e.delivery_address_id=d.address_id
+    </select>
+    <resultMap id="userMap" type="bo.ucb.edu.ingsoft.dto.UserHistoryRequest" >
+        <result column="driverFirstName" property="driverFirstName"/>
+        <result column="startStreet" property="startStreet"/>
+        <result column="startZone" property="startZone"/>
+        <result column="deliveryStreet" property="deliveryStreet"/>
+        <result column="dateDelivery" property="dateDelivery"/>
+        <result column="travelStatus" property="travelStatus"/>
+    </resultMap>
 </mapper>
