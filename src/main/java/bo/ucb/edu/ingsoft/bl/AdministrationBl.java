@@ -43,7 +43,6 @@ public class AdministrationBl {
         Integer getLastIdPerson = transactionDao.getLastInsertId();
         person.setPersonId(getLastIdPerson);
 
-        LOGGER.error(getLastIdPerson.toString());
         administration.setPersonId(getLastIdPerson);
         administration.setEmail(administrationRequest.getEmail());
         administration.setPassword(administrationRequest.getPassword());

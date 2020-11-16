@@ -6,6 +6,7 @@ import bo.ucb.edu.ingsoft.dao.PersonDao;
 import bo.ucb.edu.ingsoft.dao.TransactionDao;
 import bo.ucb.edu.ingsoft.dao.UserDao;
 import bo.ucb.edu.ingsoft.dto.SingleUser;
+import bo.ucb.edu.ingsoft.dto.UserHistoryRequest;
 import bo.ucb.edu.ingsoft.dto.UserRequest;
 import bo.ucb.edu.ingsoft.modelo.Address;
 import bo.ucb.edu.ingsoft.modelo.Person;
@@ -15,6 +16,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserBl {
@@ -130,5 +133,10 @@ public class UserBl {
         addressDao.updateAddress(address);
 
         return  userRequest;
+    }
+
+    public List<UserHistoryRequest> userHistory(User user){
+        List<UserHistoryRequest> userList = userDao.userHistory(user);
+        return userList;
     }
 }

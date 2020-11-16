@@ -25,7 +25,6 @@ public class TravelBl {
     }
     public TravelRequest createNewTravel(TravelRequest travelRequest, Transaction transaction){
 
-
         Address address= new Address();
         address.setNumber(travelRequest.getAddressNumber());
         address.setStreet(travelRequest.getAddressStreet());
@@ -44,8 +43,6 @@ public class TravelBl {
         travel.setTravelStatus(travelRequest.getTravelStatus());
         travel.setTransaction(transaction);
         travelDao.createTravel(travel);
-
-
 
         return travelRequest;
     }

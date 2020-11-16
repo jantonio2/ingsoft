@@ -46,3 +46,13 @@ Content-Type: application/json
   "city":"La Paz",
   "country":"Bolivia"
 }
+
+###
+
+GET http://localhost:8070/v1/user/history
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userId": 2
+}
