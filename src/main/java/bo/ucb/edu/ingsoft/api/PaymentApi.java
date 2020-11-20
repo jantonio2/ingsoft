@@ -3,6 +3,7 @@ package bo.ucb.edu.ingsoft.api;
 import bo.ucb.edu.ingsoft.bl.PaymentBl;
 import bo.ucb.edu.ingsoft.bl.TransactionBl;
 import bo.ucb.edu.ingsoft.dto.BankAccountRequest;
+import bo.ucb.edu.ingsoft.dto.BankTransactionRequest;
 import bo.ucb.edu.ingsoft.modelo.Transaction;
 import bo.ucb.edu.ingsoft.util.TransactionUtil;
 import org.mybatis.logging.Logger;
@@ -43,12 +44,13 @@ public class PaymentApi {
         return createbankaccount;
     }
 
-//    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
-//            consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public BankTransaction createBankTransaction(@RequestBody BankTransaction bankTransaction, HttpServletRequest request){
-//        Transaction transaction = TransactionUtil.createTransaction(request);
-//        transactionBl.createTransaction(transaction);
-//        BankTransaction createbanktransaction=paymentBl.createBankTransaction(bankTransaction,transaction);
-//        return createbanktransaction;
-//    }
+    @RequestMapping(path = "/transaction",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public BankTransactionRequest createBankTransaction(@RequestBody BankTransactionRequest bankTransactionRequest, HttpServletRequest request){
+        Transaction transaction = TransactionUtil.createTransaction(request);
+        transactionBl.createTransaction(transaction);
+        //LOGGER.error(transaction.getTxId().toString());
+        BankTransactionRequest createbanktransaction=paymentBl.createBankTransaction(bankTransactionRequest,transaction);
+        return createbanktransaction;
+    }
 }
