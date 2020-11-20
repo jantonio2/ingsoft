@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -138,5 +139,18 @@ public class UserBl {
     public List<UserHistoryRequest> userHistory(Integer userId){
         List<UserHistoryRequest> userList = userDao.userHistory(userId);
         return userList;
+    }
+
+    /*public void uploadImages(MultipartFile images, Integer idSeller, Transaction transaction){
+        StorageUtil storageUtil= new StorageUtil();
+        String nombre=storageUtil.upload(images,"imageSeller");
+        Seller seller =new Seller();
+        seller.setIdSeller(idSeller);
+        seller.setImagePath(nombre);
+        sellerDao.updateImage(seller);
+    }*/
+
+    public void uploadImage(MultipartFile image, Integer userId, Transaction transaction){
+        
     }
 }
