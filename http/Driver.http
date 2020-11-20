@@ -45,3 +45,18 @@ Content-Type: application/json
   "city":"La Paz",
   "country":"Bolivia"
 }
+
+###
+
+GET http://localhost:8070/v1/driver/history
+Accept: application/json
+Content-Type: application/json
+
+{
+  "driverId": 1
+}
+
+###
+
+GET http://localhost:8070/v1/driver/contact
+Accept: application/json

@@ -2,27 +2,26 @@ package bo.ucb.edu.ingsoft.dto;
 
 import java.sql.Date;
 
-public class UserHistoryRequest {
-
-    private String driverFirstName;
+public class DriverHistoryRequest {
+    private String userFirstName;
     private String startStreet;
     private String startZone;
     private String deliveryStreet;
     private String deliveryZone;
     private Date dateDelivery;
-    private String driverPhone;
+    private String userPhone;
     private String travelStatus;
 
-    public UserHistoryRequest(){
+    public DriverHistoryRequest(){
 
     }
 
-    public String getDriverFirstName() {
-        return driverFirstName;
+    public String getUserFirstName() {
+        return userFirstName;
     }
 
-    public void setDriverFirstName(String driverFirstName) {
-        this.driverFirstName = driverFirstName;
+    public void setUserFirstName(String userFirstName) {
+        this.userFirstName = userFirstName;
     }
 
     public String getStartStreet() {
@@ -65,12 +64,12 @@ public class UserHistoryRequest {
         this.dateDelivery = dateDelivery;
     }
 
-    public String getDriverPhone() {
-        return driverPhone;
+    public String getUserPhone() {
+        return userPhone;
     }
 
-    public void setDriverPhone(String driverPhone) {
-        this.driverPhone = driverPhone;
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
     }
 
     public String getTravelStatus() {
@@ -83,14 +82,14 @@ public class UserHistoryRequest {
 
     @Override
     public String toString() {
-        return "UserHistoryRequest{" +
-                "driverFirstName='" + driverFirstName + '\'' +
+        return "DriverHistoryRequest{" +
+                "userFirstName='" + userFirstName + '\'' +
                 ", startStreet='" + startStreet + '\'' +
                 ", startZone='" + startZone + '\'' +
                 ", deliveryStreet='" + deliveryStreet + '\'' +
                 ", deliveryZone='" + deliveryZone + '\'' +
                 ", dateDelivery=" + dateDelivery +
-                ", driverPhone='" + driverPhone + '\'' +
+                ", userPhone='" + userPhone + '\'' +
                 ", travelStatus='" + travelStatus + '\'' +
                 '}';
     }

@@ -48,10 +48,11 @@
             d.street as deliveryStreet,
             d.zone as deliveryZone,
             e.date_delivery as dateDelivery,
+            a.phone as driverPhone,
             e.travel_status as travelStatus
         FROM   person a, address b, address d, travel e, user f, driver g
         WHERE
-	        f.user_id= #{userId}
+	        f.user_id = #{userId}
             and e.driver_id=g.driver_id
             and f.user_id=e.user_id
             and g.person_id=a.person_id
@@ -65,6 +66,7 @@
         <result column="startZone" property="startZone"/>
         <result column="deliveryStreet" property="deliveryStreet"/>
         <result column="dateDelivery" property="dateDelivery"/>
+        <result column="driverPhone" property="driverPhone"/>
         <result column="travelStatus" property="travelStatus"/>
     </resultMap>
 </mapper>
