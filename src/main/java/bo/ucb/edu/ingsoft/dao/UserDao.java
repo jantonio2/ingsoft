@@ -12,5 +12,5 @@ public interface UserDao {
     public User getPersonId(Integer userId);
     public void createUser(User user);
     public void updateUser(User user);
-    public List<UserHistoryRequest> userHistory(User user);
+    public List<UserHistoryRequest> userHistory(Integer userId);
 }

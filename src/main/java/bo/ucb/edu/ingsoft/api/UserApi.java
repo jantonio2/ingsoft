@@ -61,9 +61,24 @@ public class    UserApi {
         return userRequest;
     }
 
-    @RequestMapping(path="/history",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    /*@RequestMapping(path="/history",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public List<UserHistoryRequest> chatsList(@RequestBody User user, HttpServletRequest request) {
         List<UserHistoryRequest> userList=userBl.userHistory(user);
         return userList;
+    }*/
+
+    @GetMapping(path="/{userId}/payment", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<UserHistoryRequest> chatsList(HttpServletRequest request, @PathVariable String userId){
+        Integer us = Integer.parseInt(userId);
+        List<UserHistoryRequest> userList=userBl.userHistory(us);
+        return userList;
     }
+
+    /*@RequestMapping(path="/image",method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String uploadImages(@RequestParam MultipartFile images, @RequestParam Integer idSeller, HttpServletRequest request){
+        TransactionUtil transactionUtil=new TransactionUtil();
+        Transaction transaction = transactionUtil.createTransaction(request);
+        sellerBl.uploadImages(images,idSeller,transaction);
+        return "Imagenes subidas correctamente";
+    }*/
 }

@@ -135,8 +135,8 @@ public class UserBl {
         return  userRequest;
     }
 
-    public List<UserHistoryRequest> userHistory(User user){
-        List<UserHistoryRequest> userList = userDao.userHistory(user);
+    public List<UserHistoryRequest> userHistory(Integer userId){
+        List<UserHistoryRequest> userList = userDao.userHistory(userId);
         return userList;
     }
 }
