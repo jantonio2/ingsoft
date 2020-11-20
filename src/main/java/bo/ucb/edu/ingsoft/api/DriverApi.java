@@ -2,10 +2,12 @@ package bo.ucb.edu.ingsoft.api;
 
 import bo.ucb.edu.ingsoft.bl.DriverBl;
 import bo.ucb.edu.ingsoft.bl.TransactionBl;
+import bo.ucb.edu.ingsoft.dto.DriverContactRequest;
 import bo.ucb.edu.ingsoft.dto.DriverRequest;
 import bo.ucb.edu.ingsoft.dto.SingleDriver;
-import bo.ucb.edu.ingsoft.dto.SingleUser;
+import bo.ucb.edu.ingsoft.dto.DriverHistoryRequest;
 import bo.ucb.edu.ingsoft.modelo.Transaction;
+import bo.ucb.edu.ingsoft.modelo.Driver;
 import bo.ucb.edu.ingsoft.util.TransactionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/v1/driver")
@@ -56,5 +59,16 @@ public class DriverApi {
         transactionBl.createTransaction(transaction);
         driverBl.updateDriver(driverRequest,transaction);
         return driverRequest;
+    }
+    @RequestMapping(path="/history",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DriverHistoryRequest> chatsList(@RequestBody Driver driver, HttpServletRequest request) {
+        List<DriverHistoryRequest> driverList=driverBl.driverHistory(driver);
+        return driverList;
+    }
+
+    @RequestMapping(path="/contact",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DriverContactRequest> chatsList(HttpServletRequest request) {
+        List<DriverContactRequest> driverListContact=driverBl.driverContact();
+        return driverListContact;
     }
 }

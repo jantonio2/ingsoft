@@ -40,5 +40,73 @@
         WHERE
             driver_id = #{driverId}
     </select>
+    <select id="driverHistory" resultMap="driverMap">
+        SELECT
+            a.first_name as userFirstName,
+            b.street as startStreet,
+            b.zone as startZone,
+            d.street as deliveryStreet,
+            d.zone as deliveryZone,
+            e.date_delivery as dateDelivery,
+            a.phone as userPhone,
+            e.travel_status as travelStatus
+        FROM   person a, address b, address d, travel e, user f, driver g
+        WHERE
+	        g.driver_id = #{driverId}
+            and e.user_id=f.user_id
+            and g.driver_id=e.driver_id
+            and f.person_id=a.person_id
+            and e.start_address_id=b.address_id
+            and e.delivery_address_id=d.address_id
+            and e.status = 1
+    </select>
+    <resultMap id="driverMap" type="bo.ucb.edu.ingsoft.dto.DriverHistoryRequest" >
+        <result column="userFirstName" property="userFirstName"/>
+        <result column="startStreet" property="startStreet"/>
+        <result column="startZone" property="startZone"/>
+        <result column="deliveryStreet" property="deliveryStreet"/>
+        <result column="dateDelivery" property="dateDelivery"/>
+        <result column="userPhone" property="userPhone"/>
+        <result column="travelStatus" property="travelStatus"/>
+    </resultMap>
+
+    <select id="driverContactCompany" resultMap="driverContactMap">
+        SELECT
+            a.first_name as firstName,
+            a.first_surname as firstSurname,
+            a.second_surname as secondSurname,
+            d.name as companyName,
+            a.ci as ci
+        FROM   person a, driver b, company d
+        WHERE
+        	b.person_id=a.person_id
+            and d.company_id=b.company_id
+            and b.status = 1
+    </select>
+    <resultMap id="driverContactMap" type="bo.ucb.edu.ingsoft.dto.DriverContactRequest" >
+        <result column="firstName" property="firstName"/>
+        <result column="firstSurname" property="firstSurname"/>
+        <result column="secondSurname" property="secondSurname"/>
+        <result column="companyName" property="companyName"/>
+        <result column="ci" property="ci"/>
+    </resultMap>
+    <select id="driverContactNull" resultMap="driverContactNullMap">
+        SELECT
+            a.first_name as firstName,
+            a.first_surname as firstSurname,
+            a.second_surname as secondSurname,
+            a.ci as ci
+        FROM   person a, driver b
+        WHERE
+        	b.person_id=a.person_id
+            and b.company_id IS NULL
+            and b.status = 1
+    </select>
+    <resultMap id="driverContactNullMap" type="bo.ucb.edu.ingsoft.dto.DriverContactRequest" >
+        <result column="firstName" property="firstName"/>
+        <result column="firstSurname" property="firstSurname"/>
+        <result column="secondSurname" property="secondSurname"/>
+        <result column="ci" property="ci"/>
+    </resultMap>
 
 </mapper>

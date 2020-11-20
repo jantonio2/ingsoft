@@ -5,13 +5,18 @@ import bo.ucb.edu.ingsoft.dao.AddressDao;
 import bo.ucb.edu.ingsoft.dao.PersonDao;
 import bo.ucb.edu.ingsoft.dao.TransactionDao;
 import bo.ucb.edu.ingsoft.dao.DriverDao;
+import bo.ucb.edu.ingsoft.dto.DriverContactRequest;
 import bo.ucb.edu.ingsoft.dto.DriverRequest;
 import bo.ucb.edu.ingsoft.dto.SingleDriver;
+import bo.ucb.edu.ingsoft.dto.DriverHistoryRequest;
 import bo.ucb.edu.ingsoft.modelo.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.yaml.snakeyaml.util.ArrayUtils;
+
+import java.util.List;
 
 @Service
 public class DriverBl {
@@ -126,5 +131,15 @@ public class DriverBl {
         addressDao.updateAddress(address);
 
         return  driverRequest;
+    }
+    public List<DriverHistoryRequest> driverHistory(Driver driver){
+        List<DriverHistoryRequest> driverList = driverDao.driverHistory(driver);
+        return driverList;
+    }
+    public List<DriverContactRequest> driverContact(){
+        List<DriverContactRequest> driverListContactCompany = driverDao.driverContactCompany();
+        List<DriverContactRequest> driverListContactNull = driverDao.driverContactNull();
+        driverListContactCompany.addAll(driverListContactNull);
+        return driverListContactCompany;
     }
 }

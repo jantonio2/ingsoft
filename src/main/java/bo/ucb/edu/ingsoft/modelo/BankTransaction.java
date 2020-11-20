@@ -1,6 +1,7 @@
 package bo.ucb.edu.ingsoft.modelo;
 
 import java.util.Date;
+import java.util.function.Supplier;
 
 public class BankTransaction {
     private Integer bankTransactionId;
