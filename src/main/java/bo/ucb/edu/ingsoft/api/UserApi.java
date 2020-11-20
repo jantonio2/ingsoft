@@ -32,11 +32,6 @@ public class    UserApi {
         this.transactionBl = transactionBl;
     }
 
-    /*@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Contact findById(HttpServletRequest request) {
-        return agendaBl.findContactById(0);
-    }*/
-
 //    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 //    public SingleUser findById(HttpServletRequest request, @RequestParam Integer userId) {
 //        //int userId=2;
@@ -65,7 +60,7 @@ public class    UserApi {
         userBl.updateUser(userRequest,transaction);
         return userRequest;
     }
-
+    
     @RequestMapping(path="/history",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public List<UserHistoryRequest> chatsList(@RequestBody User user, HttpServletRequest request) {
         List<UserHistoryRequest> userList=userBl.userHistory(user);
