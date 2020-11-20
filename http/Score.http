@@ -1,0 +1,2 @@
+GET http://localhost:8070/v1/score/4
+Accept: application/json

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bo.ucb.edu.ingsoft.dao.ScoreDao">
+
+    <select id="findScoreById" resultType="bo.ucb.edu.ingsoft.modelo.Score">
+        select
+        score_id as scoreId,
+        vehicle_id as vehicleId,
+        user_id as userId,
+        score as score
+        from score
+        where score_id=#{scoreId}
+    </select>
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bo.ucb.edu.ingsoft.dao.CompanyDao">
+
+    <select id="findCompanyById" resultType="bo.ucb.edu.ingsoft.modelo.Company">
+        select
+        address_id as addressId,
+        name as name,
+        email as email,
+        phone as phone
+        from company
+        where company_id=#{companyId}
+    </select>
+</mapper>
