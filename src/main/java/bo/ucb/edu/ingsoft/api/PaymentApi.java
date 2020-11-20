@@ -4,6 +4,8 @@ import bo.ucb.edu.ingsoft.bl.PaymentBl;
 import bo.ucb.edu.ingsoft.bl.TransactionBl;
 import bo.ucb.edu.ingsoft.dto.BankAccountRequest;
 import bo.ucb.edu.ingsoft.dto.BankTransactionRequest;
+import bo.ucb.edu.ingsoft.dto.CardRequest;
+import bo.ucb.edu.ingsoft.dto.PaymentRequest;
 import bo.ucb.edu.ingsoft.modelo.Transaction;
 import bo.ucb.edu.ingsoft.util.TransactionUtil;
 import org.mybatis.logging.Logger;
@@ -35,7 +37,7 @@ public class PaymentApi {
 //    public Contact findById() {
 //        return paymentBl.findContactById(0);
 //    }
-    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
+    @RequestMapping(path = "/bankaccount",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public BankAccountRequest createBankAccount(@RequestBody BankAccountRequest bankAccountRequest, HttpServletRequest request) {
         Transaction transaction = TransactionUtil.createTransaction(request);
@@ -52,5 +54,23 @@ public class PaymentApi {
         //LOGGER.error(transaction.getTxId().toString());
         BankTransactionRequest createbanktransaction=paymentBl.createBankTransaction(bankTransactionRequest,transaction);
         return createbanktransaction;
+    }
+    @RequestMapping(path = "/card",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public CardRequest createCard(@RequestBody CardRequest cardRequest, HttpServletRequest request){
+        Transaction transaction = TransactionUtil.createTransaction(request);
+        transactionBl.createTransaction(transaction);
+        //LOGGER.error(transaction.getTxId().toString());
+        CardRequest createcard=paymentBl.createCard(cardRequest,transaction);
+        return createcard;
+    }
+    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public PaymentRequest createPayment(@RequestBody PaymentRequest paymentRequest, HttpServletRequest request){
+        Transaction transaction = TransactionUtil.createTransaction(request);
+        transactionBl.createTransaction(transaction);
+        //LOGGER.error(transaction.getTxId().toString());
+        PaymentRequest createpayment=paymentBl.createPayment(paymentRequest,transaction);
+        return createpayment;
     }
 }
