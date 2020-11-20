@@ -14,3 +14,17 @@ Content-Type: application/json
   "accountType": "Caja de ahorros",
   "status": 1
 }
+
+
+###
+POST http://localhost:8070/v1/payment/transaction
+Accept: application/json
+Content-Type: application/json
+
+{
+  "driverBankAccountId": 1,
+  "administrationBankAccountId": 2,
+  "amount": 150.30,
+  "transactionDate": "2020-11-11",
+  "status": 1
+}
