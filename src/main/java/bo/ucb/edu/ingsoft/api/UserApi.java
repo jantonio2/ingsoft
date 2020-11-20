@@ -75,18 +75,12 @@ public class    UserApi {
         return userList;
     }
 
-    /*@RequestMapping(path="/image",method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String uploadImages(@RequestParam MultipartFile images, @RequestParam Integer idSeller, HttpServletRequest request){
-        TransactionUtil transactionUtil=new TransactionUtil();
-        Transaction transaction = transactionUtil.createTransaction(request);
-        sellerBl.uploadImages(images,idSeller,transaction);
-        return "Imagenes subidas correctamente";
-    }*/
+
     @PutMapping(path="/{userId}/image", produces = MediaType.APPLICATION_JSON_VALUE)
     public String uploadImage(@RequestParam MultipartFile image, @PathVariable String userId, HttpServletRequest request){
         Transaction transaction = TransactionUtil.createTransaction(request);
         transactionBl.createTransaction(transaction);
-
-        return "Imagen subida";
+        userBl.uploadImage(image,Integer.parseInt(userId),transaction);
+        return "Succesful process";
     }
 }

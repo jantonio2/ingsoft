@@ -12,6 +12,7 @@ import bo.ucb.edu.ingsoft.modelo.Address;
 import bo.ucb.edu.ingsoft.modelo.Person;
 import bo.ucb.edu.ingsoft.modelo.Transaction;
 import bo.ucb.edu.ingsoft.modelo.User;
+import bo.ucb.edu.ingsoft.util.ImageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -141,16 +142,14 @@ public class UserBl {
         return userList;
     }
 
-    /*public void uploadImages(MultipartFile images, Integer idSeller, Transaction transaction){
-        StorageUtil storageUtil= new StorageUtil();
-        String nombre=storageUtil.upload(images,"imageSeller");
-        Seller seller =new Seller();
-        seller.setIdSeller(idSeller);
-        seller.setImagePath(nombre);
-        sellerDao.updateImage(seller);
-    }*/
-
     public void uploadImage(MultipartFile image, Integer userId, Transaction transaction){
-        
+        ImageUtil imageUtil = new ImageUtil();
+        User user = new User();
+
+        String newImageName = imageUtil.uploadImage(image,"images/userImage","User",userId);
+        user.setUserId(userId);
+        user.setPicture(newImageName);
+        user.setTransaction(transaction);
+        userDao.updateImage(user);
     }
 }
