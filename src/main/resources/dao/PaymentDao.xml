@@ -20,4 +20,29 @@
 <!--    <select id="getLastInsertId" resultType="java.lang.Integer">-->
 <!--        SELECT LAST_INSERT_ID()-->
 <!--    </select>-->
+    <select id="paymentHistoryId" resultMap="paymentMap">
+        SELECT
+            d.first_name as driverFirstName,
+            d.first_surname as driverFirstSurname,
+            a.date_payment as datePayment,
+            a.payment_status as paymentStatus,
+            a.amount as amount
+        FROM   payment a, travel b, driver c, person d
+        WHERE
+	        b.user_id = #{userId}
+            and b.travel_id=a.travel_id
+            and b.driver_id=c.driver_id
+            and c.person_id=d.person_id
+            and a.status=1
+            and b.status=1
+            and c.status=1
+            and d.status=1
+    </select>
+    <resultMap id="paymentMap" type="bo.ucb.edu.ingsoft.dto.PaymentHistoryRequest" >
+        <result column="datePayment" property="datePayment"/>
+        <result column="paymentStatus" property="paymentStatus"/>
+        <result column="amount" property="amount"/>
+        <result column="driverFirstName" property="driverFirstName"/>
+        <result column="driverFirstSurname" property="driverFirstSurname"/>
+    </resultMap>
 </mapper>

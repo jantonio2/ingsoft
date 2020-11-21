@@ -2,15 +2,14 @@ package bo.ucb.edu.ingsoft.bl;
 
 import bo.ucb.edu.ingsoft.api.PaymentApi;
 import bo.ucb.edu.ingsoft.dao.*;
-import bo.ucb.edu.ingsoft.dto.BankAccountRequest;
-import bo.ucb.edu.ingsoft.dto.BankTransactionRequest;
-import bo.ucb.edu.ingsoft.dto.CardRequest;
-import bo.ucb.edu.ingsoft.dto.PaymentRequest;
+import bo.ucb.edu.ingsoft.dto.*;
 import bo.ucb.edu.ingsoft.modelo.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PaymentBl {
@@ -122,6 +121,11 @@ public class PaymentBl {
         return paymentRequest;
     }
 
+    public List<PaymentHistoryRequest> historyPayment(User user){
+        List<PaymentHistoryRequest> paymentHistoyrId=paymentDao.paymentHistoryId(user);
+        LOGGER.error(String.valueOf(paymentHistoyrId.size()));
+        return paymentHistoyrId;
+    }
 //    public Contact findContactById(Integer contactId) {
 //        return  contactDao.findByContactId(contactId);
 //    }
