@@ -12,10 +12,12 @@ import bo.ucb.edu.ingsoft.modelo.Address;
 import bo.ucb.edu.ingsoft.modelo.Person;
 import bo.ucb.edu.ingsoft.modelo.Transaction;
 import bo.ucb.edu.ingsoft.modelo.User;
+import bo.ucb.edu.ingsoft.util.ImageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -135,8 +137,19 @@ public class UserBl {
         return  userRequest;
     }
 
-    public List<UserHistoryRequest> userHistory(User user){
-        List<UserHistoryRequest> userList = userDao.userHistory(user);
+    public List<UserHistoryRequest> userHistory(Integer userId){
+        List<UserHistoryRequest> userList = userDao.userHistory(userId);
         return userList;
+    }
+
+    public void uploadImage(MultipartFile image, Integer userId, Transaction transaction){
+        ImageUtil imageUtil = new ImageUtil();
+        User user = new User();
+
+        String newImageName = imageUtil.uploadImage(image,"images/userImage","User",userId);
+        user.setUserId(userId);
+        user.setPicture(newImageName);
+        user.setTransaction(transaction);
+        userDao.updateImage(user);
     }
 }

@@ -69,4 +69,11 @@
         <result column="driverPhone" property="driverPhone"/>
         <result column="travelStatus" property="travelStatus"/>
     </resultMap>
+
+    <update id="updateImage" parameterType="bo.ucb.edu.ingsoft.modelo.User">
+        UPDATE user set
+        picture = #{picture}
+        WHERE
+        user_id=#{userId} and status = 1
+    </update>
 </mapper>

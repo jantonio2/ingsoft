@@ -2,7 +2,7 @@ GET http://localhost:8070/v1/payment
 Accept: application/json
 
 ###
-POST http://localhost:8070/v1/payment
+POST http://localhost:8070/v1/payment/bankaccount
 Accept: application/json
 Content-Type: application/json
 
@@ -27,4 +27,44 @@ Content-Type: application/json
   "amount": 150.30,
   "transactionDate": "2020-11-11",
   "status": 1
+}
+
+
+###
+POST http://localhost:8070/v1/payment/card
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "accountNumber": 2,
+  "pin": "1234",
+  "bank": "Banco Nacional",
+  "typeAccount": "Caja de ahorros",
+  "cvvCode": "1234",
+  "status": 1
+}
+
+###
+POST http://localhost:8070/v1/payment
+Accept: application/json
+Content-Type: application/json
+
+{
+  "travelId": 1,
+  "administrationId": 1,
+  "datePayment": "2020-11-14",
+  "paymentStatus": "Confirmado",
+  "amount": 124.50,
+  "status": 1
+}
+
+
+###
+GET http://localhost:8070/v1/payment/historypayment
+Accept: application/json
+Content-Type: application/json
+
+{
+"userId": 1
 }

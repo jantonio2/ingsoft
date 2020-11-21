@@ -49,10 +49,10 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8070/v1/user/history
+GET http://localhost:8070/v1/user/1/payment
 Accept: application/json
-Content-Type: application/json
 
-{
-  "userId": 1
-}
+###
+
+PUT http://localhost:8070/v1/user/1/image
+Accept: application/json

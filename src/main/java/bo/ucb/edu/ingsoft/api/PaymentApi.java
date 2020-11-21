@@ -2,12 +2,13 @@ package bo.ucb.edu.ingsoft.api;
 
 import bo.ucb.edu.ingsoft.bl.PaymentBl;
 import bo.ucb.edu.ingsoft.bl.TransactionBl;
-import bo.ucb.edu.ingsoft.dto.BankAccountRequest;
-import bo.ucb.edu.ingsoft.dto.BankTransactionRequest;
+import bo.ucb.edu.ingsoft.dto.*;
+import bo.ucb.edu.ingsoft.modelo.Driver;
 import bo.ucb.edu.ingsoft.modelo.Transaction;
+import bo.ucb.edu.ingsoft.modelo.User;
 import bo.ucb.edu.ingsoft.util.TransactionUtil;
-import org.mybatis.logging.Logger;
-import org.mybatis.logging.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/v1/payment")
@@ -35,7 +37,7 @@ public class PaymentApi {
 //    public Contact findById() {
 //        return paymentBl.findContactById(0);
 //    }
-    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
+    @RequestMapping(path = "/bankaccount",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public BankAccountRequest createBankAccount(@RequestBody BankAccountRequest bankAccountRequest, HttpServletRequest request) {
         Transaction transaction = TransactionUtil.createTransaction(request);
@@ -53,4 +55,34 @@ public class PaymentApi {
         BankTransactionRequest createbanktransaction=paymentBl.createBankTransaction(bankTransactionRequest,transaction);
         return createbanktransaction;
     }
+    @RequestMapping(path = "/card",method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public CardRequest createCard(@RequestBody CardRequest cardRequest, HttpServletRequest request){
+        Transaction transaction = TransactionUtil.createTransaction(request);
+        transactionBl.createTransaction(transaction);
+        //LOGGER.error(transaction.getTxId().toString());
+        CardRequest createcard=paymentBl.createCard(cardRequest,transaction);
+        return createcard;
+    }
+    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public PaymentRequest createPayment(@RequestBody PaymentRequest paymentRequest, HttpServletRequest request){
+        Transaction transaction = TransactionUtil.createTransaction(request);
+        transactionBl.createTransaction(transaction);
+        //LOGGER.error(transaction.getTxId().toString());
+        PaymentRequest createpayment=paymentBl.createPayment(paymentRequest,transaction);
+        return createpayment;
+    }
+
+    @RequestMapping(path="/historypayment",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<PaymentHistoryRequest> paymentHistory(@RequestBody User user, HttpServletRequest request) {
+        List<PaymentHistoryRequest> paymentList=paymentBl.historyPayment(user);
+        LOGGER.error("hola");
+        return paymentList;
+    }
+//    @RequestMapping(path="/history",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+//    public List<DriverHistoryRequest> chatsList(@RequestBody Driver driver, HttpServletRequest request) {
+//        List<DriverHistoryRequest> driverList=driverBl.driverHistory(driver);
+//        return driverList;
+//    }
 }

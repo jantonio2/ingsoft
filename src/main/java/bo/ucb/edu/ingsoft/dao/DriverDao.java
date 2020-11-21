@@ -5,6 +5,7 @@ import bo.ucb.edu.ingsoft.dto.DriverContactRequest;
 import bo.ucb.edu.ingsoft.dto.DriverHistoryRequest;
 import bo.ucb.edu.ingsoft.dto.DriverVehicleRequest;
 import bo.ucb.edu.ingsoft.modelo.Driver;
+import bo.ucb.edu.ingsoft.modelo.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -19,4 +20,5 @@ public interface DriverDao {
     public List<DriverContactRequest> driverContactCompany();
     public List<DriverContactRequest> driverContactNull();
     public List<DriverVehicleRequest> driverVehicle(Driver driver);
+    public void updateImage(Driver driver);
 }

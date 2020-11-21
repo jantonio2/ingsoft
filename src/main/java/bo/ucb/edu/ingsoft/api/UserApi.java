@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -31,11 +32,6 @@ public class    UserApi {
         this.userBl = userBl;
         this.transactionBl = transactionBl;
     }
-
-    /*@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Contact findById(HttpServletRequest request) {
-        return agendaBl.findContactById(0);
-    }*/
 
 //    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 //    public SingleUser findById(HttpServletRequest request, @RequestParam Integer userId) {
@@ -66,9 +62,25 @@ public class    UserApi {
         return userRequest;
     }
 
-    @RequestMapping(path="/history",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    /*@RequestMapping(path="/history",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public List<UserHistoryRequest> chatsList(@RequestBody User user, HttpServletRequest request) {
         List<UserHistoryRequest> userList=userBl.userHistory(user);
         return userList;
+    }*/
+
+    @GetMapping(path="/{userId}/payment", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<UserHistoryRequest> chatsList(HttpServletRequest request, @PathVariable String userId){
+        Integer us = Integer.parseInt(userId);
+        List<UserHistoryRequest> userList=userBl.userHistory(us);
+        return userList;
+    }
+
+
+    @PutMapping(path="/{userId}/image", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String uploadImage(@RequestParam MultipartFile image, @PathVariable String userId, HttpServletRequest request){
+        Transaction transaction = TransactionUtil.createTransaction(request);
+        transactionBl.createTransaction(transaction);
+        userBl.uploadImage(image,Integer.parseInt(userId),transaction);
+        return "Succesful process";
     }
 }

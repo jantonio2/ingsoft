@@ -9,7 +9,7 @@ public class Payment {
     private Date datePayment;
     private String paymentStatus;
     private Double amount;
-    private String status;
+    private Integer status;
     private Transaction transaction;
 
     public Payment(){
@@ -67,11 +67,11 @@ public class Payment {
         this.amount = amount;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
