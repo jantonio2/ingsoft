@@ -13,4 +13,11 @@
         from score
         where score_id=#{scoreId}
     </select>
+
+    <insert id="createScore" parameterType="bo.ucb.edu.ingsoft.modelo.Score">
+        insert into score values(null,#{vehicleId},#{userId},#{score},
+        1, #{transaction.txId}, #{transaction.txHost}, #{transaction.txUserId},
+        #{transaction.txDate}
+        )
+    </insert>
 </mapper>

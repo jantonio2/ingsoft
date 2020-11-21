@@ -2,10 +2,7 @@ package bo.ucb.edu.ingsoft.api;
 
 import bo.ucb.edu.ingsoft.bl.DriverBl;
 import bo.ucb.edu.ingsoft.bl.TransactionBl;
-import bo.ucb.edu.ingsoft.dto.DriverContactRequest;
-import bo.ucb.edu.ingsoft.dto.DriverRequest;
-import bo.ucb.edu.ingsoft.dto.SingleDriver;
-import bo.ucb.edu.ingsoft.dto.DriverHistoryRequest;
+import bo.ucb.edu.ingsoft.dto.*;
 import bo.ucb.edu.ingsoft.modelo.Transaction;
 import bo.ucb.edu.ingsoft.modelo.Driver;
 import bo.ucb.edu.ingsoft.util.TransactionUtil;
@@ -42,7 +39,6 @@ public class DriverApi {
     public SingleDriver findById(HttpServletRequest request, @PathVariable String driverId){
         return driverBl.findDriverById(Integer.parseInt(driverId));
     }
-
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public DriverRequest createDriver(@RequestBody DriverRequest driverRequest, HttpServletRequest request) {
@@ -66,9 +62,19 @@ public class DriverApi {
         return driverList;
     }
 
+    @RequestMapping(path="/vehicle",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DriverVehicleRequest> vehicleList(@RequestBody Driver driver, HttpServletRequest request) {
+        List<DriverVehicleRequest> driverList=driverBl.driverVehicle(driver);
+        return driverList;
+    }
+
     @RequestMapping(path="/contact",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DriverContactRequest> chatsList(HttpServletRequest request) {
         List<DriverContactRequest> driverListContact=driverBl.driverContact();
         return driverListContact;
     }
+
+
+
+
 }

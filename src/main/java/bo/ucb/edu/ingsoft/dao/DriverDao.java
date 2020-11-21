@@ -3,6 +3,7 @@ package bo.ucb.edu.ingsoft.dao;
 
 import bo.ucb.edu.ingsoft.dto.DriverContactRequest;
 import bo.ucb.edu.ingsoft.dto.DriverHistoryRequest;
+import bo.ucb.edu.ingsoft.dto.DriverVehicleRequest;
 import bo.ucb.edu.ingsoft.modelo.Driver;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -17,4 +18,5 @@ public interface DriverDao {
     public List<DriverHistoryRequest> driverHistory(Driver driver);
     public List<DriverContactRequest> driverContactCompany();
     public List<DriverContactRequest> driverContactNull();
+    public List<DriverVehicleRequest> driverVehicle(Driver driver);
 }

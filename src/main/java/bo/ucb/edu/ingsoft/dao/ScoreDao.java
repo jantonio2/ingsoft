@@ -6,4 +6,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ScoreDao {
     public Score findScoreById(Integer scoreId);
+    public void createScore(Score score);
 }

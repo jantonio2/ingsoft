@@ -111,4 +111,33 @@
         <result column="ci" property="ci"/>
     </resultMap>
 
+    <select id="driverVehicle" resultMap="driverVehicleMap">
+
+        select
+            c.vehicle_id as driverVehicleId,
+            c.license_plate as vehicleLicensePlate,
+            c.capacity as vehicleCapacity,
+            c.vehicle_type as vehicleType,
+            c.price as vehiclePrice,
+            c.vehicle_status as vehicleStatus,
+            c.brand as vehicleBrand,
+            c.vehicle_model as vehicleModel
+        from person a, driver b, vehicle c
+        where a.person_id = b.person_id
+        and c.driver_id = b.driver_id
+        and c.status = 1
+        and b.driver_id=2
+    </select>
+
+    <resultMap id="driverVehicleMap" type="bo.ucb.edu.ingsoft.dto.DriverVehicleRequest">
+        <result column="driverVehicleId" property="driverVehicleId"/>
+        <result column="vehicleLicensePlate" property="vehicleLicensePlate"/>
+        <result column="vehicleCapacity" property="vehicleCapacity"/>
+        <result column="vehicleType" property="vehicleType"/>
+        <result column="vehiclePrice" property="vehiclePrice"/>
+        <result column="vehicleStatus" property="vehicleStatus"/>
+        <result column="vehicleBrand" property="vehicleBrand"/>
+        <result column="vehicleModel" property="vehicleModel"/>
+    </resultMap>
+
 </mapper>

@@ -5,10 +5,7 @@ import bo.ucb.edu.ingsoft.dao.AddressDao;
 import bo.ucb.edu.ingsoft.dao.PersonDao;
 import bo.ucb.edu.ingsoft.dao.TransactionDao;
 import bo.ucb.edu.ingsoft.dao.DriverDao;
-import bo.ucb.edu.ingsoft.dto.DriverContactRequest;
-import bo.ucb.edu.ingsoft.dto.DriverRequest;
-import bo.ucb.edu.ingsoft.dto.SingleDriver;
-import bo.ucb.edu.ingsoft.dto.DriverHistoryRequest;
+import bo.ucb.edu.ingsoft.dto.*;
 import bo.ucb.edu.ingsoft.modelo.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,6 +57,8 @@ public class DriverBl {
         singleDriverResponse.setCountry(address.getCountry());
         return  singleDriverResponse;
     }
+
+
 
     public DriverRequest createDriver(DriverRequest driverRequest, Transaction transaction) {
         Driver driver = new Driver();
@@ -141,5 +140,10 @@ public class DriverBl {
         List<DriverContactRequest> driverListContactNull = driverDao.driverContactNull();
         driverListContactCompany.addAll(driverListContactNull);
         return driverListContactCompany;
+    }
+
+    public List<DriverVehicleRequest>driverVehicle(Driver driver){
+        List<DriverVehicleRequest> driverList = driverDao.driverVehicle(driver);
+        return driverList;
     }
 }

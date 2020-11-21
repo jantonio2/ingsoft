@@ -129,6 +129,11 @@ DELIMITER ;
 
 
 insert into travel values(null,1,1,13,14,'Confirmado',now(),1, 1, '192.168.1.100', 0, now());	
+insert into travel values(null,2,1,2,14,'Confirmado',now(),1, 1, '192.168.1.100', 0, now());
+insert into travel values(null,4,1,11,5,'Confirmado',now(),1, 1, '192.168.1.100', 0, now());
+
+
+
 
 DELIMITER |
 CREATE TRIGGER trigger_insert_h_card
@@ -180,7 +185,10 @@ insert into vehicle values (null,1,'789HBG',45.84459,'Camioneta',100.25,'Ocupado
 insert into vehicle values (null,2,'889HBG',65.84459,'Flota',100.25,'Disponible',null,'Toyota','2020',1, 1, '192.168.1.100', 1, now());
 insert into vehicle values (null,3,'189HBG',35.84459,'Volqueta',100.25,'Ocupado',null,'Toyota','2020',1, 1, '192.168.1.100', 1, now());
 insert into vehicle values (null,4,'289HBG',85.84459,'Minibus',100.25,'Disponible',null,'Toyota','2020',1, 1, '192.168.1.100', 1, now());
-
+insert into vehicle values (null,2,'123GFD',65.84459,'Volqueta',100.25,'Disponible',null,'Toyota','Hilux',1,1,'192.168.1.100', 1, now());
+insert into vehicle values (null,2,'2123GFD',65.84459,'Camioneta',100.25, 'Disponible',null, 'Nissan', 'Sedan',1, 1, '192.168.1.100', 1,now());
+insert into vehicle values (null,2,'651RFQ',65.84459,'Minibus',100.25,'Disponible',null,'Volkswagen','Peta',1,1,'192.168.1.100', 1, now());
+insert into vehicle values (null,2,'890JEI',65.84459,'Flota',100.25, 'Disponible',null, 'Ford', 'Focus',1, 1, '192.168.1.100', 1,now());
 
 
 insert into score values(null,1,1,3.5,1, 1, '192.168.1.100', 1, now());
@@ -262,3 +270,5 @@ DELIMITER ;
 
 insert into bank_transaction values(null,null,2,850.50,now(),1, 1, '192.168.1.100', 1, now());
 insert into bank_transaction values(null,1,null,790.80,now(),1, 1, '192.168.1.100', 1, now());
+
+insert into vehicle values (null, 5, '123FGD',35.844590, 'Camioneta',100.25, 'Disponible',null, 'Toyota', 'Hilux',1, 1, '192.168.1.100', 1, now());
