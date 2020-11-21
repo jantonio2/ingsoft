@@ -6,10 +6,12 @@
     <select id="findByDriverId" resultType="bo.ucb.edu.ingsoft.modelo.Driver">
         SELECT
                driver_id as driverId,
+               company_id as companyId,
                person_id as personId,
                address_id as addressId,
                birthdate as birthDate,
                email as email
+
         FROM driver
         WHERE
             driver_id = #{driverId}

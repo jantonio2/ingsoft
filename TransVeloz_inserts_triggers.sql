@@ -48,6 +48,7 @@ insert into address values (null,'187B','Calle 8','Obrajes','La Paz','Bolivia',1
 insert into address values (null,'187B','Calle 1','Calacoto','La Paz','Bolivia',1, 1, '192.168.1.100', 1, now());
 
 
+
 DELIMITER |
 CREATE TRIGGER trigger_insert_h_user
 AFTER INSERT ON user

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bo.ucb.edu.ingsoft.dao.VehicleDao">
+
+    <select id="findVehicleById" resultType="bo.ucb.edu.ingsoft.modelo.Vehicle">
+        select
+        driver_id as driverId,
+        license_plate as licensePlate,
+        capacity as capacity,
+        vehicle_type as vehicleType,
+        price as price,
+        vehicle_status as vehicleStatus,
+        brand as brand,
+        vehicle_model as vehicleModel
+        from vehicle
+        where vehicle_id=#{vehicleId}
+    </select>
+</mapper>
