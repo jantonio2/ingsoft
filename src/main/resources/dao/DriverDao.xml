@@ -109,4 +109,10 @@
         <result column="ci" property="ci"/>
     </resultMap>
 
+    <update id="updateImage" parameterType="bo.ucb.edu.ingsoft.modelo.Driver">
+        UPDATE driver set
+        picture = #{picture}
+        WHERE
+        driver_id=#{driverId} and status = 1
+    </update>
 </mapper>

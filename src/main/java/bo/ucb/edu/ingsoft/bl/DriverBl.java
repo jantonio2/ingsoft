@@ -10,10 +10,12 @@ import bo.ucb.edu.ingsoft.dto.DriverRequest;
 import bo.ucb.edu.ingsoft.dto.SingleDriver;
 import bo.ucb.edu.ingsoft.dto.DriverHistoryRequest;
 import bo.ucb.edu.ingsoft.modelo.*;
+import bo.ucb.edu.ingsoft.util.ImageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.yaml.snakeyaml.util.ArrayUtils;
 
 import java.util.List;
@@ -141,5 +143,16 @@ public class DriverBl {
         List<DriverContactRequest> driverListContactNull = driverDao.driverContactNull();
         driverListContactCompany.addAll(driverListContactNull);
         return driverListContactCompany;
+    }
+
+    public void uploadImage(MultipartFile image, Integer driverId, Transaction transaction){
+        ImageUtil imageUtil = new ImageUtil();
+        Driver driver = new Driver();
+
+        String newImageName = imageUtil.uploadImage(image,"images/driverImage","Driver",driverId);
+        driver.setDriverId(driverId);
+        driver.setPicture(newImageName);
+        driver.setTransaction(transaction);
+        driverDao.updateImage(driver);
     }
 }
