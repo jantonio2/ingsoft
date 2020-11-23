@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -60,6 +61,15 @@ public class VehicleApi {
         transactionBl.createTransaction(transaction);
         VehicleRequest vehicleResponse = vehicleBl.createNewVehicle(vehicleRequest,transaction);
         return vehicleResponse;
+    }
+
+    @PutMapping(path = "/{vehicleId}/image", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String UploadImage(@RequestParam MultipartFile image, @PathVariable String vehicleId, HttpServletRequest request) {
+
+        Transaction transaction = TransactionUtil.createTransaction(request);
+        transactionBl.createTransaction(transaction);
+        vehicleBl.uploadImage(image,Integer.parseInt(vehicleId),transaction);
+        return "Succesful process";
     }
 
 

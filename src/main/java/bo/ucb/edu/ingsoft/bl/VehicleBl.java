@@ -4,10 +4,12 @@ import bo.ucb.edu.ingsoft.api.DriverApi;
 import bo.ucb.edu.ingsoft.dao.*;
 import bo.ucb.edu.ingsoft.dto.*;
 import bo.ucb.edu.ingsoft.modelo.*;
+import bo.ucb.edu.ingsoft.util.ImageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -130,6 +132,18 @@ public class VehicleBl {
 
 
         return vehicleRequest;
+    }
+
+    public void uploadImage(MultipartFile image, Integer vehicleId, Transaction transaction){
+        ImageUtil imageUtil = new ImageUtil();
+        Vehicle vehicle = new Vehicle();
+
+
+         String newImageName = imageUtil.uploadImage(image,"images/vehicleImage","Vehicle",vehicleId);
+         vehicle.setVehicleId(vehicleId);
+         vehicle.setPictures(newImageName);
+         vehicle.setTransaction(transaction);
+         vehicleDao.updateImage(vehicle);
     }
 
 

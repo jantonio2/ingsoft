@@ -9,14 +9,14 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "vehicleDriverId": 1,
-  "vehicleLicensePlate":"VGD541",
+  "vehicleDriverId": 4,
+  "vehicleLicensePlate":"DHL333",
   "vehicleCapacity": 35.844590,
-  "vehicleType": "Volqueta",
+  "vehicleType": "Minibus",
   "vehiclePrice": 100.250000,
-  "vehicleBrand": "Volvo",
+  "vehicleBrand": "Mercedes Benz",
   "vehicleStatus": "Disponible",
-  "vehicleModel": "2020"
+  "vehicleModel": "A"
 }
 ###
 GET http://localhost:8070/v1/vehicle/type
@@ -36,5 +36,6 @@ Content-Type: application/json
 {
   "brand": "Toyota"
 }
-
 ###
+PUT http://localhost:8070/v1/vehicle/2/image
+Accept: application/json

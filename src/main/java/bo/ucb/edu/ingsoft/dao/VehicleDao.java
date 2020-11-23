@@ -13,4 +13,6 @@ public interface VehicleDao {
     public List<VehicleDriverRequest> vehicleDriver();
     public List<VehicleDriverRequest>findVehiclesByType(String vehicleType);
     public List<VehicleDriverRequest>findVehiclesByBrand(String vehicleBrand);
+    public void updateImage(Vehicle vehicle);
+
 }
