@@ -11,6 +11,6 @@
         email as email,
         phone as phone
         from company
-        where company_id=#{companyId}
+        where company_id=#{companyId} and status=1
     </select>
 </mapper>

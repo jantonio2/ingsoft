@@ -11,7 +11,7 @@
         user_id as userId,
         score as score
         from score
-        where score_id=#{scoreId}
+        where score_id=#{scoreId} and status = 1
     </select>
 
     <insert id="createScore" parameterType="bo.ucb.edu.ingsoft.modelo.Score">

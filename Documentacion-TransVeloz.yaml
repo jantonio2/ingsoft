@@ -20,8 +20,29 @@ tags:
   description: Operations about driver
 - name: payment
   description: Transactions that user make on the system
+- name: administration
+  description: Operation about administration
+- name: score
+  description: Operations about vehicles scores
+- name: travel
+  description: Operations about travel
+- name: vehicle
+  description: Operations about vehicles
 paths:
-  /user:
+  /v1/administration:
+    post:
+      tags:
+      - administration
+      summary: Add a new administratos to the system
+      operationId: addAdministration
+      requestBody:
+        $ref: '#/components/requestBodies/Administration'
+      responses:
+        "201":
+          description: User added
+        "405":
+          description: Invalid input
+  /v1/user:
     get:
       tags:
       - user
@@ -61,23 +82,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
-                  properties:
-                    names:
-                      type: string
-                      example: Pedro Alejandro
-                    surnames:
-                      type: string
-                      example: Perez Rodriguez
-                    email:
-                      type: string
-                      example: example@gmail.com
-                    ci:
-                      type: string
-                      example: 8588857
-                    phone:
-                      type: integer
-                      example: 7465843
+                  $ref: '#/components/schemas/DriverRequest'
         "400":
           description: Invalid status value
     put:
@@ -108,7 +113,7 @@ paths:
           description: User added
         "405":
           description: Invalid input
-  /user/{idUser}:
+  /v1/user/{idUser}:
     get:
       tags:
       - user
@@ -129,65 +134,14 @@ paths:
         "200":
           description: successful operation
           content:
-            application/json:
+            aplication/json:
               schema:
-                type: object
-                properties:
-                  names:
-                    type: string
-                    example: Pedro Alejandro
-                  surnames:
-                    type: string
-                    example: Perez Rodriguez
-                  email:
-                    type: string
-                    example: example@gmail.com
-                  ci:
-                    type: string
-                    example: 8588857
-                  phone:
-                    type: integer
-                    example: 7465843
-                  birthdate:
-                    type: string
-                    format: date
-                    example: 2016-08-29
-                  picture:
-                    type: string
-                    example: url
-                  company:
-                    type: string
-                    example: Soboce
-                  address:
-                    type: string
-                    example: Sopocachi, av. Carranza
+                $ref: '#/components/schemas/SingleUser'
         "400":
           description: Invalid ID supplied
         "404":
           description: User not found
-    delete:
-      tags:
-      - user
-      summary: Deletes a user
-      operationId: deleteUser
-      parameters:
-      - name: idUser
-        in: path
-        description: User id to delete
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: integer
-          format: int64
-      responses:
-        "200":
-          description: Succesful delete
-        "400":
-          description: Invalid ID supplied
-        "404":
-          description: User not found
-  /user/{idUser}/image:
+  /v1/user/{idUser}/image:
     post:
       tags:
       - user
@@ -218,7 +172,7 @@ paths:
           description: User not found
         "405":
           description: Validation exception
-  /user/{idUser}/payment/{idPayment}:
+  /v1/user/{idUser}/payment/{idPayment}:
     get:
       tags:
       - user
@@ -247,10 +201,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Payment'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Payment'
+                $ref: '#/components/schemas/PaymentRequest'
         "400":
           description: Invalid id payment
         "401":
@@ -305,19 +256,14 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Payment'
-            application/xml:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Payment'
+                  $ref: '#/components/schemas/PaymentHistoryRequest'
         "400":
           description: Invalid id payment
         "401":
           description: Please sign in
         "404":
           description: Data not found
-  /driver:
+  /v1/driver:
     get:
       tags:
       - driver
@@ -357,25 +303,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
-                  properties:
-                    names:
-                      type: string
-                      example: Jose Gabriel
-                    surnames:
-                      type: string
-                      example: Lopez Lopez
-                    idCompany:
-                      $ref: '#/components/schemas/Company'
-                    ci:
-                      type: string
-                      example: 456484165
-                    phone:
-                      type: integer
-                      example: 7465843
-                    email:
-                      type: string
-                      example: example@gmail.com
+                  $ref: '#/components/schemas/DriverContactRequest'
         "400":
           description: Invalid status value
     put:
@@ -406,7 +334,7 @@ paths:
           description: Driver added
         "405":
           description: Invalid input
-  /driver/{idDriver}:
+  /v1/driver/{idDriver}:
     get:
       tags:
       - driver
@@ -429,35 +357,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  names:
-                    type: string
-                    example: Jose Gabriel
-                  surnames:
-                    type: string
-                    example: Lopez Lopez
-                  idCompany:
-                    $ref: '#/components/schemas/Company'
-                  ci:
-                    type: string
-                    example: 456484165
-                  phone:
-                    type: integer
-                    example: 7465843
-                  email:
-                    type: string
-                    example: example@gmail.com
-                  birthdate:
-                    type: string
-                    format: date
-                    example: 2016-08-29
-                  picture:
-                    type: string
-                    example: url
-                  address:
-                    type: string
-                    example: Sopocachi, av. Carranza
+                $ref: '#/components/schemas/SingleDriver'
         "400":
           description: Invalid ID supplied
         "404":
@@ -1233,6 +1133,587 @@ paths:
           description: Card not found
 components:
   schemas:
+    AdministrationRequest:
+      type: object
+      properties:
+        administartionId:
+          type: integer
+          format: int64
+          example: 1
+        ci:
+          type: string
+          example: 112562682
+        firstName:
+          type: string
+          example: Juan
+        firstSurname:
+          type: string
+          example: Apaza
+        secondSurname:
+          type: string
+          example: Maldonado
+        phone:
+          type: string
+          example: +591 65934875
+        email:
+          type: string
+          example: admi@gamil.com
+        password:
+          type: string
+          example: admi12345
+    BankAccountRequest:
+      type: object
+      properties:
+        bankAccountId:
+          type: integer
+          format: int64
+          example: 5
+        driverId:
+          type: integer
+          format: int64
+          example: 7
+        administrationId:
+          type: integer
+          format: int64
+          example: 4
+        accountNumber:
+          type: integer
+          format: int64
+          example: 3234687561
+        bank:
+          type: string
+          example: Banco Union
+        accountType:
+          type: string
+          example: Bolsa de ahorros
+    BankTransactionRequest:
+      type: object
+      properties:
+        bankTransaccionId:
+          type: integer
+          format: int64
+          example: 7
+        driverBankAccountId:
+          type: integer
+          format: int64
+          example: 3
+        administrationBankAccountId:
+          type: integer
+          format: int64
+          example: 11
+        amount:
+          type: number
+          example: 1255.5
+        transactionDate:
+          type: string
+          example: 2020-11-10
+    CardRequest:
+      type: object
+      properties:
+        cardId:
+          type: integer
+          format: int64
+          example: 6
+        userId:
+          type: integer
+          format: int64
+          example: 3
+        accountNumber:
+          type: string
+          example: 846526594
+        pin:
+          type: string
+        bank:
+          type: string
+          example: Banco Union
+        typeAccount:
+          type: string
+          example: Bolsa de ahorros
+        cvvCode:
+          type: string
+    DriverContactRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: Jose Marco
+        firstSurname:
+          type: string
+          example: Pereira
+        secondSurname:
+          type: string
+          example: Muñoz
+        companyName:
+          type: string
+          example: Independiente
+        ci:
+          type: string
+          example: 483192843
+    DriverHistoryRequest:
+      type: object
+      properties:
+        userFirstName:
+          type: string
+          example: María
+        startStreet:
+          type: string
+          example: Los Olmos
+        startZone:
+          type: string
+          example: Ciudad Satelite
+        deliveryStreet:
+          type: string
+          example: Batallón Colorados
+        deliveryZone:
+          type: string
+          example: Sopocachi
+        dateDelivery:
+          type: string
+          example: 2020-12-12
+        userPhone:
+          type: string
+          example: +591 68457312
+        travelStatus:
+          type: string
+          example: Confirmado
+    DriverRequest:
+      type: object
+      properties:
+        driverId:
+          type: integer
+          format: int64
+          example: 12
+        ci:
+          type: string
+          example: 12348626
+        firstName:
+          type: string
+          example: Marco
+        firstSurname:
+          type: string
+          example: Lopez
+        secondSurname:
+          type: string
+          example: Lopez
+        birthDate:
+          type: string
+          example: 1992-08-24
+        phone:
+          type: string
+          example: +591 65493465
+        email:
+          type: string
+          example: driver@gmail.com
+        password:
+          type: string
+          example: marco@gmail.com
+        number:
+          type: string
+          example: 168B
+        street:
+          type: string
+          example: Pisagua
+        zone:
+          type: string
+          example: Norte
+        city:
+          type: string
+          example: La Paz
+        country:
+          type: string
+          example: Bolivia
+    DriverVehicleRequest:
+      type: object
+      properties:
+        driverVehicleId:
+          type: integer
+          format: int64
+          example: 12
+        vehicleLicensePLate:
+          type: string
+          example: 985HTI
+        vehicleCapacity:
+          type: number
+          example: 158.5
+        vehicleType:
+          type: string
+          example: Minibus
+        vehiclePrice:
+          type: number
+          example: 550
+        vehicleStatus:
+          type: string
+          example: Habilitado
+        vehicleBrand:
+          type: string
+          example: Toyota
+        vehicleModel:
+          type: string
+          example: Toyosa-2000
+    PaymentHistoryRequest:
+      type: object
+      properties:
+        datePayment:
+          type: string
+          example: 2020-11-23
+        paymentStatus:
+          type: string
+          example: Cancelado
+        amount:
+          type: number
+          example: 650.5
+        driverFirstName:
+          type: string
+          example: Carlos
+        driverFirstSurname:
+          type: string
+          example: Aguilar
+    PaymentRequest:
+      type: object
+      properties:
+        paymentId:
+          type: integer
+          format: int64
+          example: 1
+        travelId:
+          type: integer
+          format: int64
+          example: 3
+        administartionId:
+          type: integer
+          format: int64
+          example: 2
+        datePayment:
+          type: string
+          example: 2020-10-23
+        paymentStatus:
+          type: string
+          example: Confirmado
+        amount:
+          type: number
+          example: 550.5
+    ScoreRequest:
+      type: object
+      properties:
+        vehicleId:
+          type: integer
+          format: int64
+          example: 1
+        userId:
+          type: integer
+          format: int64
+          example: 2
+        score:
+          type: number
+          example: 4.3
+    SingleDriver:
+      type: object
+      properties:
+        ci:
+          type: string
+          example: 12348626
+        firstName:
+          type: string
+          example: Marco
+        firstSurname:
+          type: string
+          example: Lopez
+        secondSurname:
+          type: string
+          example: Lopez
+        birthDate:
+          type: string
+          example: 1992-08-24
+        phone:
+          type: string
+          example: +591 65493465
+        email:
+          type: string
+          example: driver@gmail.com
+        number:
+          type: string
+          example: 168B
+        street:
+          type: string
+          example: Pisagua
+        zone:
+          type: string
+          example: Norte
+        city:
+          type: string
+          example: La Paz
+        country:
+          type: string
+          example: Bolivia
+    SingleScore:
+      type: object
+      properties:
+        score:
+          type: number
+          example: 4.5
+        vehicleType:
+          type: string
+          example: Minibus
+        vehicleBrand:
+          type: string
+          example: Toyota
+        vehicleModel:
+          type: string
+          example: toyosa-2000
+        personFisrtName:
+          type: string
+          example: Marco
+        personFirstSurname:
+          type: string
+          example: Gonzalez
+        vehicleLicensePlate:
+          type: string
+          example: 846JPA
+        vehicleCapacity:
+          type: number
+          example: 845.5
+        vehicleCompany:
+          type: string
+          example: Independiente
+        personPhone:
+          type: string
+          example: +591 69451975
+        vehicleStatus:
+          type: string
+          example: Ocupado
+    SingleUser:
+      type: object
+      properties:
+        ci:
+          type: string
+          example: 12348626
+        firstName:
+          type: string
+          example: Marco
+        firstSurname:
+          type: string
+          example: Lopez
+        secondSurname:
+          type: string
+          example: Lopez
+        birthDate:
+          type: string
+          example: 1992-08-24
+        phone:
+          type: string
+          example: +591 65493465
+        email:
+          type: string
+          example: driver@gmail.com
+        number:
+          type: string
+          example: 168B
+        street:
+          type: string
+          example: Pisagua
+        zone:
+          type: string
+          example: Norte
+        city:
+          type: string
+          example: La Paz
+        country:
+          type: string
+          example: Bolivia
+    SingleVehicle:
+      type: object
+      properties:
+        personFisrtName:
+          type: string
+          example: Marco
+        personFirstSurname:
+          type: string
+          example: Gonzalez
+        vehicleLicensePlate:
+          type: string
+          example: 846JPA
+        vehicleCapacity:
+          type: number
+          example: 845.5
+        vehicleType:
+          type: string
+          example: Minibus
+        vehiclePrice:
+          type: number
+          example: 450.5
+        vehicleStatus:
+          type: string
+          example: Ocupado
+        vehicleBrand:
+          type: string
+          example: Nissan
+        vehicleModel:
+          type: string
+          example: Nissan - 2021
+    TravelRequest:
+      type: object
+      properties:
+        travelUserId:
+          type: integer
+          format: int64
+          example: 2
+        travelDriverId:
+          type: integer
+          format: int64
+          example: 3
+        travelStatus:
+          type: string
+          example: Confirmado
+        travelDateDelivery:
+          type: string
+          example: 2020-11-11
+        startAddressNumber:
+          type: string
+          example: 168
+        startAddressStreet:
+          type: string
+          example: Los Olmos
+        startAddressZone:
+          type: string
+          example: Ciudad Satelite
+        startAddressCity:
+          type: string
+          example: La Paz
+        startAddressCountry:
+          type: string
+          example: Bolivia
+        deliveryAddressNumber:
+          type: string
+          example: 102B
+        deliveryAddressStreet:
+          type: string
+          example: Cuba
+        deliveryAddressZone:
+          type: string
+          example: Miraflores
+        deliveryAddressCity:
+          type: string
+          example: La Paz
+        deliveryAddressCountry:
+          type: string
+          example: Bolivia
+    UserHistoryRequest:
+      type: object
+      properties:
+        driverFirstName:
+          type: string
+          example: María
+        startStreet:
+          type: string
+          example: Los Olmos
+        startZone:
+          type: string
+          example: Ciudad Satelite
+        deliveryStreet:
+          type: string
+          example: Batallón Colorados
+        deliveryZone:
+          type: string
+          example: Sopocachi
+        dateDelivery:
+          type: string
+          example: 2020-12-12
+        driverPhone:
+          type: string
+          example: +591 68457312
+        travelStatus:
+          type: string
+          example: Confirmado
+    UserRequest:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int64
+          example: 12
+        ci:
+          type: string
+          example: 12348626
+        firstName:
+          type: string
+          example: Marco
+        firstSurname:
+          type: string
+          example: Lopez
+        secondSurname:
+          type: string
+          example: Lopez
+        birthDate:
+          type: string
+          example: 1992-08-24
+        phone:
+          type: string
+          example: +591 65493465
+        email:
+          type: string
+          example: driver@gmail.com
+        password:
+          type: string
+          example: marco@gmail.com
+        number:
+          type: string
+          example: 168B
+        street:
+          type: string
+          example: Pisagua
+        zone:
+          type: string
+          example: Norte
+        city:
+          type: string
+          example: La Paz
+        country:
+          type: string
+          example: Bolivia
+    VehicleDriverRequest:
+      type: object
+      properties:
+        vehicleId:
+          type: integer
+          format: int64
+          example: 1
+        personFirstName:
+          type: string
+          example: Juan
+        personFirstSurname:
+          type: string
+          example: Colque
+        vehicleLicensePlate:
+          type: string
+          example: 846JPA
+        vehicleCapacity:
+          type: number
+          example: 845.5
+        vehicleType:
+          type: string
+          example: Minibus
+        vehiclePrice:
+          type: number
+          example: 450.5
+        vehicleStatus:
+          type: string
+          example: Ocupado
+        vehicleBrand:
+          type: string
+          example: Nissan
+        vehicleModel:
+          type: string
+          example: Nissan - 2021
+        driverCompany:
+          type: string
+          example: Independiente
+    VehicleRequest:
+      type: object
+      properties:
+        vehicleDriverId:
+          type: integer
+          format: int64
+          example: 1
     Person:
       type: object
       properties:
@@ -1539,25 +2020,26 @@ components:
           type: integer
           description: total pages
   requestBodies:
+    Administration:
+      description: Administration object that needs to be added to the system
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AdministrationRequest'
+      required: true
     User:
       description: User object that needs to be added to the system
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/User'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/User'
+            $ref: '#/components/schemas/UserRequest'
       required: true
     Driver:
       description: Driver object that needs to be added to the system
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Driver'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/Driver'
+            $ref: '#/components/schemas/DriverRequest'
       required: true
     Payment:
       description: Payment object that needs to be added to the system

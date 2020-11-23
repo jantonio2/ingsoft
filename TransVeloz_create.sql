@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2020-11-15 03:26:23.473
+-- Last modification date: 2020-11-20 23:44:28.062
 
 -- tables
 -- Table: address
@@ -153,7 +153,7 @@ Example: 1999-01-0',
 Example: juanperez@gmail.com',
     password varchar(150) NOT NULL COMMENT 'password that the administrator will have to access the system
 Example: abcABC123',
-    picture varchar(45) NULL COMMENT 'Image certifying the identity of the driver
+    picture varchar(300) NULL COMMENT 'Image certifying the identity of the driver
 Example: https://mypage/MostrarFoto.aspx',
     status int NOT NULL,
     tx_id int NOT NULL,
@@ -224,7 +224,7 @@ CREATE TABLE h_driver (
     birthdate varchar(45) NOT NULL,
     email varchar(150) NOT NULL,
     password varchar(150) NOT NULL,
-    picture varchar(45) NULL,
+    picture varchar(300) NULL,
     status int NOT NULL,
     tx_id int NOT NULL,
     tx_host varchar(100) NOT NULL,
@@ -294,7 +294,7 @@ CREATE TABLE h_user (
     birthdate date NOT NULL,
     email varchar(150) NOT NULL,
     password varchar(150) NOT NULL,
-    picture varchar(45) NULL,
+    picture varchar(300) NULL,
     status int NOT NULL,
     tx_id int NOT NULL,
     tx_host varchar(100) NOT NULL,
@@ -456,7 +456,7 @@ Example:
     password varchar(150) NOT NULL COMMENT 'It is the password that the user or driver enters.
 Example:
        Password: 1234456abc',
-    picture varchar(45) NULL COMMENT 'It is the profile photo of the user or driver. Where when registering, the profile photo has a generic user image by default.
+    picture varchar(300) NULL COMMENT 'It is the profile photo of the user or driver. Where when registering, the profile photo has a generic user image by default.
 ',
     status int NOT NULL,
     tx_id int NOT NULL,
