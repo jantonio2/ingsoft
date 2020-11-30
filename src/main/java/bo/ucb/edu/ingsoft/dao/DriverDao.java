@@ -1,6 +1,7 @@
 package bo.ucb.edu.ingsoft.dao;
 
 
+import bo.ucb.edu.ingsoft.dto.CompanyRequest;
 import bo.ucb.edu.ingsoft.dto.DriverContactRequest;
 import bo.ucb.edu.ingsoft.dto.DriverHistoryRequest;
 import bo.ucb.edu.ingsoft.dto.DriverVehicleRequest;
@@ -19,6 +20,7 @@ public interface DriverDao {
     public List<DriverHistoryRequest> driverHistory(Driver driver);
     public List<DriverContactRequest> driverContactCompany();
     public List<DriverContactRequest> driverContactNull();
+    public List<CompanyRequest> getCompanies();
     public List<DriverVehicleRequest> driverVehicle(Driver driver);
     public void updateImage(Driver driver);
 }

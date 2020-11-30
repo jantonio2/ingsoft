@@ -144,6 +144,11 @@ public class DriverBl {
         return driverListContactCompany;
     }
 
+    public List<CompanyRequest> getCompanies(){
+        List<CompanyRequest> companies = driverDao.getCompanies();
+        return companies;
+    }
+
     public List<DriverVehicleRequest>driverVehicle(Driver driver) {
         List<DriverVehicleRequest> driverList = driverDao.driverVehicle(driver);
         return driverList;

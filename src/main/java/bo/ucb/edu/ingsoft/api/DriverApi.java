@@ -83,4 +83,10 @@ public class DriverApi {
         driverBl.uploadImage(image,Integer.parseInt(driverId),transaction);
         return "Succesful process";
     }
+
+    @RequestMapping(path="/company",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<CompanyRequest> companyList(HttpServletRequest request) {
+        List<CompanyRequest> companies=driverBl.getCompanies();
+        return companies;
+    }
 }

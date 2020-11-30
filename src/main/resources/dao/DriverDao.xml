@@ -146,4 +146,18 @@
         WHERE
         driver_id=#{driverId} and status = 1
     </update>
+
+    <select id="getCompanies" resultMap="companiesMap">
+
+        select
+            company_id as companyId,
+            name as name
+        from company
+        where status = 1
+    </select>
+
+    <resultMap id="companiesMap" type="bo.ucb.edu.ingsoft.dto.CompanyRequest">
+        <result column="companyId" property="companyId"/>
+        <result column="name" property="name"/>
+    </resultMap>
 </mapper>
