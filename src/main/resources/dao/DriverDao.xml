@@ -27,6 +27,7 @@
         email=#{email},
         birthdate=#{birthDate},
         password=#{password},
+        company_id=#{companyId},
         tx_id=#{transaction.txId},
         tx_host=#{transaction.txHost},
         tx_user_id=#{transaction.txUserId},
@@ -146,4 +147,18 @@
         WHERE
         driver_id=#{driverId} and status = 1
     </update>
+
+    <select id="getCompanies" resultMap="companiesMap">
+
+        select
+            company_id as companyId,
+            name as name
+        from company
+        where status = 1
+    </select>
+
+    <resultMap id="companiesMap" type="bo.ucb.edu.ingsoft.dto.CompanyRequest">
+        <result column="companyId" property="companyId"/>
+        <result column="name" property="name"/>
+    </resultMap>
 </mapper>

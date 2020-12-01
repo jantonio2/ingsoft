@@ -270,5 +270,3 @@ DELIMITER ;
 
 insert into bank_transaction values(null,null,2,850.50,now(),1, 1, '192.168.1.100', 1, now());
 insert into bank_transaction values(null,1,null,790.80,now(),1, 1, '192.168.1.100', 1, now());
-
-insert into vehicle values (null, 5, '123FGD',35.844590, 'Camioneta',100.25, 'Disponible',null, 'Toyota', 'Hilux',1, 1, '192.168.1.100', 1, now());

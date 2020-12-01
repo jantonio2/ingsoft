@@ -34,7 +34,7 @@
         tx_user_id=#{transaction.txUserId},
         tx_date=#{transaction.txDate}
         WHERE
-        address_id=#{addressId}
+        address_id=#{addressId} and status = 1
     </update>
 
 </mapper>

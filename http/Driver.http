@@ -4,18 +4,19 @@ Content-Type: application/json
 
 {
   "ci": "124248596 lp",
-  "firstName": "Jorge",
-  "firstSurname": "Mamani",
+  "firstName": "Carlos",
+  "firstSurname": "Aguilar",
   "secondSurname": "Quispe",
   "birthDate": "1996-11-10",
   "phone": "+591 68459315",
-  "email": "mamani@gmail.com",
-  "password": "mamani",
+  "email": "carlosaguilar@gmail.com",
+  "password": "aguilar",
   "number":"198B",
   "street":"Pisagua",
   "zone":"Norte",
   "city":"La Paz",
-  "country":"Bolivia"
+  "country":"Bolivia",
+  "companyId": null
 }
 
 ###
@@ -30,20 +31,21 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "driverId": 1,
+  "driverId": 4,
   "ci": "124248596 sc",
-  "firstName": "Maria",
-  "firstSurname": "Sarmiento",
-  "secondSurname": "Daza",
+  "firstName": "Sebastian",
+  "firstSurname": "Carrasco",
+  "secondSurname": "Giraldez",
   "birthDate": "1974-01-17",
   "phone": "+591 77745812",
-  "email": "mariasarmiento@gmail.com",
-  "password": "mariasarmiento",
+  "email": "carrasco@gmail.com",
+  "password": "carrasco",
   "number":"198B",
   "street":"Estados Unidos",
   "zone":"Miraflores",
   "city":"La Paz",
-  "country":"Bolivia"
+  "country":"Bolivia",
+  "companyId": 2
 }
 
 ###
@@ -73,4 +75,14 @@ Accept: application/json
 ###
 
 PUT http://localhost:8070/v1/driver/3/image
+Accept: application/json
+
+###
+
+GET http://localhost:8070/v1/driver/company
+Accept: application/json
+
+###
+
+GET http://192.168.0.18:8070/v1/driver/company
 Accept: application/json

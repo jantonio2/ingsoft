@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class DriverRequest {
     private Integer driverId;
+    private Integer companyId;
     private String ci;
     private String firstName;
     private String firstSurname;
@@ -133,10 +134,19 @@ public class DriverRequest {
         this.country = country;
     }
 
+    public Integer getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Integer companyId) {
+        this.companyId = companyId;
+    }
+
     @Override
     public String toString() {
         return "DriverRequest{" +
                 "driverId=" + driverId +
+                ", companyId=" + companyId +
                 ", ci='" + ci + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", firstSurname='" + firstSurname + '\'' +
