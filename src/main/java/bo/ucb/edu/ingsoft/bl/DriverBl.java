@@ -88,6 +88,7 @@ public class DriverBl {
 
         Integer getLastIdAddress = transactionDao.getLastInsertId();
         driver.setPersonId(getLastIdPerson);
+        driver.setCompanyId(driverRequest.getCompanyId());
         driver.setAddressId(getLastIdAddress);
         //LOGGER.error(user.getPersonId().toString());
         driver.setBirthDate(driverRequest.getBirthDate());
@@ -105,6 +106,8 @@ public class DriverBl {
         Address address = new Address();
 
         driver.setDriverId(driverRequest.getDriverId());
+        driver.setCompanyId(driverRequest.getCompanyId());
+        LOGGER.error(driverRequest.getCompanyId().toString());
         driver.setEmail(driverRequest.getEmail());
         driver.setBirthDate(driverRequest.getBirthDate());
         driver.setPassword(driverRequest.getPassword());

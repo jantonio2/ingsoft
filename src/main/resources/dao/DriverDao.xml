@@ -27,6 +27,7 @@
         email=#{email},
         birthdate=#{birthDate},
         password=#{password},
+        company_id=#{companyId},
         tx_id=#{transaction.txId},
         tx_host=#{transaction.txHost},
         tx_user_id=#{transaction.txUserId},
