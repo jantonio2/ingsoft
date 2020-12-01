@@ -1,6 +1,7 @@
 package bo.ucb.edu.ingsoft.dao;
 
 import bo.ucb.edu.ingsoft.dto.VehicleDriverRequest;
+import bo.ucb.edu.ingsoft.dto.VehicleListRequest;
 import bo.ucb.edu.ingsoft.modelo.Vehicle;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,6 +14,10 @@ public interface VehicleDao {
     public List<VehicleDriverRequest> vehicleDriver();
     public List<VehicleDriverRequest>findVehiclesByType(String vehicleType);
     public List<VehicleDriverRequest>findVehiclesByBrand(String vehicleBrand);
+
+    public List<VehicleListRequest>vehicleListNotCompany();
+    public List<VehicleListRequest>vehicleListWithCompany();
+
     public void updateImage(Vehicle vehicle);
 
 }

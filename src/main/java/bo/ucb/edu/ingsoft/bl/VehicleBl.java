@@ -88,7 +88,6 @@ public class VehicleBl {
 
 
     }
-
     public List<VehicleDriverRequest> vehicleDriver(){
         List<VehicleDriverRequest>vehicleDriverList = vehicleDao.vehicleDriver();
         return vehicleDriverList;
@@ -144,6 +143,13 @@ public class VehicleBl {
          vehicle.setPictures(newImageName);
          vehicle.setTransaction(transaction);
          vehicleDao.updateImage(vehicle);
+    }
+
+    public List<VehicleListRequest>vehiclesList(){
+        List<VehicleListRequest>vehicleListRequests = vehicleDao.vehicleListNotCompany();
+        List<VehicleListRequest>vehicleListWithCompany=vehicleDao.vehicleListWithCompany();
+        vehicleListRequests.addAll(vehicleListWithCompany);
+        return vehicleListRequests;
     }
 
 

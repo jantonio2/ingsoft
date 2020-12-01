@@ -34,12 +34,18 @@ public class VehicleApi {
     public SingleVehicle findById(HttpServletRequest request, @PathVariable String vehicleId){
         return vehicleBl.findVehicleById(Integer.parseInt(vehicleId));
     }
-
+    /*
     @RequestMapping(method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public List<VehicleDriverRequest> findVehiclesByDriver(HttpServletRequest request) {
         List<VehicleDriverRequest> vehicleListDriver=vehicleBl.vehicleDriver();
         return vehicleListDriver;
+    }*/
+    @RequestMapping(method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<VehicleListRequest> findVehiclesByDriver(HttpServletRequest request) {
+        List<VehicleListRequest> vehicleListRequests=vehicleBl.vehiclesList();
+        return vehicleListRequests;
     }
+
 
     @RequestMapping(path="/type", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public List<VehicleDriverRequest> findVehiclesByType(@RequestBody Vehicle vehicle, HttpServletRequest request) {
@@ -52,6 +58,9 @@ public class VehicleApi {
         List<VehicleDriverRequest> vehicleListDriver=vehicleBl.findVehicleByBrand(vehicle.getBrand());
         return vehicleListDriver;
     }
+
+
+
 
 
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,

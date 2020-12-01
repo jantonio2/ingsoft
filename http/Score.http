@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-GET http://localhost:8070/v1/score/5
-=======
+
 GET http://localhost:8070/v1/score/1
->>>>>>> ca7bbf78c18046f6d9be8be38bbd3d1760da9129
+
 Accept: application/json
 ########
 POST http://localhost:8070/v1/score
