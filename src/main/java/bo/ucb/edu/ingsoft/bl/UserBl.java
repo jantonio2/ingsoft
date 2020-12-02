@@ -5,6 +5,7 @@ import bo.ucb.edu.ingsoft.dao.AddressDao;
 import bo.ucb.edu.ingsoft.dao.PersonDao;
 import bo.ucb.edu.ingsoft.dao.TransactionDao;
 import bo.ucb.edu.ingsoft.dao.UserDao;
+import bo.ucb.edu.ingsoft.dto.LogInRequest;
 import bo.ucb.edu.ingsoft.dto.SingleUser;
 import bo.ucb.edu.ingsoft.dto.UserHistoryRequest;
 import bo.ucb.edu.ingsoft.dto.UserRequest;
@@ -151,5 +152,10 @@ public class UserBl {
         user.setPicture(newImageName);
         user.setTransaction(transaction);
         userDao.updateImage(user);
+    }
+
+    public List<LogInRequest> userLogIn() {
+        List<LogInRequest> list = userDao.userLogIn();
+        return list;
     }
 }

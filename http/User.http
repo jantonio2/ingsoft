@@ -56,3 +56,8 @@ Accept: application/json
 
 PUT http://localhost:8070/v1/user/1/image
 Accept: application/json
+
+###
+
+GET http://localhost:8070/v1/user/sesion
+Accept: application/json
