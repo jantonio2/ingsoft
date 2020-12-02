@@ -2,6 +2,7 @@ package bo.ucb.edu.ingsoft.api;
 
 import bo.ucb.edu.ingsoft.bl.TransactionBl;
 import bo.ucb.edu.ingsoft.bl.UserBl;
+import bo.ucb.edu.ingsoft.dto.LogInRequest;
 import bo.ucb.edu.ingsoft.dto.SingleUser;
 import bo.ucb.edu.ingsoft.dto.UserHistoryRequest;
 import bo.ucb.edu.ingsoft.dto.UserRequest;
@@ -82,5 +83,11 @@ public class    UserApi {
         transactionBl.createTransaction(transaction);
         userBl.uploadImage(image,Integer.parseInt(userId),transaction);
         return "Succesful process";
+    }
+
+    @RequestMapping(path="/sesion",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<LogInRequest> logList(HttpServletRequest request) {
+        List<LogInRequest> log=userBl.userLogIn();
+        return log;
     }
 }

@@ -1,5 +1,6 @@
 package bo.ucb.edu.ingsoft.dao;
 
+import bo.ucb.edu.ingsoft.dto.LogInRequest;
 import bo.ucb.edu.ingsoft.dto.UserHistoryRequest;
 import bo.ucb.edu.ingsoft.modelo.User;
 import org.apache.ibatis.annotations.Mapper;
@@ -14,4 +15,5 @@ public interface UserDao {
     public void updateUser(User user);
     public List<UserHistoryRequest> userHistory(Integer userId);
     public void updateImage(User user);
+    public List<LogInRequest> userLogIn();
 }

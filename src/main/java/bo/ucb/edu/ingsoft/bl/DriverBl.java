@@ -166,4 +166,9 @@ public class DriverBl {
         driver.setTransaction(transaction);
         driverDao.updateImage(driver);
     }
+
+    public List<LogInRequest> driverLogIn() {
+        List<LogInRequest> list = driverDao.driverLogIn();
+        return list;
+    }
 }

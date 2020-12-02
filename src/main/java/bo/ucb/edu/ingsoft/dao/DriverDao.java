@@ -1,10 +1,7 @@
 package bo.ucb.edu.ingsoft.dao;
 
 
-import bo.ucb.edu.ingsoft.dto.CompanyRequest;
-import bo.ucb.edu.ingsoft.dto.DriverContactRequest;
-import bo.ucb.edu.ingsoft.dto.DriverHistoryRequest;
-import bo.ucb.edu.ingsoft.dto.DriverVehicleRequest;
+import bo.ucb.edu.ingsoft.dto.*;
 import bo.ucb.edu.ingsoft.modelo.Driver;
 import bo.ucb.edu.ingsoft.modelo.User;
 import org.apache.ibatis.annotations.Mapper;
@@ -23,4 +20,5 @@ public interface DriverDao {
     public List<CompanyRequest> getCompanies();
     public List<DriverVehicleRequest> driverVehicle(Driver driver);
     public void updateImage(Driver driver);
+    public List<LogInRequest> driverLogIn();
 }

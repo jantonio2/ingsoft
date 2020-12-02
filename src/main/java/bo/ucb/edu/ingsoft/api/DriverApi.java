@@ -89,4 +89,10 @@ public class DriverApi {
         List<CompanyRequest> companies=driverBl.getCompanies();
         return companies;
     }
+
+    @RequestMapping(path="/sesion",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<LogInRequest> logList(HttpServletRequest request) {
+        List<LogInRequest> log=driverBl.driverLogIn();
+        return log;
+    }
 }
