@@ -5,13 +5,19 @@ import bo.ucb.edu.ingsoft.dao.AdministrationDao;
 import bo.ucb.edu.ingsoft.dao.PersonDao;
 import bo.ucb.edu.ingsoft.dao.TransactionDao;
 import bo.ucb.edu.ingsoft.dto.AdministrationRequest;
+import bo.ucb.edu.ingsoft.dto.DriverVehicleRequest;
+import bo.ucb.edu.ingsoft.dto.LogInRequest;
 import bo.ucb.edu.ingsoft.modelo.Administration;
+import bo.ucb.edu.ingsoft.modelo.Driver;
 import bo.ucb.edu.ingsoft.modelo.Person;
 import bo.ucb.edu.ingsoft.modelo.Transaction;
+import org.apache.juli.logging.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AdministrationBl {
@@ -50,6 +56,11 @@ public class AdministrationBl {
         administrationDao.createAdministration(administration);
 
         return administrationRequest;
+    }
+
+    public List<LogInRequest> administrationLogIn() {
+        List<LogInRequest> list = administrationDao.administrationLogIn();
+        return list;
     }
 
 }

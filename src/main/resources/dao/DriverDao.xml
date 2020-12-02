@@ -75,6 +75,7 @@
 
     <select id="driverContactCompany" resultMap="driverContactMap">
         SELECT
+            b.driver_id as driverId,
             a.first_name as firstName,
             a.first_surname as firstSurname,
             a.second_surname as secondSurname,
@@ -87,6 +88,7 @@
             and b.status = 1
     </select>
     <resultMap id="driverContactMap" type="bo.ucb.edu.ingsoft.dto.DriverContactRequest" >
+        <result column="driverId" property="driverId"/>
         <result column="firstName" property="firstName"/>
         <result column="firstSurname" property="firstSurname"/>
         <result column="secondSurname" property="secondSurname"/>
@@ -95,6 +97,7 @@
     </resultMap>
     <select id="driverContactNull" resultMap="driverContactNullMap">
         SELECT
+            b.driver_id as driverId,
             a.first_name as firstName,
             a.first_surname as firstSurname,
             a.second_surname as secondSurname,
@@ -106,6 +109,7 @@
             and b.status = 1
     </select>
     <resultMap id="driverContactNullMap" type="bo.ucb.edu.ingsoft.dto.DriverContactRequest" >
+        <result column="driverId" property="driverId"/>
         <result column="firstName" property="firstName"/>
         <result column="firstSurname" property="firstSurname"/>
         <result column="secondSurname" property="secondSurname"/>

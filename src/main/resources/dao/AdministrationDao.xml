@@ -9,4 +9,19 @@
             #{transaction.txId}, #{transaction.txHost}, #{transaction.txUserId}, #{transaction.txDate}
         )
     </insert>
+
+    <select id="administrationLogIn" resultMap="administrationLog">
+        SELECT
+            administration_id as id,
+            email as email,
+            password as password
+        FROM   administration
+        WHERE
+        	status = 1
+    </select>
+    <resultMap id="administrationLog" type="bo.ucb.edu.ingsoft.dto.LogInRequest" >
+        <result column="id" property="id"/>
+        <result column="email" property="email"/>
+        <result column="password" property="password"/>
+    </resultMap>
 </mapper>
