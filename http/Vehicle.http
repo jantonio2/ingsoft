@@ -1,4 +1,4 @@
-GET http://localhost:8070/v1/vehicle/3
+GET http://localhost:8070/v1/vehicle/1
 Accept: application/json
 ########
 GET http://localhost:8070/v1/vehicle
@@ -9,7 +9,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "vehicleDriverId": 4,
+  "vehicleDriverId": 1,
   "vehicleLicensePlate":"DHL333",
   "vehicleCapacity": 35.844590,
   "vehicleType": "Minibus",

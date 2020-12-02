@@ -126,6 +126,11 @@ public class PaymentBl {
         LOGGER.error(String.valueOf(paymentHistoyrId.size()));
         return paymentHistoyrId;
     }
+    public List<CardCollectionRequest> cardCollection(User user){
+        List<CardCollectionRequest> cardCollection=cardDao.cardCollectionId(user);
+        LOGGER.error(String.valueOf(cardCollection.size()));
+        return cardCollection;
+    }
 //    public Contact findContactById(Integer contactId) {
 //        return  contactDao.findByContactId(contactId);
 //    }

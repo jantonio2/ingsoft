@@ -68,3 +68,12 @@ Content-Type: application/json
 {
 "userId": 1
 }
+
+###
+GET http://localhost:8070/v1/payment/cardcollection
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userId": 1
+}

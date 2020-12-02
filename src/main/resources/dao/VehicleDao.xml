@@ -46,6 +46,7 @@
         from person a, driver b, vehicle c
         where a.person_id = b.person_id
         and c.driver_id = b.driver_id
+        and b.company_id = d.company_id
         and c.status = 1
 
     </select>

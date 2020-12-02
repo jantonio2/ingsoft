@@ -2,16 +2,16 @@ package bo.ucb.edu.ingsoft.dto;
 
 import bo.ucb.edu.ingsoft.modelo.Transaction;
 
-public class CardRequest {
-    private Integer cardId;
-    private Integer userId;
+public class CardCollectionRequest {
+//    private Integer cardId;
+//    private Integer userId;
     private String accountNumber;
     private String pin;
     private String bank;
     private String typeAccount;
     private String cvvCode;
     private Integer status;
-    private Transaction transaction;
+//    private Transaction transaction;
 
     public String getAccountNumber() {
         return accountNumber;
@@ -38,29 +38,14 @@ public class CardRequest {
         this.status = status;
     }
 
-    public Transaction getTransaction() {
-        return transaction;
-    }
 
-    public void setTransaction(Transaction transaction) {
-        this.transaction = transaction;
-    }
-
-    public Integer getCardId() {
-        return cardId;
-    }
-
-    public void setCardId(Integer cardId) {
-        this.cardId = cardId;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+//    public Integer getCardId() {
+//        return cardId;
+//    }
+//
+//    public void setCardId(Integer cardId) {
+//        this.cardId = cardId;
+//    }
 
     public String getPin() {
         return pin;
@@ -88,16 +73,14 @@ public class CardRequest {
 
     @Override
     public String toString() {
-        return "CardRequest{" +
-                "cardId=" + cardId +
-                ", userId=" + userId +
-                ", accountNumber=" + accountNumber +
+        return "CardCollectionRequest{" +
+//                "cardId=" + cardId +
+                "accountNumber=" + accountNumber +
                 ", pin=" + pin +
                 ", bank='" + bank + '\'' +
                 ", typeAccount='" + typeAccount + '\'' +
                 ", cvvCode='" + cvvCode + '\'' +
                 ", status=" + status +
-                ", transaction=" + transaction +
                 '}';
     }
 }
