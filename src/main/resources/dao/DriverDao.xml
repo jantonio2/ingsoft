@@ -165,4 +165,19 @@
         <result column="companyId" property="companyId"/>
         <result column="name" property="name"/>
     </resultMap>
+
+    <select id="driverLogIn" resultMap="driverLog">
+        SELECT
+            driver_id as id,
+            email as email,
+            password as password
+        FROM   driver
+        WHERE
+        	status = 1
+    </select>
+    <resultMap id="driverLog" type="bo.ucb.edu.ingsoft.dto.LogInRequest" >
+        <result column="id" property="id"/>
+        <result column="email" property="email"/>
+        <result column="password" property="password"/>
+    </resultMap>
 </mapper>

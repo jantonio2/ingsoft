@@ -82,3 +82,8 @@ Accept: application/json
 GET http://localhost:8070/v1/driver/company
 Accept: application/json
 
+###
+
+GET http://localhost:8070/v1/driver/sesion
+Accept: application/json
+
