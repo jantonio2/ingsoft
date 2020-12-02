@@ -20,7 +20,7 @@
 
     <insert id="createVehicle" parameterType="bo.ucb.edu.ingsoft.modelo.Vehicle">
         insert into vehicle values (null, #{driverId}, #{licensePlate},#{capacity}, #{vehicleType},
-                            #{price}, #{vehicleStatus},null, #{brand}, #{vehicleModel},
+                            #{price}, 'Disponible',null, #{brand}, #{vehicleModel},
                             1, #{transaction.txId}, #{transaction.txHost}, #{transaction.txUserId}, #{transaction.txDate}
                             )
     </insert>

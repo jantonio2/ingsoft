@@ -47,7 +47,7 @@ public class VehicleApi {
     }
 
 
-    @RequestMapping(path="/type", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path="/type/", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public List<VehicleDriverRequest> findVehiclesByType(@RequestBody Vehicle vehicle, HttpServletRequest request) {
         List<VehicleDriverRequest> vehicleListDriver=vehicleBl.findVehiclesByType(vehicle.getVehicleType());
         return vehicleListDriver;

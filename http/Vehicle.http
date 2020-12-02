@@ -9,14 +9,13 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "vehicleDriverId": 4,
-  "vehicleLicensePlate":"DHL333",
+  "vehicleDriverId": 3,
+  "vehicleLicensePlate":"ASW128",
   "vehicleCapacity": 35.844590,
-  "vehicleType": "Minibus",
+  "vehicleType": "Volqueta",
   "vehiclePrice": 100.250000,
-  "vehicleBrand": "Mercedes Benz",
-  "vehicleStatus": "Disponible",
-  "vehicleModel": "A"
+  "vehicleBrand": "Volvo",
+  "vehicleModel": "B"
 }
 ###
 GET http://localhost:8070/v1/vehicle/type

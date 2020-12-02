@@ -122,7 +122,6 @@ public class VehicleBl {
         vehicle.setCapacity(vehicleRequest.getVehicleCapacity());
         vehicle.setVehicleType(vehicleRequest.getVehicleType());
         vehicle.setPrice(vehicleRequest.getVehiclePrice());
-        vehicle.setVehicleStatus(vehicleRequest.getVehicleStatus());
         vehicle.setBrand(vehicleRequest.getVehicleBrand());
         vehicle.setVehicleModel(vehicleRequest.getVehicleModel());
         vehicle.setTransaction(transaction);
