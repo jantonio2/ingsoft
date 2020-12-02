@@ -121,13 +121,13 @@ public class PaymentBl {
         return paymentRequest;
     }
 
-    public List<PaymentHistoryRequest> historyPayment(User user){
-        List<PaymentHistoryRequest> paymentHistoyrId=paymentDao.paymentHistoryId(user);
+    public List<PaymentHistoryRequest> historyPayment(Integer userId){
+        List<PaymentHistoryRequest> paymentHistoyrId=paymentDao.paymentHistoryId(userId);
         LOGGER.error(String.valueOf(paymentHistoyrId.size()));
         return paymentHistoyrId;
     }
-    public List<CardCollectionRequest> cardCollection(User user){
-        List<CardCollectionRequest> cardCollection=cardDao.cardCollectionId(user);
+    public List<CardCollectionRequest> cardCollection(Integer userId){
+        List<CardCollectionRequest> cardCollection=cardDao.cardCollectionId(userId);
         LOGGER.error(String.valueOf(cardCollection.size()));
         return cardCollection;
     }

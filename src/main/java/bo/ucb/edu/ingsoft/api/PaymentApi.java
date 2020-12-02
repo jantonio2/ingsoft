@@ -12,10 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -75,15 +72,15 @@ public class PaymentApi {
         return createpayment;
     }
 
-    @RequestMapping(path="/historypayment",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<PaymentHistoryRequest> paymentHistory(@RequestBody User user, HttpServletRequest request) {
-        List<PaymentHistoryRequest> paymentList=paymentBl.historyPayment(user);
+    @RequestMapping(path="/historypayment/{userId}",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<PaymentHistoryRequest> paymentHistory(@PathVariable String userId, HttpServletRequest request) {
+        List<PaymentHistoryRequest> paymentList=paymentBl.historyPayment(Integer.parseInt(userId));
         LOGGER.error("hola");
         return paymentList;
     }
-    @RequestMapping(path="/cardcollection",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<CardCollectionRequest> cardCollection(@RequestBody User user, HttpServletRequest request) {
-        List<CardCollectionRequest> cardList=paymentBl.cardCollection(user);
+    @RequestMapping(path="/cardcollection/{userId}",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<CardCollectionRequest> cardCollection(@PathVariable String userId, HttpServletRequest request) {
+        List<CardCollectionRequest> cardList=paymentBl.cardCollection(Integer.parseInt(userId));
         LOGGER.error("hola");
         return cardList;
     }
