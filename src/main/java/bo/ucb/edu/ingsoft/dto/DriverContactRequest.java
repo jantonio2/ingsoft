@@ -3,11 +3,22 @@ package bo.ucb.edu.ingsoft.dto;
 import java.sql.Date;
 
 public class DriverContactRequest {
+    private Integer driverId;
     private String firstName;
     private String firstSurname;
     private String secondSurname;
     private String companyName;
     private String ci;
+
+    public DriverContactRequest() {}
+
+    public Integer getDriverId() {
+        return driverId;
+    }
+
+    public void setDriverId(Integer driverId) {
+        this.driverId = driverId;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -52,7 +63,8 @@ public class DriverContactRequest {
     @Override
     public String toString() {
         return "DriverContactRequest{" +
-                "firstName='" + firstName + '\'' +
+                "driverId=" + driverId +
+                ", firstName='" + firstName + '\'' +
                 ", firstSurname='" + firstSurname + '\'' +
                 ", secondSurname='" + secondSurname + '\'' +
                 ", companyName='" + companyName + '\'' +
