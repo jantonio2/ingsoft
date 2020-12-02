@@ -47,6 +47,5 @@
         <result column="typeAccount" property="typeAccount"/>
         <result column="cvvCode" property="cvvCode"/>
         <result column="status" property="status"/>
-<!--        <result column="deliveryStreet" property="deliveryStreet"/>-->
     </resultMap>
 </mapper>
