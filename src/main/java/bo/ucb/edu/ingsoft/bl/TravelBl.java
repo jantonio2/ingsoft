@@ -3,12 +3,14 @@ package bo.ucb.edu.ingsoft.bl;
 import bo.ucb.edu.ingsoft.dao.AddressDao;
 import bo.ucb.edu.ingsoft.dao.TransactionDao;
 import bo.ucb.edu.ingsoft.dao.TravelDao;
+import bo.ucb.edu.ingsoft.dto.SingleVehicle;
+import bo.ucb.edu.ingsoft.dto.TravelIdRequest;
 import bo.ucb.edu.ingsoft.dto.TravelRequest;
-import bo.ucb.edu.ingsoft.modelo.Address;
-import bo.ucb.edu.ingsoft.modelo.Transaction;
-import bo.ucb.edu.ingsoft.modelo.Travel;
+import bo.ucb.edu.ingsoft.modelo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class TravelBl {
@@ -57,6 +59,11 @@ public class TravelBl {
 
         return travelRequest;
     }
+    public List<TravelIdRequest> getIdsTravel(Integer userId,Integer driverId){
+//        SingleVehicle singleVehicle = new SingleVehicle();
+        List<TravelIdRequest> travelList=travelDao.getbyIds(userId,driverId);
 
+        return travelList;
+    }
 
 }

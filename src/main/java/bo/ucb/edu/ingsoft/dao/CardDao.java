@@ -13,7 +13,6 @@ import java.util.List;
 @Mapper
 public interface CardDao {
     public Integer createCard(Card card);
-
     public Integer getLastInsertId();
     public List<CardCollectionRequest> cardCollectionId(Integer userId);
 }
