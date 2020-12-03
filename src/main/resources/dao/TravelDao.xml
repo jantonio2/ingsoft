@@ -11,4 +11,51 @@
         #{transaction.txUserId},#{transaction.txDate})
 
     </insert>
+
+
+
+    <select id="getbyIds" resultMap="travelMap">
+        SELECT
+            b.travel_id as travelId,
+            b.user_id as travelUserId,
+            b.driver_id as travelDriverId,
+            b.travel_status as travelStatus,
+            b.date_delivery as travelDateDelivery,
+            e.number as startAddressNumber,
+            e.street as startAddressStreet,
+            e.zone as startAddressZone,
+            e.city as startAddressCity,
+            e.country as startAddressCountry,
+            f.number as deliveryAddressNumber,
+            f.street as deliveryAddressStreet,
+            f.zone as deliveryAddressZone,
+            f.city as deliveryAddressCity,
+            f.country as deliveryAddressCountry
+        FROM   travel b,address e, address f
+        WHERE
+	        b.user_id = #{userId}
+	        and b.driver_id=#{driverId}
+            and b.start_address_id=e.address_id
+            and b.delivery_address_id=f.address_id
+            and b.status=1
+            and e.status=1
+            and f.status=1
+    </select>
+    <resultMap id="travelMap" type="bo.ucb.edu.ingsoft.dto.TravelIdRequest" >
+        <result column="travelId" property="travelId"/>
+        <result column="travelUserId" property="travelUserId"/>
+        <result column="travelDriverId" property="travelDriverId"/>
+        <result column="travelStatus" property="travelStatus"/>
+        <result column="travelDateDelivery" property="travelDateDelivery"/>
+        <result column="startAddressNumber" property="startAddressNumber"/>
+        <result column="startAddressStreet" property="startAddressStreet"/>
+        <result column="startAddressZone" property="startAddressZone"/>
+        <result column="startAddressCity" property="startAddressCity"/>
+        <result column="startAddressCountry" property="startAddressCountry"/>
+        <result column="deliveryAddressNumber" property="deliveryAddressNumber"/>
+        <result column="deliveryAddressStreet" property="deliveryAddressStreet"/>
+        <result column="deliveryAddressZone" property="deliveryAddressZone"/>
+        <result column="deliveryAddressCity" property="deliveryAddressCity"/>
+        <result column="deliveryAddressCountry" property="deliveryAddressCountry"/>
+    </resultMap>
 </mapper>

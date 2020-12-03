@@ -2,6 +2,9 @@ package bo.ucb.edu.ingsoft.api;
 
 import bo.ucb.edu.ingsoft.bl.TransactionBl;
 import bo.ucb.edu.ingsoft.bl.TravelBl;
+import bo.ucb.edu.ingsoft.dto.CardCollectionRequest;
+import bo.ucb.edu.ingsoft.dto.SingleDriver;
+import bo.ucb.edu.ingsoft.dto.TravelIdRequest;
 import bo.ucb.edu.ingsoft.dto.TravelRequest;
 import bo.ucb.edu.ingsoft.modelo.Transaction;
 import bo.ucb.edu.ingsoft.util.TransactionUtil;
@@ -9,12 +12,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/v1/travel")
@@ -40,6 +41,12 @@ public class TravelApi {
         TravelRequest travelRequest1 = travelBl.createNewTravel(travelRequest,transaction);
         return travelRequest1;
     }
-
+    @GetMapping(path="/{userId}/{driverId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<TravelIdRequest> findTravelById(HttpServletRequest request, @PathVariable String userId,@PathVariable String driverId){
+        List<TravelIdRequest> travelList=travelBl.getIdsTravel(Integer.parseInt(userId),Integer.parseInt(driverId));
+        LOGGER.error("travelId");
+        return travelList;
+//        return travelBl.get(Integer.parseInt(userId),Integer.parseInt(driverId));
+    }
 
 }

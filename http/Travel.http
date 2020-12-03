@@ -19,3 +19,8 @@ Content-Type: application/json
   "deliveryAddressCountry": "Bolivia"
 
 }
+
+###
+GET http://localhost:8070/v1/travel/1/1
+Accept: application/json
+
