@@ -2,19 +2,19 @@ package bo.ucb.edu.ingsoft.api;
 
 import bo.ucb.edu.ingsoft.bl.TransactionBl;
 import bo.ucb.edu.ingsoft.bl.TravelBl;
+import bo.ucb.edu.ingsoft.dto.TravelListByDriverRequest;
 import bo.ucb.edu.ingsoft.dto.TravelRequest;
+import bo.ucb.edu.ingsoft.dto.VehicleListRequest;
 import bo.ucb.edu.ingsoft.modelo.Transaction;
 import bo.ucb.edu.ingsoft.util.TransactionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/v1/travel")
@@ -39,6 +39,12 @@ public class TravelApi {
         transactionBl.createTransaction(transaction);
         TravelRequest travelRequest1 = travelBl.createNewTravel(travelRequest,transaction);
         return travelRequest1;
+    }
+
+    @RequestMapping(path="/findDriver/{driverId}", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<TravelListByDriverRequest> findVehiclesByCompany(HttpServletRequest request, @PathVariable int driverId) {
+        List<TravelListByDriverRequest> vehicleListDriver=travelBl.travelsList(driverId);
+        return vehicleListDriver;
     }
 
 

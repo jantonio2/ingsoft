@@ -196,4 +196,21 @@
         <result column="email" property="email"/>
         <result column="password" property="password"/>
     </resultMap>
+
+    <select id="findDriverByLicensePlate" resultType="bo.ucb.edu.ingsoft.modelo.Driver">
+        select a.driver_id as driverId
+        from driver a, vehicle b, person c
+        where a.driver_id = b.vehicle_id
+        and c.person_id = a.person_id
+        and B.license_plate=#{licensePlate}
+    </select>
+
+    <select id="findDriverByCi" resultType="bo.ucb.edu.ingsoft.modelo.Driver">
+        select a.driver_id as driverId
+        from driver a, vehicle b, person c
+        where a.driver_id = b.vehicle_id
+        and c.person_id = a.person_id
+        and c.ci='1244504'
+    </select>
+
 </mapper>

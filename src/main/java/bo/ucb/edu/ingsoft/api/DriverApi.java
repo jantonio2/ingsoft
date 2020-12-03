@@ -41,6 +41,12 @@ public class DriverApi {
     public SingleDriver findById(HttpServletRequest request, @PathVariable String driverId){
         return driverBl.findDriverById(Integer.parseInt(driverId));
     }
+    @GetMapping(path="/findIdDriver/{licensePlate}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public int findDriverByLicensePlate(HttpServletRequest request, @PathVariable String licensePlate){
+        return driverBl.findDriverByLicensePlate(licensePlate);
+    }
+
+
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public DriverRequest createDriver(@RequestBody DriverRequest driverRequest, HttpServletRequest request) {

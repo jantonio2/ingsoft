@@ -145,15 +145,17 @@ public class VehicleBl {
     }
 
     public List<VehicleListRequest>vehiclesList(){
-        List<VehicleListRequest>vehicleListRequests = vehicleDao.vehicleListNotCompany();
-        List<VehicleListRequest>vehicleListWithCompany=vehicleDao.vehicleListWithCompany();
+
+        List<VehicleListRequest>vehicleListRequests = vehicleDao.vehicleListWithCompany();
+        List<VehicleListRequest>vehicleListWithCompany=vehicleDao.vehicleListNotCompany();
         vehicleListRequests.addAll(vehicleListWithCompany);
         return vehicleListRequests;
     }
 
     public List<VehicleListRequest>vehiclesListByType(String vehicleType){
-        List<VehicleListRequest>vehicleListRequests = vehicleDao.vehicleListWithCompanyByType(vehicleType);
-        List<VehicleListRequest>vehicleListWithCompany=vehicleDao.vehicleListNotCompanyByType(vehicleType);
+
+        List<VehicleListRequest>vehicleListRequests = vehicleDao.vehicleListNotCompanyByType(vehicleType);
+        List<VehicleListRequest>vehicleListWithCompany=vehicleDao.vehicleListWithCompanyByType(vehicleType);
         vehicleListRequests.addAll(vehicleListWithCompany);
         return vehicleListRequests;
     }
@@ -165,8 +167,8 @@ public class VehicleBl {
 
 
     public List<VehicleListRequest>vehiclesListByBrand(String vehicleBrand){
-        List<VehicleListRequest>vehicleListRequests = vehicleDao.vehicleListNotCompanyByBrand(vehicleBrand);
-        List<VehicleListRequest>vehicleListWithCompany=vehicleDao.vehicleListWithCompanyByBrand(vehicleBrand);
+        List<VehicleListRequest>vehicleListRequests = vehicleDao.vehicleListWithCompanyByBrand(vehicleBrand);
+        List<VehicleListRequest>vehicleListWithCompany=vehicleDao.vehicleListNotCompanyByBrand(vehicleBrand);
         vehicleListRequests.addAll(vehicleListWithCompany);
         return vehicleListRequests;
     }

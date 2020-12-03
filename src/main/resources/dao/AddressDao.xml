@@ -37,4 +37,6 @@
         address_id=#{addressId} and status = 1
     </update>
 
+
+
 </mapper>

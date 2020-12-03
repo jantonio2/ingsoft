@@ -9,6 +9,37 @@
         null,#{userId},#{driverId},#{startAddressId},#{deliveryAddressId},#{travelStatus},
         #{dateDelivery},1,#{transaction.txId}, #{transaction.txHost},
         #{transaction.txUserId},#{transaction.txDate})
-
     </insert>
+
+    <select id="findTravelByIdDriver" resultMap="travelListMap">
+        select a.user_id as userId,
+        d.first_name as userFirstName,
+        d.first_surname as userFirsSurname,
+        a.date_delivery as travelDateDelivery,
+        d.phone as userPhone,
+        a.travel_status as travelStatus,
+        a.start_address_id as startAddressId,
+        a.delivery_address_id as deliveryAddressId
+        from travel a, driver c, person d, user e
+        where a.user_id=e.user_id
+        and e.person_id = d.person_id
+        and a.driver_id = c.driver_id
+        and a.driver_id=#{driverId};
+    </select>
+
+    <resultMap id="travelListMap" type="bo.ucb.edu.ingsoft.dto.TravelListByDriverRequest">
+        <result column="userId" property="userId"/>
+        <result column="userFirstName" property="userFirstName"/>
+        <result column="userFirsSurname" property="userFirsSurname"/>
+        <result column="travelDateDelivery" property="travelDateDelivery"/>
+        <result column="userPhone" property="userPhone"/>
+        <result column="travelStatus" property="travelStatus"/>
+        <result column="startAddressId" property="startAddressId"/>
+        <result column="deliveryAddressId" property="deliveryAddressId"/>
+    </resultMap>
+
+
+
+
+
 </mapper>

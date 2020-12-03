@@ -179,4 +179,8 @@ public class DriverBl {
         driver.setTransaction(transaction);
         driverDao.deleteDriver(driver);
     }
+    public int findDriverByLicensePlate(String licensePlate){
+        return driverDao.findDriverByLicensePlate(licensePlate);
+
+    }
 }
