@@ -37,9 +37,9 @@ Content-Type: application/json
 
 {
   "userId": 1,
-  "accountNumber": 2,
+  "accountNumber": 267747,
   "pin": "1234",
-  "bank": "Banco Nacional",
+  "bank": "Banco Sol",
   "typeAccount": "Caja de ahorros",
   "cvvCode": "1234",
   "status": 1
