@@ -5,6 +5,7 @@ import bo.ucb.edu.ingsoft.bl.TransactionBl;
 import bo.ucb.edu.ingsoft.dto.*;
 import bo.ucb.edu.ingsoft.modelo.Transaction;
 import bo.ucb.edu.ingsoft.modelo.Driver;
+import bo.ucb.edu.ingsoft.util.ImageUtil;
 import bo.ucb.edu.ingsoft.util.TransactionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -94,5 +95,20 @@ public class DriverApi {
     public List<LogInRequest> logList(HttpServletRequest request) {
         List<LogInRequest> log=driverBl.driverLogIn();
         return log;
+    }
+
+    @GetMapping(path="image/{path}/{name}" , produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    public byte[] getImage(@PathVariable String path, @PathVariable String name){
+        ImageUtil storageUtil=new ImageUtil();
+        byte[] image=storageUtil.getImage(path,name);
+        return image;
+    }
+
+    @DeleteMapping(path="/{driverId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String deleteDriver(@PathVariable String driverId, HttpServletRequest request){
+        Transaction transaction = TransactionUtil.createTransaction(request);
+        transactionBl.createTransaction(transaction);
+        driverBl.deleteDriver(Integer.parseInt(driverId),transaction);
+        return "Succesful process";
     }
 }

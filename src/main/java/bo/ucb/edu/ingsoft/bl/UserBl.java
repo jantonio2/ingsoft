@@ -54,6 +54,7 @@ public class UserBl {
 
         singleUserResponse.setBirthDate(user.getBirthDate());
         singleUserResponse.setEmail(user.getEmail());
+        singleUserResponse.setPassword(user.getPassword());
 
         singleUserResponse.setNumber(address.getNumber());
         singleUserResponse.setStreet(address.getStreet());

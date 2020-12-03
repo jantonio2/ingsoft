@@ -3,8 +3,8 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "travelUserId": 1,
-  "travelDriverId": 3,
+  "travelUserId": 2,
+  "travelDriverId": 1,
   "travelStatus": "Confirmado",
   "travelDateDelivery": "2020-11-11",
   "startAddressNumber": "3226",

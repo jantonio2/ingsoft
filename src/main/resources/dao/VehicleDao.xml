@@ -28,8 +28,6 @@
     <delete id="deleteVehicle" parameterType="bo.ucb.edu.ingsoft.modelo.Vehicle">
     </delete>
 
-
-
     <select id="vehicleDriver" resultMap="vehicleMap">
 
         select
@@ -59,6 +57,10 @@
         <result column="vehicleCapacity" property="vehicleCapacity"/>
         <result column="vehiclePrice" property="vehiclePrice"/>
     </resultMap>
+
+
+
+
     <select id="findVehiclesByType" resultMap="vehicleMap">
         select
             c.vehicle_id as vehicleId,
@@ -264,7 +266,6 @@
         <result column="vehicleCapacity" property="vehicleCapacity"/>
         <result column="vehiclePrice" property="vehiclePrice"/>
     </resultMap>
-
 
 
 

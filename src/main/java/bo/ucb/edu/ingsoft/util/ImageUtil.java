@@ -2,6 +2,7 @@ package bo.ucb.edu.ingsoft.util;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -42,6 +43,16 @@ public class ImageUtil {
         String array[] = imageName.split("\\.");
         String type = array[1];
         return type;
+    }
+
+    public byte[] getImage(String path,String name){
+        try{
+            File image = new File("images/"+path+"/"+name);
+            return Files.readAllBytes(image.toPath());
+        }
+        catch (Exception e){
+            throw new RuntimeException("Error: " + e.toString());
+        }
     }
 
 }
