@@ -9,7 +9,8 @@
                person_id as personId,
                address_id as addressId,
                birthdate as birthDate,
-               email as email
+               email as email,
+               password as password
         FROM user
         WHERE
             user_id = #{userId} and status = 1
