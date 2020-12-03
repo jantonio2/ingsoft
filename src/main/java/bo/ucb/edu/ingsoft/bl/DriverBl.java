@@ -52,6 +52,7 @@ public class DriverBl {
         singleDriverResponse.setBirthDate(driver.getBirthDate());
         singleDriverResponse.setEmail(driver.getEmail());
         singleDriverResponse.setPassword(driver.getPassword());
+        singleDriverResponse.setPicture(driver.getPicture());
 
         singleDriverResponse.setNumber(address.getNumber());
         singleDriverResponse.setStreet(address.getStreet());

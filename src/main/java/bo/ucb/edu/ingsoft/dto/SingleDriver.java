@@ -16,6 +16,7 @@ public class SingleDriver {
     private String zone;
     private String city;
     private String country;
+    private String picture;
 
     public SingleDriver() {
     }
@@ -124,6 +125,14 @@ public class SingleDriver {
         this.country = country;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
     @Override
     public String toString() {
         return "SingleDriver{" +
@@ -140,6 +149,7 @@ public class SingleDriver {
                 ", zone='" + zone + '\'' +
                 ", city='" + city + '\'' +
                 ", country='" + country + '\'' +
+                ", picture='" + picture + '\'' +
                 '}';
     }
 }
