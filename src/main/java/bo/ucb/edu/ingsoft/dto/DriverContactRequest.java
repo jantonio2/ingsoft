@@ -9,6 +9,7 @@ public class DriverContactRequest {
     private String secondSurname;
     private String companyName;
     private String ci;
+    private String pathImage;
 
     public DriverContactRequest() {}
 
@@ -60,6 +61,14 @@ public class DriverContactRequest {
         this.ci = ci;
     }
 
+    public String getPathImage() {
+        return pathImage;
+    }
+
+    public void setPathImage(String pathImage) {
+        this.pathImage = pathImage;
+    }
+
     @Override
     public String toString() {
         return "DriverContactRequest{" +
@@ -69,6 +78,7 @@ public class DriverContactRequest {
                 ", secondSurname='" + secondSurname + '\'' +
                 ", companyName='" + companyName + '\'' +
                 ", ci='" + ci + '\'' +
+                ", pathImage='" + pathImage + '\'' +
                 '}';
     }
 }

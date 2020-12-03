@@ -87,3 +87,14 @@ Accept: application/json
 GET http://localhost:8070/v1/driver/sesion
 Accept: application/json
 
+###
+
+GET http://192.168.0.18:8070/v1/driver/sesion
+Accept: application/json
+
+###
+
+DELETE http://localhost:8070/v1/driver/7
+Accept: application/json
+
+

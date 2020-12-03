@@ -93,7 +93,7 @@ public class VehicleBl {
         return vehicleDriverList;
     }
 
-    public List<VehicleDriverRequest>findVehiclesByType(String vehicleType){
+    /*public List<VehicleDriverRequest>findVehiclesByType(String vehicleType){
         List<VehicleDriverRequest>vehicleDriverRequests = vehicleDao.findVehiclesByType(vehicleType);
         return vehicleDriverRequests;
     }
@@ -101,7 +101,7 @@ public class VehicleBl {
     public List<VehicleDriverRequest>findVehicleByBrand(String vehicleBrand){
         List<VehicleDriverRequest>vehicleDriverRequests = vehicleDao.findVehiclesByBrand(vehicleBrand);
         return vehicleDriverRequests;
-    }
+    }*/
 
     public ScoreRequest createNewScore(ScoreRequest scoreRequest, Transaction transaction){
         Score score = new Score();
@@ -122,7 +122,6 @@ public class VehicleBl {
         vehicle.setCapacity(vehicleRequest.getVehicleCapacity());
         vehicle.setVehicleType(vehicleRequest.getVehicleType());
         vehicle.setPrice(vehicleRequest.getVehiclePrice());
-        vehicle.setVehicleStatus(vehicleRequest.getVehicleStatus());
         vehicle.setBrand(vehicleRequest.getVehicleBrand());
         vehicle.setVehicleModel(vehicleRequest.getVehicleModel());
         vehicle.setTransaction(transaction);
@@ -148,6 +147,26 @@ public class VehicleBl {
     public List<VehicleListRequest>vehiclesList(){
         List<VehicleListRequest>vehicleListRequests = vehicleDao.vehicleListNotCompany();
         List<VehicleListRequest>vehicleListWithCompany=vehicleDao.vehicleListWithCompany();
+        vehicleListRequests.addAll(vehicleListWithCompany);
+        return vehicleListRequests;
+    }
+
+    public List<VehicleListRequest>vehiclesListByType(String vehicleType){
+        List<VehicleListRequest>vehicleListRequests = vehicleDao.vehicleListWithCompanyByType(vehicleType);
+        List<VehicleListRequest>vehicleListWithCompany=vehicleDao.vehicleListNotCompanyByType(vehicleType);
+        vehicleListRequests.addAll(vehicleListWithCompany);
+        return vehicleListRequests;
+    }
+
+    public List<VehicleListRequest>vehiclesListByCompany(String vehicleCompany){
+        List<VehicleListRequest>vehicleListRequests = vehicleDao.vehicleListWithCompanyByCompany(vehicleCompany);
+        return vehicleListRequests;
+    }
+
+
+    public List<VehicleListRequest>vehiclesListByBrand(String vehicleBrand){
+        List<VehicleListRequest>vehicleListRequests = vehicleDao.vehicleListNotCompanyByBrand(vehicleBrand);
+        List<VehicleListRequest>vehicleListWithCompany=vehicleDao.vehicleListWithCompanyByBrand(vehicleBrand);
         vehicleListRequests.addAll(vehicleListWithCompany);
         return vehicleListRequests;
     }

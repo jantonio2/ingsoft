@@ -20,15 +20,13 @@
 
     <insert id="createVehicle" parameterType="bo.ucb.edu.ingsoft.modelo.Vehicle">
         insert into vehicle values (null, #{driverId}, #{licensePlate},#{capacity}, #{vehicleType},
-                            #{price}, #{vehicleStatus},null, #{brand}, #{vehicleModel},
+                            #{price}, 'Disponible',null, #{brand}, #{vehicleModel},
                             1, #{transaction.txId}, #{transaction.txHost}, #{transaction.txUserId}, #{transaction.txDate}
                             )
     </insert>
 
     <delete id="deleteVehicle" parameterType="bo.ucb.edu.ingsoft.modelo.Vehicle">
     </delete>
-
-
 
     <select id="vehicleDriver" resultMap="vehicleMap">
 
@@ -59,6 +57,10 @@
         <result column="vehicleCapacity" property="vehicleCapacity"/>
         <result column="vehiclePrice" property="vehiclePrice"/>
     </resultMap>
+
+
+
+
     <select id="findVehiclesByType" resultMap="vehicleMap">
         select
             c.vehicle_id as vehicleId,
@@ -145,6 +147,113 @@
 
     </select>
 
+    <select id="vehicleListNotCompanyByType" resultMap="vehicleListMap">
+    select
+    c.vehicle_id as vehicleId,
+    c.vehicle_type as vehicleType,
+    c.brand as vehicleBrand,
+    c.vehicle_model as vehicleModel,
+    c.pictures as vehiclePicture,
+    a.first_name as personFirstName,
+    a.first_surname as personFirstSurname,
+    c.capacity as vehicleCapacity,
+    c.price as vehiclePrice
+    from person a, driver b, vehicle c
+    where a.person_id = b.person_id
+    and c.driver_id = b.driver_id
+    and b.company_id is null
+    and c.status = 1
+    and c.vehicle_type=#{vehicleType}
+
+    </select>
+
+    <select id="vehicleListWithCompanyByType" resultMap="vehicleListMap">
+    select
+    c.vehicle_id as vehicleId,
+    c.vehicle_type as vehicleType,
+    c.brand as vehicleBrand,
+    c.vehicle_model as vehicleModel,
+    c.pictures as vehiclePicture,
+    a.first_name as personFirstName,
+    a.first_surname as personFirstSurname,
+    c.capacity as vehicleCapacity,
+    c.price as vehiclePrice,
+    d.name as vehicleCompany
+    from person a, driver b, vehicle c, company d
+    where a.person_id = b.person_id
+    and c.driver_id = b.driver_id
+    and d.company_id = b.company_id
+    and b.company_id is not null
+    and c.status = 1
+    and c.vehicle_type=#{vehicleType}
+
+    </select>
+
+    <select id="vehicleListWithCompanyByCompany" resultMap="vehicleListMap">
+    select
+    c.vehicle_id as vehicleId,
+    c.vehicle_type as vehicleType,
+    c.brand as vehicleBrand,
+    c.vehicle_model as vehicleModel,
+    c.pictures as vehiclePicture,
+    a.first_name as personFirstName,
+    a.first_surname as personFirstSurname,
+    c.capacity as vehicleCapacity,
+    c.price as vehiclePrice,
+    d.name as vehicleCompany
+    from person a, driver b, vehicle c, company d
+    where a.person_id = b.person_id
+    and c.driver_id = b.driver_id
+    and d.company_id = b.company_id
+    and b.company_id is not null
+    and c.status = 1
+    and d.name=#{vehicleCompany}
+
+    </select>
+
+    <select id="vehicleListNotCompanyByBrand" resultMap="vehicleListMap">
+    select
+    c.vehicle_id as vehicleId,
+    c.vehicle_type as vehicleType,
+    c.brand as vehicleBrand,
+    c.vehicle_model as vehicleModel,
+    c.pictures as vehiclePicture,
+    a.first_name as personFirstName,
+    a.first_surname as personFirstSurname,
+    c.capacity as vehicleCapacity,
+    c.price as vehiclePrice
+    from person a, driver b, vehicle c
+    where a.person_id = b.person_id
+    and c.driver_id = b.driver_id
+    and b.company_id is null
+    and c.status = 1
+    and c.brand=#{vehicleBrand}
+
+    </select>
+
+    <select id="vehicleListWithCompanyByBrand" resultMap="vehicleListMap">
+    select
+    c.vehicle_id as vehicleId,
+    c.vehicle_type as vehicleType,
+    c.brand as vehicleBrand,
+    c.vehicle_model as vehicleModel,
+    c.pictures as vehiclePicture,
+    a.first_name as personFirstName,
+    a.first_surname as personFirstSurname,
+    c.capacity as vehicleCapacity,
+    c.price as vehiclePrice,
+    d.name as vehicleCompany
+    from person a, driver b, vehicle c, company d
+    where a.person_id = b.person_id
+    and c.driver_id = b.driver_id
+    and d.company_id = b.company_id
+    and b.company_id is not null
+    and c.status = 1
+    and c.brand=#{vehicleBrand}
+
+    </select>
+
+
 
     <resultMap id="vehicleListMap" type="bo.ucb.edu.ingsoft.dto.VehicleListRequest">
         <result column="vehicleId" property="vehicleId"/>
@@ -157,7 +266,6 @@
         <result column="vehicleCapacity" property="vehicleCapacity"/>
         <result column="vehiclePrice" property="vehiclePrice"/>
     </resultMap>
-
 
 
 

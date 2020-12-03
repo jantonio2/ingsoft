@@ -9,7 +9,6 @@ public class VehicleRequest {
     String vehicleType;
     Double vehiclePrice;
     String vehicleBrand;
-    String vehicleStatus;
     String vehicleModel;
 
     public VehicleRequest(){
@@ -18,14 +17,6 @@ public class VehicleRequest {
 
     public Integer getVehicleDriverId() {
         return vehicleDriverId;
-    }
-
-    public String getVehicleStatus() {
-        return vehicleStatus;
-    }
-
-    public void setVehicleStatus(String vehicleStatus) {
-        this.vehicleStatus = vehicleStatus;
     }
 
     public void setVehicleDriverId(Integer vehicleDriverId) {

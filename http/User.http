@@ -31,7 +31,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "userId": 2,
+  "userId": 3,
   "ci": "124248596 cbba",
   "firstName": "Andrea",
   "firstSurname": "Albarracin",
@@ -39,7 +39,7 @@ Content-Type: application/json
   "birthDate": "2000-01-17",
   "phone": "+591 77745812",
   "email": "albarracinandrea@gmail.com",
-  "password": "andreaalbarracin",
+  "password": "ya123",
   "number":"198B",
   "street":"Sucre",
   "zone":"Norte",

@@ -12,11 +12,25 @@ public interface VehicleDao {
     public void createVehicle(Vehicle vehicle);
     public Vehicle findVehicleById(Integer vehicleId);
     public List<VehicleDriverRequest> vehicleDriver();
-    public List<VehicleDriverRequest>findVehiclesByType(String vehicleType);
-    public List<VehicleDriverRequest>findVehiclesByBrand(String vehicleBrand);
+    //public List<VehicleDriverRequest>findVehiclesByType(String vehicleType);
+    //public List<VehicleDriverRequest>findVehiclesByBrand(String vehicleBrand);
 
     public List<VehicleListRequest>vehicleListNotCompany();
     public List<VehicleListRequest>vehicleListWithCompany();
+
+    public List<VehicleListRequest>vehicleListNotCompanyByType(String vehicleType);
+    public List<VehicleListRequest>vehicleListWithCompanyByType(String vehicleType);
+
+    public List<VehicleListRequest>vehicleListWithCompanyByCompany(String vehicleCompany);
+
+    public List<VehicleListRequest>vehicleListNotCompanyByBrand(String vehicleBrand);
+    public List<VehicleListRequest>vehicleListWithCompanyByBrand(String vehicleBrand);
+
+
+
+    public List<VehicleListRequest>vehicleListNotCompanyByBrand();
+    public List<VehicleListRequest>vehicleListWithCompanyByBrand();
+
 
     public void updateImage(Vehicle vehicle);
 

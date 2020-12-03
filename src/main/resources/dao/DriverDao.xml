@@ -35,6 +35,18 @@
         WHERE
         driver_id=#{driverId}
     </update>
+
+    <update id="deleteDriver" parameterType="bo.ucb.edu.ingsoft.modelo.Driver">
+        UPDATE driver set
+        status = #{status},
+        tx_id=#{transaction.txId},
+        tx_host=#{transaction.txHost},
+        tx_user_id=#{transaction.txUserId},
+        tx_date=#{transaction.txDate}
+        WHERE
+        driver_id=#{driverId} and status = 1
+    </update>
+
     <select id="getPersonId" resultType="bo.ucb.edu.ingsoft.modelo.Driver">
         SELECT
                person_id as personId,
@@ -80,6 +92,7 @@
             a.first_surname as firstSurname,
             a.second_surname as secondSurname,
             d.name as companyName,
+            b.picture as pathImage,
             a.ci as ci
         FROM   person a, driver b, company d
         WHERE
@@ -93,6 +106,7 @@
         <result column="firstSurname" property="firstSurname"/>
         <result column="secondSurname" property="secondSurname"/>
         <result column="companyName" property="companyName"/>
+        <result column="pathImage" property="pathImage"/>
         <result column="ci" property="ci"/>
     </resultMap>
     <select id="driverContactNull" resultMap="driverContactNullMap">
@@ -101,6 +115,7 @@
             a.first_name as firstName,
             a.first_surname as firstSurname,
             a.second_surname as secondSurname,
+            b.picture as pathImage,
             a.ci as ci
         FROM   person a, driver b
         WHERE
@@ -113,6 +128,7 @@
         <result column="firstName" property="firstName"/>
         <result column="firstSurname" property="firstSurname"/>
         <result column="secondSurname" property="secondSurname"/>
+        <result column="pathImage" property="pathImage"/>
         <result column="ci" property="ci"/>
     </resultMap>
 

@@ -20,5 +20,6 @@ public interface DriverDao {
     public List<CompanyRequest> getCompanies();
     public List<DriverVehicleRequest> driverVehicle(Driver driver);
     public void updateImage(Driver driver);
+    public void deleteDriver(Driver driver);
     public List<LogInRequest> driverLogIn();
 }

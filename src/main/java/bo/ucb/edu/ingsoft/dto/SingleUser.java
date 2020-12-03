@@ -10,6 +10,7 @@ public class SingleUser {
     private Date birthDate;
     private String phone;
     private String email;
+    private String password;
     private String number;
     private String street;
     private String zone;
@@ -73,6 +74,14 @@ public class SingleUser {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getNumber() {
