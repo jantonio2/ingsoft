@@ -11,6 +11,25 @@ public class PaymentHistoryRequest {
     private String driverFirstName;
     private String driverFirstSurname;
 
+    public String getStartStreet() {
+        return startStreet;
+    }
+
+    public void setStartStreet(String startStreet) {
+        this.startStreet = startStreet;
+    }
+
+    public String getDeliveryStreet() {
+        return deliveryStreet;
+    }
+
+    public void setDeliveryStreet(String deliveryStreet) {
+        this.deliveryStreet = deliveryStreet;
+    }
+
+    private String startStreet;
+    private String deliveryStreet;
+
     public PaymentHistoryRequest(){
 
     }
@@ -47,6 +66,8 @@ public class PaymentHistoryRequest {
                 ", amount='" + amount + '\'' +
                 ", driverFirstName='" + driverFirstName + '\'' +
                 ", driverFirstSurname='" + driverFirstSurname + '\'' +
+                ", startStreet='" + startStreet + '\'' +
+                ", deliveryStreet='" + deliveryStreet + '\'' +
                 '}';
     }
 

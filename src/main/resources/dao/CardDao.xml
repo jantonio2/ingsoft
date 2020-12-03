@@ -23,4 +23,29 @@
 <!--    <select id="getLastInsertId" resultType="java.lang.Integer">-->
 <!--        SELECT LAST_INSERT_ID()-->
 <!--    </select>-->
+    <select id="cardCollectionId" resultMap="cardMap">
+        SELECT
+            a.account_number as accountNumber,
+            a.pin as pin,
+            a.bank as bank,
+            a.type_account as typeAccount,
+            a.cvv_code as cvvCode,
+            a.status as status
+        FROM   card a, person b, user c
+        WHERE
+	        a.user_id = #{userId}
+            and c.user_id=a.user_id
+            and c.person_id=b.person_id
+            and a.status=1
+            and b.status=1
+            and c.status=1
+    </select>
+    <resultMap id="cardMap" type="bo.ucb.edu.ingsoft.dto.CardCollectionRequest" >
+        <result column="accountNumber" property="accountNumber"/>
+        <result column="pin" property="pin"/>
+        <result column="bank" property="bank"/>
+        <result column="typeAccount" property="typeAccount"/>
+        <result column="cvvCode" property="cvvCode"/>
+        <result column="status" property="status"/>
+    </resultMap>
 </mapper>

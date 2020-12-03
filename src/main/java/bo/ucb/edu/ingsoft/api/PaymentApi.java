@@ -3,6 +3,7 @@ package bo.ucb.edu.ingsoft.api;
 import bo.ucb.edu.ingsoft.bl.PaymentBl;
 import bo.ucb.edu.ingsoft.bl.TransactionBl;
 import bo.ucb.edu.ingsoft.dto.*;
+import bo.ucb.edu.ingsoft.modelo.Card;
 import bo.ucb.edu.ingsoft.modelo.Driver;
 import bo.ucb.edu.ingsoft.modelo.Transaction;
 import bo.ucb.edu.ingsoft.modelo.User;
@@ -79,6 +80,12 @@ public class PaymentApi {
         List<PaymentHistoryRequest> paymentList=paymentBl.historyPayment(user);
         LOGGER.error("hola");
         return paymentList;
+    }
+    @RequestMapping(path="/cardcollection",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<CardCollectionRequest> cardCollection(@RequestBody User user, HttpServletRequest request) {
+        List<CardCollectionRequest> cardList=paymentBl.cardCollection(user);
+        LOGGER.error("hola");
+        return cardList;
     }
 //    @RequestMapping(path="/history",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
 //    public List<DriverHistoryRequest> chatsList(@RequestBody Driver driver, HttpServletRequest request) {

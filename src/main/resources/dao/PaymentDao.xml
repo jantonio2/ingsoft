@@ -26,13 +26,17 @@
             d.first_surname as driverFirstSurname,
             a.date_payment as datePayment,
             a.payment_status as paymentStatus,
-            a.amount as amount
-        FROM   payment a, travel b, driver c, person d
+            a.amount as amount,
+            e.street as startStreet,
+            f.street as deliveryStreet
+        FROM   payment a, travel b, driver c, person d, address e, address f
         WHERE
 	        b.user_id = #{userId}
             and b.travel_id=a.travel_id
             and b.driver_id=c.driver_id
             and c.person_id=d.person_id
+            and b.start_address_id=e.address_id
+            and b.delivery_address_id=f.address_id
             and a.status=1
             and b.status=1
             and c.status=1
@@ -44,5 +48,7 @@
         <result column="amount" property="amount"/>
         <result column="driverFirstName" property="driverFirstName"/>
         <result column="driverFirstSurname" property="driverFirstSurname"/>
+        <result column="startStreet" property="startStreet"/>
+        <result column="deliveryStreet" property="deliveryStreet"/>
     </resultMap>
 </mapper>
