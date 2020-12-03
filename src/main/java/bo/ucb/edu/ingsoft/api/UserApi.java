@@ -8,6 +8,7 @@ import bo.ucb.edu.ingsoft.dto.UserHistoryRequest;
 import bo.ucb.edu.ingsoft.dto.UserRequest;
 import bo.ucb.edu.ingsoft.modelo.Transaction;
 import bo.ucb.edu.ingsoft.modelo.User;
+import bo.ucb.edu.ingsoft.util.ImageUtil;
 import bo.ucb.edu.ingsoft.util.TransactionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -89,5 +90,12 @@ public class    UserApi {
     public List<LogInRequest> logList(HttpServletRequest request) {
         List<LogInRequest> log=userBl.userLogIn();
         return log;
+    }
+
+    @GetMapping(path="image/{path}/{name}" , produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    public byte[] getImage(@PathVariable String path, @PathVariable String name){
+        ImageUtil storageUtil=new ImageUtil();
+        byte[] image=storageUtil.getImage(path,name);
+        return image;
     }
 }

@@ -46,6 +46,7 @@
         and c.driver_id = b.driver_id
         and b.company_id = d.company_id
         and c.status = 1
+        and b.status = 1
 
     </select>
 
@@ -78,6 +79,7 @@
         and c.driver_id = b.driver_id
         and c.vehicle_type=#{vehicleType}
         and c.status = 1
+        and b.status = 1
     </select>
 
     <select id="findVehiclesByBrand" resultMap="vehicleMap">
@@ -97,6 +99,7 @@
         and c.driver_id = b.driver_id
         and c.brand=#{vehicleBrand}
         and c.status = 1
+        and b.status = 1
     </select>
 
     <update id="updateImage" parameterType="bo.ucb.edu.ingsoft.modelo.Vehicle">
@@ -123,6 +126,7 @@
     and c.driver_id = b.driver_id
     and b.company_id is null
     and c.status = 1
+    and b.status = 1
 
     </select>
 
@@ -144,7 +148,7 @@
     and d.company_id = b.company_id
     and b.company_id is not null
     and c.status = 1
-
+    and b.status = 1
     </select>
 
     <select id="vehicleListNotCompanyByType" resultMap="vehicleListMap">
@@ -164,6 +168,7 @@
     and b.company_id is null
     and c.status = 1
     and c.vehicle_type=#{vehicleType}
+    and b.status = 1
 
     </select>
 
@@ -186,7 +191,7 @@
     and b.company_id is not null
     and c.status = 1
     and c.vehicle_type=#{vehicleType}
-
+    and b.status = 1
     </select>
 
     <select id="vehicleListWithCompanyByCompany" resultMap="vehicleListMap">
@@ -208,7 +213,7 @@
     and b.company_id is not null
     and c.status = 1
     and d.name=#{vehicleCompany}
-
+    and b.status = 1
     </select>
 
     <select id="vehicleListNotCompanyByBrand" resultMap="vehicleListMap">
@@ -228,7 +233,7 @@
     and b.company_id is null
     and c.status = 1
     and c.brand=#{vehicleBrand}
-
+    and b.status = 1
     </select>
 
     <select id="vehicleListWithCompanyByBrand" resultMap="vehicleListMap">
@@ -250,7 +255,7 @@
     and b.company_id is not null
     and c.status = 1
     and c.brand=#{vehicleBrand}
-
+    and b.status = 1
     </select>
     <resultMap id="vehicleListMap" type="bo.ucb.edu.ingsoft.dto.VehicleListRequest">
         <result column="vehicleId" property="vehicleId"/>
