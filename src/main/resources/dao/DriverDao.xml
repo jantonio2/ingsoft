@@ -10,11 +10,13 @@
                person_id as personId,
                address_id as addressId,
                birthdate as birthDate,
-               email as email
+               email as email,
+               password as password
 
         FROM driver
         WHERE
             driver_id = #{driverId}
+            and status = 1
     </select>
     <insert id="createDriver" parameterType="bo.ucb.edu.ingsoft.modelo.Driver">
         INSERT INTO driver VALUES (
