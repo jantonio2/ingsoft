@@ -1,0 +1,15 @@
+POST http://localhost:8070/v1/company
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Bolivar",
+  "email": "bolivar@gmail.com",
+  "phone": "+691 73545245",
+  "number": "1305",
+  "street": "Bolivar",
+  "zone": "Tembladerani",
+  "city": "La Paz",
+  "country": "Bolivia"
+}
+

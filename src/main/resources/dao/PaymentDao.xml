@@ -24,11 +24,19 @@
         SELECT
             d.first_name as driverFirstName,
             d.first_surname as driverFirstSurname,
+            d.second_surname as driverSecondSurname,
             a.date_payment as datePayment,
             a.payment_status as paymentStatus,
             a.amount as amount,
             e.street as startStreet,
-            f.street as deliveryStreet
+            e.zone as startZone,
+            e.city as startCity,
+            e.country as startCountry,
+            f.street as deliveryStreet,
+            f.zone as deliveryZone,
+            f.city as deliveryCity,
+            f.country as deliveryCountry,
+            c.picture as driverPicture
         FROM   payment a, travel b, driver c, person d, address e, address f
         WHERE
 	        b.user_id = #{userId}
@@ -43,12 +51,21 @@
             and d.status=1
     </select>
     <resultMap id="paymentMap" type="bo.ucb.edu.ingsoft.dto.PaymentHistoryRequest" >
+        <result column="driverFirstName" property="driverFirstName"/>
+        <result column="driverFirstSurname" property="driverFirstSurname"/>
+        <result column="driverSecondSurname" property="driverSecondSurname"/>
         <result column="datePayment" property="datePayment"/>
         <result column="paymentStatus" property="paymentStatus"/>
         <result column="amount" property="amount"/>
-        <result column="driverFirstName" property="driverFirstName"/>
-        <result column="driverFirstSurname" property="driverFirstSurname"/>
         <result column="startStreet" property="startStreet"/>
+        <result column="startZone" property="startZone"/>
+        <result column="startCity" property="startCity"/>
+        <result column="startCountry" property="startCountry"/>
         <result column="deliveryStreet" property="deliveryStreet"/>
+        <result column="deliveryZone" property="deliveryZone"/>
+        <result column="deliveryCity" property="deliveryCity"/>
+        <result column="deliveryCountry" property="deliveryCountry"/>
+        <result column="driverPicture" property="driverPicture"/>
+
     </resultMap>
 </mapper>

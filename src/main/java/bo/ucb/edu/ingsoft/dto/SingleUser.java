@@ -16,6 +16,7 @@ public class SingleUser {
     private String zone;
     private String city;
     private String country;
+    private String picture;
 
     public SingleUser() {
     }
@@ -124,9 +125,17 @@ public class SingleUser {
         this.country = country;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
     @Override
     public String toString() {
-        return "SingleUserResponse{" +
+        return "SingleUser{" +
                 "ci='" + ci + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", firstSurname='" + firstSurname + '\'' +
@@ -134,11 +143,13 @@ public class SingleUser {
                 ", birthDate=" + birthDate +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 ", number='" + number + '\'' +
                 ", street='" + street + '\'' +
                 ", zone='" + zone + '\'' +
                 ", city='" + city + '\'' +
                 ", country='" + country + '\'' +
+                ", picture='" + picture + '\'' +
                 '}';
     }
 }

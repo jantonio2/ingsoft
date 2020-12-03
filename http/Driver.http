@@ -31,7 +31,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "driverId": 4,
+  "driverId": 3,
   "ci": "124248596 sc",
   "firstName": "Sebastian",
   "firstSurname": "Carrasco",
@@ -45,7 +45,7 @@ Content-Type: application/json
   "zone":"Miraflores",
   "city":"La Paz",
   "country":"Bolivia",
-  "companyId": 2
+  "companyId": 1
 }
 
 ###

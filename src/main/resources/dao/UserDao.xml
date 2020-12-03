@@ -10,7 +10,8 @@
                address_id as addressId,
                birthdate as birthDate,
                email as email,
-               password as password
+               password as password,
+               picture as picture
         FROM user
         WHERE
             user_id = #{userId} and status = 1
