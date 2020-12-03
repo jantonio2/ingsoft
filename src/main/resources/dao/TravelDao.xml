@@ -11,7 +11,6 @@
         #{transaction.txUserId},#{transaction.txDate})
     </insert>
 
-<<<<<<< HEAD
     <select id="findTravelByIdDriver" resultMap="travelListMap">
         select a.user_id as userId,
         d.first_name as userFirstName,
@@ -38,13 +37,6 @@
         <result column="startAddressId" property="startAddressId"/>
         <result column="deliveryAddressId" property="deliveryAddressId"/>
     </resultMap>
-
-
-
-
-
-=======
-
 
     <select id="getbyIds" resultMap="travelMap">
         SELECT
@@ -90,5 +82,4 @@
         <result column="deliveryAddressCity" property="deliveryAddressCity"/>
         <result column="deliveryAddressCountry" property="deliveryAddressCountry"/>
     </resultMap>
->>>>>>> 12a914349f2971e72e392909630884e065ae65b4
 </mapper>
