@@ -14,5 +14,5 @@ import java.util.List;
 public interface PaymentDao {
     public Integer createPayment(Payment payment);
     public Payment findByUserId(Integer userId);
-    public List<PaymentHistoryRequest> paymentHistoryId(User user);
+    public List<PaymentHistoryRequest> paymentHistoryId(Integer userId);
 }
