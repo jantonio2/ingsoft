@@ -110,8 +110,10 @@ public class PaymentBl {
 
     public PaymentRequest createPayment(PaymentRequest paymentRequest, Transaction transaction){
         Payment payment=new Payment();
+//        Card card=new Card();
         payment.setTravelId(paymentRequest.getTravelId());
         payment.setAdministrationId(paymentRequest.getAdministrationId());
+
         payment.setDatePayment(paymentRequest.getDatePayment());
         payment.setPaymentStatus(paymentRequest.getPaymentStatus());
         payment.setAmount(paymentRequest.getAmount());

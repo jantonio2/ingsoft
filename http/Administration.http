@@ -3,13 +3,13 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "ci": "1458596 lp",
-  "firstName": "Antonio",
-  "firstSurname": "Rojas",
-  "secondSurname": "Rojas",
-  "phone": "+591 75400415",
-  "email": "antonio@gmail.com",
-  "password": "juan1234"
+  "ci": "123332 lp",
+  "firstName": "Kevin",
+  "firstSurname": "Escobar",
+  "secondSurname": "Escobar",
+  "phone": "+591 72589386",
+  "email": "kevin@gmail.com",
+  "password": "kevin"
 }
 
 ###
