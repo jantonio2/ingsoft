@@ -171,4 +171,12 @@ public class DriverBl {
         List<LogInRequest> list = driverDao.driverLogIn();
         return list;
     }
+
+    public void deleteDriver(Integer driverId, Transaction transaction){
+        Driver driver = new Driver();
+        driver.setStatus(0);
+        driver.setDriverId(driverId);
+        driver.setTransaction(transaction);
+        driverDao.deleteDriver(driver);
+    }
 }

@@ -103,4 +103,12 @@ public class DriverApi {
         byte[] image=storageUtil.getImage(path,name);
         return image;
     }
+
+    @DeleteMapping(path="/{driverId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String deleteDriver(@PathVariable String driverId, HttpServletRequest request){
+        Transaction transaction = TransactionUtil.createTransaction(request);
+        transactionBl.createTransaction(transaction);
+        driverBl.deleteDriver(Integer.parseInt(driverId),transaction);
+        return "Succesful process";
+    }
 }
