@@ -10,11 +10,13 @@ public class SingleDriver {
     private Date birthDate;
     private String phone;
     private String email;
+    private String password;
     private String number;
     private String street;
     private String zone;
     private String city;
     private String country;
+    private String picture;
 
     public SingleDriver() {
     }
@@ -75,6 +77,14 @@ public class SingleDriver {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getNumber() {
         return number;
     }
@@ -115,9 +125,17 @@ public class SingleDriver {
         this.country = country;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
     @Override
     public String toString() {
-        return "SingleUserResponse{" +
+        return "SingleDriver{" +
                 "ci='" + ci + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", firstSurname='" + firstSurname + '\'' +
@@ -125,11 +143,13 @@ public class SingleDriver {
                 ", birthDate=" + birthDate +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 ", number='" + number + '\'' +
                 ", street='" + street + '\'' +
                 ", zone='" + zone + '\'' +
                 ", city='" + city + '\'' +
                 ", country='" + country + '\'' +
+                ", picture='" + picture + '\'' +
                 '}';
     }
 }

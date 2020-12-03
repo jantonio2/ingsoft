@@ -22,8 +22,13 @@ Content-Type: application/json
 
 ###
 
+
 GET http://localhost:8070/v1/travel/findDriver/1
 Accept: application/json
 Content-Type: application/json
 
 ###
+
+GET http://localhost:8070/v1/travel/7/1
+Accept: application/json
+

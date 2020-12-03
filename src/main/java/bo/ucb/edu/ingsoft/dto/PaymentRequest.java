@@ -7,6 +7,7 @@ public class PaymentRequest {
     private Integer paymentId;
     private Integer travelId;
     private Integer administrationId;
+//    private String accountNumber;
     private Date datePayment;
     private String paymentStatus;
     private Double amount;
@@ -82,11 +83,20 @@ public class PaymentRequest {
                 "bankTransactionId=" + paymentId +
                 ", driverBankAccountId=" + travelId +
                 ", administrationBankAccountId=" + administrationId +
-                ", transactionDate='" + datePayment + '\'' +
-                ", transactionDate='" + paymentStatus + '\'' +
+//                ", accountNumber='" + accountNumber + '\'' +
+                ", datePayment='" + datePayment + '\'' +
+                ", payentStatus='" + paymentStatus + '\'' +
                 ", amount=" + amount +
                 ", status=" + status +
                 ", transaction=" + transaction +
                 '}';
     }
+
+//    public String getAccountNumber() {
+//        return accountNumber;
+//    }
+//
+//    public void setAccountNumber(String accountNumber) {
+//        this.accountNumber = accountNumber;
+//    }
 }

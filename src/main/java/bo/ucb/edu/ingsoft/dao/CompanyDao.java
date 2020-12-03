@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface CompanyDao {
     public Company findCompanyById(Integer companyId);
-
+    public void createCompany(Company company);
 }
