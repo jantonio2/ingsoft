@@ -3,6 +3,7 @@ package bo.ucb.edu.ingsoft.api;
 import bo.ucb.edu.ingsoft.bl.TransactionBl;
 import bo.ucb.edu.ingsoft.bl.VehicleBl;
 import bo.ucb.edu.ingsoft.dto.*;
+import bo.ucb.edu.ingsoft.modelo.Company;
 import bo.ucb.edu.ingsoft.modelo.Transaction;
 import bo.ucb.edu.ingsoft.modelo.Vehicle;
 import bo.ucb.edu.ingsoft.util.TransactionUtil;
@@ -30,6 +31,7 @@ public class VehicleApi {
         this.transactionBl = transactionBl;
     }
 
+
     @GetMapping(path="/{vehicleId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public SingleVehicle findById(HttpServletRequest request, @PathVariable String vehicleId){
         return vehicleBl.findVehicleById(Integer.parseInt(vehicleId));
@@ -45,23 +47,37 @@ public class VehicleApi {
         List<VehicleListRequest> vehicleListRequests=vehicleBl.vehiclesList();
         return vehicleListRequests;
     }
+    @RequestMapping(path="/type/{vehicleType}", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<VehicleListRequest> findVehiclesByType(HttpServletRequest request, @PathVariable String vehicleType) {
+        List<VehicleListRequest> vehicleListDriver=vehicleBl.vehiclesListByType(vehicleType);
+        return vehicleListDriver;
+    }
+
+    @RequestMapping(path="/company/{vehicleCompany}", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<VehicleListRequest> findVehiclesByCompany(HttpServletRequest request, @PathVariable String vehicleCompany) {
+        List<VehicleListRequest> vehicleListDriver=vehicleBl.vehiclesListByCompany(vehicleCompany);
+        return vehicleListDriver;
+    }
+    @RequestMapping(path="/brand/{vehicleBrand}", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<VehicleListRequest> findVehiclesByBrand(HttpServletRequest request, @PathVariable String vehicleBrand) {
+        List<VehicleListRequest> vehicleListDriver=vehicleBl.vehiclesListByBrand(vehicleBrand);
+        return vehicleListDriver;
+    }
 
 
+/*
     @RequestMapping(path="/type/", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public List<VehicleDriverRequest> findVehiclesByType(@RequestBody Vehicle vehicle, HttpServletRequest request) {
         List<VehicleDriverRequest> vehicleListDriver=vehicleBl.findVehiclesByType(vehicle.getVehicleType());
         return vehicleListDriver;
     }
+*/
 
-    @RequestMapping(path="/brand", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    /*@RequestMapping(path="/brand", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     public List<VehicleDriverRequest> findVehiclesByBrand(@RequestBody Vehicle vehicle, HttpServletRequest request) {
         List<VehicleDriverRequest> vehicleListDriver=vehicleBl.findVehicleByBrand(vehicle.getBrand());
         return vehicleListDriver;
-    }
-
-
-
-
+    }*/
 
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)

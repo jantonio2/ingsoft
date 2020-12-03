@@ -18,23 +18,21 @@ Content-Type: application/json
   "vehicleModel": "B"
 }
 ###
-GET http://localhost:8070/v1/vehicle/type
+GET http://localhost:8070/v1/vehicle/type/Minibus
 Accept: application/json
-Content-Type: application/json
-
-{
-  "vehicleType": "Minibus"
-}
 
 ###
 
-GET http://localhost:8070/v1/vehicle/brand
+GET http://localhost:8070/v1/vehicle/company/Pumari
 Accept: application/json
 Content-Type: application/json
 
-{
-  "brand": "Toyota"
-}
+###
+
+GET http://localhost:8070/v1/vehicle/brand/Toyota
+Accept: application/json
+Content-Type: application/json
+
 ###
 PUT http://localhost:8070/v1/vehicle/2/image
 Accept: application/json
